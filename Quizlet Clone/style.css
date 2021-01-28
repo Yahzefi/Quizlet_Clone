@@ -1,0 +1,16 @@
+body {
+    background-color: rgb(85, 85, 85);
+    color:white;
+}
+    .header_container {
+    vertical-align: bottom;
+    text-align: center; 
+    }
+        .nav_div a {
+            color:white;
+            text-decoration: none;
+        }
+        .nav_div a:hover{
+            cursor: pointer;
+            color:lightblue;
+        }
