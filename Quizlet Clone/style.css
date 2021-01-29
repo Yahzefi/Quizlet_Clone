@@ -38,14 +38,14 @@ body {
         border: 1px solid red;
     }
         .pg-bg {
-            /*  */
+            color:white;
         }
             .load-msg {
-                /*  */
+                color:white;
             }
         .ctg-side {
-            /*  */
+            color:white;
         }
-        .update-form {
-            /*  */
-        }
+    .form-container {
+        color:white;
+    }
