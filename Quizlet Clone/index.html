@@ -4,20 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quizlet Clone</title>
-    <link rel="stylesheet" type="text/css" href="style.css";>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div id= "main_container" class="header_container">
-        <h1 style="display:none;" id="main_header">Welcome to the Quizlet Clone</h1>
-        <br><br>
-        <div class="nav_div">
+    <!-- PAGE HEADER -->
+    <div id= "header_container" class="h-container">
+        <h1 id="main_header">Welcome to the Quizlet Clone</h1>
+        <!-- LOGIN AND REGISTRY REDIRECT -->
+        <div id="logIn_Links" class="log-links">
+            <nav><a>LOGIN</a></nav>
+            <nav><a>REGISTER</a></nav>
+        </div>
+        <!-- GENERAL PAGE NAVIGATION -->
+        <div id="page_navigation" class="pg_nav">
             <nav>
                 <a href="#" onclick="navOne()">Nav One</a>
             </nav>
         </div>
     </div>
+    <!-- BODY OF WEBPAGE -->
+    <div id="page_container" class="p-container">
+        <h2>||BODY||</h2>
+        <div id="body_background" class="pg-bg">
+            <!-- ON LEFT SIDE && BG IMG -->
+            <div id="load_message" class="load-msg">
+                <!-- POSTS GO HERE -->
+            </div>
+        </div>
+        <div id="category_side" class="ctg-side">
+            <!-- ON RIGHT SIDE && CATEGORIES GO HERE -->
+        </div>
+        <div id="update_form" class="update-form">
+            <!-- ON BOTTOM && SUB FORM GOES HERE -->
+        </div>
+    </div>
 
     <script type="module" src="main.js"></script>
     <script type="module" src="classes.js"></script>
+
 </body>
 </html>
