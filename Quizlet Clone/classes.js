@@ -1,9 +1,10 @@
-export class Main {
-
-    constructor(Obj1, Obj2, Obj3) {
-        this.ObjectOne = Obj1;
-        this.ObjectTwo = Obj2;
-        this.ObjectThree = Obj3;
+export class Component {
+    constructor(componentName, componentTierLevel, componentHasAnimations, componentAutoFill, componentStorage) {
+        this.cptName = componentName;
+        this.cptTierLVL = componentTierLevel;
+        this.cptAnim = componentHasAnimations;
+        this.cptFill = componentAutoFill;
+        this.cptStg = componentStorage;
     }
     methodOne(){
         //
@@ -11,9 +12,4 @@ export class Main {
     methodTwo(){
         //
     };
-};
-
-
-class SubMain extends Main {
-    //
 };
