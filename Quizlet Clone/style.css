@@ -3,26 +3,27 @@ body {
     background-color: rgb(85, 85, 85);
     color:white;
 }
+div {
+    padding: 12px;
+}
 
 /* IFRAME STYLING */
-    .testHTML {
+    /* .testHTML {
         border:none;
+    } */
+/* HEADER CONTAINER */
+    .h-container {
+        text-align: center;
+        border: 2px solid gold;
     }
-
-/* PRIMARY PAGE CONTAINER */
+/* BODY CONTAINER */
     .p-container {
         text-align: center;
         border: 1px solid red;
     }
-        .pg-bg {
-            color:white;
-        }
-            .load-msg {
-                color:white;
-            }
-        .ctg-side {
-            color:white;
-        }
+/* FORM CONTAINER */
     .form-container {
-        color:white;
+        text-align: center;
+        border: 1px solid pink;
     }
+
