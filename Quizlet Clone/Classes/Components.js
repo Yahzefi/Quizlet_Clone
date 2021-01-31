@@ -18,10 +18,19 @@ export class Component {
         });
     };
     async attachTwoSubCPT(firstChild, secondChild){
-        await this.attachSubCPT(firstChild)
+        return new Promise(res=>{
+            this.attachSubCPT(firstChild)
+            .then((data)=>{
+                let selectedCPT = data;
+                res(selectedCPT.appendChild(secondChild));
+            });
+        })
+    }
+    async attachThreeSubCPT(f_Child, s_Child, t_Child){
+        this.attachTwoSubCPT(f_Child, s_Child)
         .then((data)=>{
             let selectedCPT = data;
-            selectedCPT.appendChild(secondChild)
+            selectedCPT.appendChild(t_Child);
         });
     }
 };
