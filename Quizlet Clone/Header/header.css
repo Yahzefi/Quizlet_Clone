@@ -1,29 +1,24 @@
 /* PAGE HEADER */
-/* .h-container div {
-    margin-top: 8px;
-} */
+.h-container div {
+    margin-top: 12px;
+}
     .ban-graphic {
-        background: blue;
-        width: 75%;
-        float:left;
-        height: 75px;
-        margin-top:12px;
-        margin-left: 8%;
-        margin-bottom: 12px;
+        width:100%;
+        border: 1px solid blue;
     }
     .log-links {
-        width:15%;
-        float:right;
-        margin-top: 8px;
-        /* border: 1px solid purple; */
+        width:100%;
+        border: 1px solid purple;
     }
+        .m_Header {
+            width:85%;
+            float:left;
+        }
         .log-links nav {
-            position:relative;
-            left: 30%;
-            padding:4px;
-            width: 50%;
+            width:15%;
+            float:right;
+            margin-bottom: 8px;
             border: 1px solid black;
-            margin-bottom: 4px;
         }
             .log-links a {
                 color:white;
@@ -35,8 +30,8 @@
                 color: lightblue;
             }
     .pg_nav {
-        margin-top: 12px;
         border: 1px solid black;
+        width:100%;
     }
         .pg_nav a {
             color:white;
@@ -46,9 +41,3 @@
             cursor: pointer;
             color:lightblue;
         }
-
-        /* FIX THIS STUFF
-
-                THE BANNER, LOG-LINKS AND PAGE NAV NEED TO ALL BE IN ONE DIV.
-                RIGHT NOW THEY'RE ALL IN THE NAV DIV AND THAT'S NOT OKAY
-        */
