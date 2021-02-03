@@ -29,11 +29,23 @@ div {
     }
 /* BODY CONTAINER */
     .p-container {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width:80%;
+        padding-left: 40px;
+        padding-right: 40px;
         text-align: center;
         border: 1px solid red;
     }
 /* FORM CONTAINER */
     .form-container {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width:40%;
         text-align: center;
         border: 1px solid pink;
     }
