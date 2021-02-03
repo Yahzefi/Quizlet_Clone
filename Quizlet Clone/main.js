@@ -29,7 +29,7 @@ let home_SubCPT = new Subcomponent("div", "home_container", "home-container", fa
     let posts_SubCPT = new Subcomponent("div", "post_container", "post-container", false);
 let ctg_SubCPT = new Subcomponent("div", "category_container", "ctg-container", false);
 let form_subCPT = new Subcomponent("form", "subscription_form", "sub-form", false);
-    let subForm_subCPT = new Subcomponent("input", "name_input", "name-inp", false);
+    let subForm_subCPT = new Subcomponent("input", "name_input", "txt-inp", false);
 
 //                                      ||   ON INIT  ||                                      \\
 
@@ -101,7 +101,7 @@ function initPageFill(data){
     let formCollection = [formDiv, subForm, nameInput];
 
 // START CODE HERE
-    // headerMain(headerCollection);
-    // homeMain(bodyCollection);
+    headerMain(headerCollection);
+    homeMain(bodyCollection);
     formMain(formCollection);
 };
