@@ -36,32 +36,60 @@ export class Component {
 };
 
 export class Subcomponent {
-    constructor(type, id, className, hasInLineStyling) {
-        this.type = type;
+    constructor(elementType, id, className, hasInLineStyling) {
+        this.elementType = elementType;
         this.id = id;
         this.className = className;
         this.hasInLineStyling = hasInLineStyling;
     }
-    createElement(specEx, infoArr){
-        let newElement = document.createElement(this.type);
+    createElement(newAttr, attrData){
+        let newElement = document.createElement(this.elementType);
         newElement.setAttribute('id', this.id);
         newElement.setAttribute('class', this.className);
-        if(specEx == null){
-            return newElement;
-        } else if(specEx === "for"){
-            newElement.setAttribute('for', infoArr[0]);
-            newElement.textContent = infoArr[1];
-            return newElement;
-        } else if(specEx === "name"){
-            newElement.setAttribute('name', infoArr[0]);
-            return newElement;
+        if(this.hasInLineStyling){
+            this.insertStyling();
         }
+        if(newAttr == null || !newAttr){
+            return newElement;
+        } else if(newAttr && typeof attrData === "object"){
+            this.addAttributes(newElement, attrData);
+            return newElement;
+        } else if(newAttr && typeof attrData !== "object") {
+            throw new Error('Second Paramenter Must Be An Array');
+        } else {
+            throw new Error('Attribute Type Not Found');
+        }
+    }
+    addAttributes(newElement, attrData){
+        console.log(attrData[0].reqAttr);
+        attrData.forEach((value, i)=>{
+            switch(attrData[i].reqAttr){
+                case "for":
+                    console.log(attrData[i].reqInfo);
+                    newElement.setAttribute('for', attrData[i].reqInfo);
+                    if(typeof attrData[i].innerTxt === "string"){
+                        newElement.textContent = attrData[i].innerTxt;
+                        break;
+                    } else if(attrData[i].innerTxt == null){
+                        break;
+                    } else {
+                        throw new Error("'innerTxt' does not match type 'string'");
+                    }
+                case "type":
+                    newElement.setAttribute('type', attrData[i].reqInfo);
+                case "name":
+                    newElement.setAttribute('name', attrData[i].reqInfo);
+                case undefined:
+                    break;
+                default:
+                    throw new Error('Attribute Type Not Found');
+            };
+            return newElement;
+        })
     }
     insertStyling() {
         if(this.hasInLineStyling){
-            //
-        } else {
-            //
-        }
+            
+        };
     }
 }
