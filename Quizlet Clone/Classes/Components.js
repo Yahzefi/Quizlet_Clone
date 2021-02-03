@@ -42,11 +42,20 @@ export class Subcomponent {
         this.className = className;
         this.hasInLineStyling = hasInLineStyling;
     }
-    createElement(){
+    createElement(specEx, infoArr){
         let newElement = document.createElement(this.type);
         newElement.setAttribute('id', this.id);
         newElement.setAttribute('class', this.className);
-        return newElement;
+        if(specEx == null){
+            return newElement;
+        } else if(specEx === "for"){
+            newElement.setAttribute('for', infoArr[0]);
+            newElement.textContent = infoArr[1];
+            return newElement;
+        } else if(specEx === "name"){
+            newElement.setAttribute('name', infoArr[0]);
+            return newElement;
+        }
     }
     insertStyling() {
         if(this.hasInLineStyling){
