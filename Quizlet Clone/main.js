@@ -2,6 +2,8 @@
 
 import { Component, Subcomponent } from "./Classes/Components.js";
 import { headerMain } from "./Header/header.js";
+import { homeMain } from "./Home/home.js";
+import { formMain } from "./Subscription_Form/form.js";
 
 //                                      ||   CONSTANTS FOR WEBPAGE DIVISIONS   ||                                      \\
 
@@ -52,7 +54,7 @@ function initWebLayout(){
         );
         formCPT.attachTwoSubCPT(
             form_subCPT.createElement(),
-            subForm_subCPT.createElement()
+            subForm_subCPT.createElement("name", ["nameInput"])
         );
         resolve();
     });
@@ -99,5 +101,7 @@ function initPageFill(data){
     let formCollection = [formDiv, subForm, nameInput];
 
 // START CODE HERE
-    headerMain(headerCollection);
+    // headerMain(headerCollection);
+    // homeMain(bodyCollection);
+    formMain(formCollection);
 };
