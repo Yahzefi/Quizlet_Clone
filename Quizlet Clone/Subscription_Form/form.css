@@ -1,1 +1,21 @@
-/*  */
+.sub-msg {
+    padding: 8px;
+    border: 2px solid lightblue;
+    border-radius: 48px;
+}
+.sub-form{
+    border: 1px solid black;
+    padding:6px;
+}
+    .form-label {
+        padding-right:18px;
+        text-decoration: black underline;
+    }
+    .txt-inp {
+        border-radius: 24px;
+        height:18px;
+    }
+    .txt-inp:focus {
+        border: 2.5px solid lightblue;
+        outline: none;
+    }
