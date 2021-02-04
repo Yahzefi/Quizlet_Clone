@@ -1,4 +1,5 @@
-import { Component, Subcomponent } from "../Classes/Components.js";
+import { Component } from "../Initialization/Component.js";
+import { Subcomponent } from "../Initialization/Subcomponent.js";
 
 export function formMain(data) {
 // TRANSFER PARAMETER DATA ARRAY
@@ -13,7 +14,7 @@ export function formMain(data) {
 
 
 // COMPONENTS
-    let formCPT = new Component(formDiv, '', false, false);
+//
 
 // SUBCOMPONENTS
     let nameLabel = new Subcomponent('label', 'name_label', 'form-label', false);
@@ -27,10 +28,11 @@ export function formMain(data) {
     // formElement.insertBefore(nameLabel.createElement());
     
     // JQUERY CODE FOR THE ABOVE FUNCTIONALITY
-    $(nameInput).before(nameLabel.createElement(true, [{reqAttr:"for", reqInfo:"nameInput", innerTxt:"Name:"}]));
+    $(nameInput).before(nameLabel.createElement([{reqAttr:"for", reqInfo:"nameInput", innerTxt:"Name:"}]));
     $("<br>").appendTo(formElement);
-    $(formElement).append(emailLabel.createElement(true, [{reqAttr:"for", reqInfo:"email-label", innerTxt:"Email:"}]));
-    $(formElement).append(emailInput.createElement(true, [{reqAttr:"type", reqInfo:"email"}, {reqAttr:"name", reqInfo:"email-label"}]));
+
+    $(formElement).append(emailLabel.createElement([{reqAttr:"for", reqInfo:"email-label", innerTxt:"Email:"}]));
+    $(formElement).append(emailInput.createElement([{reqAttr:"type", reqInfo:"email"}, {reqAttr:"name", reqInfo:"email-label"}]));
 }
 
 function accessArray(tgt, formArr){
