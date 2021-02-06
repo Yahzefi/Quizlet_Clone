@@ -25,32 +25,38 @@ export class Subcomponent {
     }
     addAttributes(newElement, attrData){
         attrData.forEach((value, i)=>{
-            switch(attrData[i].reqAttr){
+            switch(attrData[i].attr){
 // FOR
                 case "for":
-                    console.log(attrData[i].reqInfo);
-                    newElement.setAttribute('for', attrData[i].reqInfo);
-                    if(typeof attrData[i].innerTxt === "string"){
-                        newElement.textContent = attrData[i].innerTxt;
-                        break;
-                    } else if(attrData[i].innerTxt == null){
-                        break;
-                    } else {
-                        throw new Error("'innerTxt' does not match type 'string'");
-                    }
+                    newElement.setAttribute('for', attrData[i].content);
+                    break;
 // TYPE
                 case "type":
-                    newElement.setAttribute('type', attrData[i].reqInfo);
+                    newElement.setAttribute('type', attrData[i].content);
+                    break;
 // NAME
                 case "name":
-                    newElement.setAttribute('name', attrData[i].reqInfo);
+                    newElement.setAttribute('name', attrData[i].content);
+                    break;
+// HREF
+                case "href":
+                    newElement.setAttribute('href', attrData[i].content);
+                    break;
 // UNDEFINED
                 case undefined:
+                    break;
+// NO NEW ATTR W/ INNER TEXT
+                case "":
                     break;
 // DEFAULT
                 default:
                     throw new Error('Attribute Type Not Found');
             };
+            if(attrData[i].innerText && typeof attrData[i].innerText === 'string'){
+                newElement.textContent = attrData[i].innerText;
+            } else if(attrData[i].innerText && typeof attrData[i].innerText !== 'string'){
+                throw new Error("'innerTxt' does not match type 'string'");
+            }
             return newElement;
         })
     }
