@@ -33,13 +33,57 @@ let formCPT = new Component("div", "form_container", "form-container", false, fa
 // FORM
     let form_SC = new Subcomponent("form", "subscription_form", "sub-form", false);
         let subMessage_SC = new Subcomponent('p', 'sub_message', 'sub-msg', false);
+        let nameLabel_SC = new Subcomponent('label', 'name_label', 'form-label', false);
         let nameInput_SC = new Subcomponent("input", "name_input", "txt-inp", false);
+        let emailLabel_SC = new Subcomponent('label', 'email_label', 'form-label', false);
+        let emailInput_SC = new Subcomponent('input', 'email_input', 'txt-inp', false);
 
 
 
 export function initWebLoad(){
     return new Promise(resolve=>{
-
+        formCPT.createContainer()
+        .then((form)=>{
+            $(document.body).prepend(form);
+                $(form).append(form_SC.createElement());
+                    $('#' + form_SC.id).append(subMessage_SC.createElement([{attr:"", content: "", innerText:"Interested in Learning More?"}]));
+                        $("<br>").appendTo('#' + subMessage_SC.id);
+                        $("<span>Sign Up For Email Updates!</span>").appendTo('#' + subMessage_SC.id);
+                    $('#' + form_SC.id).append(nameLabel_SC.createElement([{attr:"for", content:"nameInput", innerText:"Name:"}]));
+                    $('#' + form_SC.id).append(nameInput_SC.createElement([{attr: "name", content: "nameInput"}]));
+                    $("<br>").appendTo('#' + form_SC.id);
+                    $('#' + form_SC.id).append(emailLabel_SC.createElement([{attr: "for", content:"emailInput", innerText:"Email:"}]));
+                    $('#' + form_SC.id).append(emailInput_SC.createElement([{attr:"type", content:"email"}, {attr:"name", content:"emailInput"}]));
+        })
+        bodyCPT.createContainer()
+        .then((body)=>{
+            $(document.body).prepend(body);
+                $(body).append(home_SC.createElement())
+                    $('#' + home_SC.id).append(posts_SC.createElement());
+                $(body).append(ctg_SC.createElement());
+        });
+        headerCPT.createContainer()
+        .then((head)=>{
+            $(document.body).prepend(head);
+                $(head).append(logInLinks_SC.createElement());
+                    $('#' + logInLinks_SC.id).append(mainHeadTxt_SC.createElement([{attr:"", content:"", innerText:"Welcome to the Quizlet Clone"}]));
+                    $('#' + logInLinks_SC.id).append(logNav_SC.createElement());
+                        $('#' + logNav_SC.id).append(logAnchor_SC.createElement([{attr:"href", content:"#", innerText: "LOGIN"}]));
+                    $('#' + logInLinks_SC.id).append(regNav_SC.createElement());
+                        $('#' + regNav_SC.id).append(regAnchor_SC.createElement([{attr:"href", content:"#", innerText:"REGISTER"}]));
+                $(head).append(banner_SC.createElement());
+                $(head).append(pageNavDiv_SC.createElement());
+                    $('#' + pageNavDiv_SC.id).append(pageNav_SC.createElement());
+                        $('#' + pageNav_SC.id).append(tempNavOne_SC.createElement([{attr:"href", content:"#", innerText:"Nav One"}]));
+                            $("<span>| </span>").prependTo('#' + tempNavOne_SC.id);
+                            $("<span> | </span>").appendTo('#' + tempNavOne_SC.id);
+                        $('#' + pageNav_SC.id).append(tempNavTwo_SC.createElement([{attr:"href", content:"#", innerText:"Nav Two"}]));
+                            $("<span>| </span>").prependTo('#' + tempNavTwo_SC.id);
+                            $("<span> | </span>").appendTo('#' + tempNavTwo_SC.id);
+                        $('#' + pageNav_SC.id).append(tempNavThree_SC.createElement([{attr:"href", content:"#", innerText:"Nav Three"}]));
+                            $("<span>| </span>").prependTo('#' + tempNavThree_SC.id);
+                            $("<span> |</span>").appendTo('#' + tempNavThree_SC.id);
+        });
         resolve();
     });
 };
