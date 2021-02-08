@@ -1,17 +1,13 @@
 export class Subcomponent {
-    constructor(elementType, id, className, hasInLineStyling) {
+    constructor(elementType, id, className) {
         this.elementType = elementType;
         this.id = id;
         this.className = className;
-        this.hasInLineStyling = hasInLineStyling;
     }
     createElement(attrData){
         let newElement = document.createElement(this.elementType);
         newElement.setAttribute('id', this.id);
         newElement.setAttribute('class', this.className);
-        if(this.hasInLineStyling){
-            this.insertStyling();
-        }
         if(attrData == null){
             return newElement;
         } else if(typeof attrData === "object"){
@@ -42,6 +38,10 @@ export class Subcomponent {
                 case "href":
                     newElement.setAttribute('href', attrData[i].content);
                     break;
+// SRC
+                case "src":
+                    newElement.setAttribute('src', attrData[i].content);
+                    break;
 // UNDEFINED
                 case undefined:
                     break;
@@ -59,10 +59,5 @@ export class Subcomponent {
             }
             return newElement;
         })
-    }
-    insertStyling() {
-        if(this.hasInLineStyling){
-            
-        };
     }
 }
