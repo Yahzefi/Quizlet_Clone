@@ -1,36 +1,22 @@
-import { Component } from "../Initialization/Component.js";
-import { Subcomponent } from "../Initialization/Subcomponent.js";
+//                                      ||      IMPORTS     ||                                      \\
 
+
+
+//                                      ||   LINKED FUNCTION   ||                                      \\
 export function formMain(data) {
 // TRANSFER PARAMETER DATA ARRAY
-    let form_Collection = data;
-    console.log(form_Collection);
+    const FORM_COLLECTION = data;
 
 // SPLIT PARAMATER ARRAY
-    let formDiv, formElement, nameLabel, nameInput, emailLabel, emailInput;
-    formDiv = accessArray("div", form_Collection);
-        formElement = accessArray("form", form_Collection);
-            nameLabel = accessArray("nameLabel", form_Collection);
-            nameInput = accessArray("nameInput", form_Collection);
-            emailLabel = accessArray("emailLabel", form_Collection);
-            emailInput = accessArray("emailInput", form_Collection);
+    let formDiv = FORM_COLLECTION.container;
+        let formElement = FORM_COLLECTION.children["form"];
+            let subMsg = FORM_COLLECTION.children["form_Children"].subMessage;
+            let nameLabel = FORM_COLLECTION.children["form_Children"].nameLabel;
+            let nameInput = FORM_COLLECTION.children["form_Children"].nameInput;
+            let emailLabel = FORM_COLLECTION.children["form_Children"].emailLabel;
+            let emailInput = FORM_COLLECTION.children["form_Children"].emailInput;
+
+//                                      ||      START NEW CODE HERE     ||                                      \\
+
 }
 
-function accessArray(tgt, form_Collection){
-    switch(tgt){
-        case "div":
-            return form_Collection["container"];
-        case "form":
-            return form_Collection["children"].form;
-        case "nameLabel":
-            return form_Collection["children"].formChildren["nameLabel"];
-        case "nameInput":
-            return form_Collection["children"].formChildren["nameInput"];
-        case "emailLabel":
-            return form_Collection["children"].formChildren["emailLabel"];
-        case "emailInput":
-            return form_Collection["children"].formChildren["emailInput"];
-        default:
-            console.log("Error");
-    }
-}
