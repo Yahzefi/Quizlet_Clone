@@ -9,6 +9,7 @@ body {
 }
 div {
     padding: 12px;
+    margin-bottom: 24px;
 }
 
 /* IFRAME STYLING */
@@ -26,18 +27,17 @@ div {
         padding-right: 40px;
         text-align: center;
         border: 2px solid gold;
+        background-color: rgba(3, 3, 3, 0.534)
     }
 /* BODY CONTAINER */
     .p-container {
+        padding: 0px;
         display:flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
-        width:80%;
-        padding-left: 40px;
-        padding-right: 40px;
+        flex-direction: row;
+        width:100%;
         text-align: center;
-        border: 1px solid red;
     }
 /* FORM CONTAINER */
     .form-container {
@@ -47,6 +47,5 @@ div {
         flex-direction: column;
         width:40%;
         text-align: center;
-        border: 1px solid pink;
     }
 
