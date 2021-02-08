@@ -3,16 +3,21 @@
     margin-top: 12px;
 }
     .ban-graphic {
-        width:100%;
-        border: 1px solid blue;
+        width: 100%;
+        height: 400px;
     }
+        .ban-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 72px;
+        }
     .log-links {
         width:100%;
-        border: 1px solid purple;
     }
         .m_Header {
             width:85%;
             float:left;
+            padding-left: 164px;
         }
         .log-links nav {
             width:15%;
@@ -30,12 +35,13 @@
                 color: lightblue;
             }
     .pg_nav {
-        border: 1px solid black;
         width:100%;
     }
         .pg_nav a {
             color:white;
             text-decoration: none;
+            padding-right: 12px;
+            padding-left: 12px;
         }
         .pg_nav a:hover{
             cursor: pointer;
