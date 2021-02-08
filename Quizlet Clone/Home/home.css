@@ -1,1 +1,36 @@
-/*  */
+.p-container {
+    text-decoration: none;
+}
+
+    .home-container {
+        width: 75%;
+        float:left;
+        background-color: rgb(39,39,39);
+        border: 1px solid red;
+        border-radius: 24px;
+        /* box-shadow: 0px 8px 32px 0px red; */
+
+    }
+        .post-container {
+            width:75%;
+            text-align: left;
+        }
+        .post-container section {
+            margin-bottom: 18px;
+            margin-top: 6px;
+        }
+            .post-sect {
+                height: auto;
+                text-align: center;
+                border: 1px solid black;
+                border-radius: 24px;
+                box-shadow: 0px 4px 24px 0px red;
+            }
+
+    .ctg-container {
+        width:25%;
+        float:right;
+        background-color: rgb(39, 39, 39);
+        border: 1px solid red;
+        border-radius: 24px;
+    }   
