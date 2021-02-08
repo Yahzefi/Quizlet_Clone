@@ -29,6 +29,8 @@ let formCPT = new Component("div", "form_container", "form-container", false, fa
 // BODY
     let home_SC = new Subcomponent("div", "home_container", "home-container", false);
         let posts_SC = new Subcomponent("div", "post_container", "post-container", false);
+            let postSection_SC_1 = new Subcomponent("section", "post_section_1", "post-sect", false);
+            let postSection_SC_2 = new Subcomponent("section", "post_section_2", "post-sect", false);
     let ctg_SC = new Subcomponent("div", "category_container", "ctg-container", false);
 // FORM
     let form_SC = new Subcomponent("form", "subscription_form", "sub-form", false);
@@ -39,9 +41,11 @@ let formCPT = new Component("div", "form_container", "form-container", false, fa
         let emailInput_SC = new Subcomponent('input', 'email_input', 'txt-inp', false);
 
 
+//                                      ||   ON INIT (DOM CONSTRUCTION)   ||                                      \\
 
 export function initWebLoad(){
     return new Promise(resolve=>{
+// FORM
         formCPT.createContainer()
         .then((form)=>{
             $(document.body).prepend(form);
@@ -55,13 +59,36 @@ export function initWebLoad(){
                     $('#' + form_SC.id).append(emailLabel_SC.createElement([{attr: "for", content:"emailInput", innerText:"Email:"}]));
                     $('#' + form_SC.id).append(emailInput_SC.createElement([{attr:"type", content:"email"}, {attr:"name", content:"emailInput"}]));
         })
+// BODY
         bodyCPT.createContainer()
         .then((body)=>{
             $(document.body).prepend(body);
                 $(body).append(home_SC.createElement())
+                    $('#' + home_SC.id).append("<h2>Recent Updates</h2>");
+                        $('#' + home_SC.id + ' h2').css("text-decoration", 'underline');
                     $('#' + home_SC.id).append(posts_SC.createElement());
+                            $('#' + posts_SC.id).append(postSection_SC_1.createElement());
+                                $('#' + postSection_SC_1.id).append("<h4><span>Ver. 1.0.0: </span>Site Initialized</h4>");
+                                    $('#' + postSection_SC_1.id + " h4").css({"color": "lightgrey"});
+                                    $('#' + postSection_SC_1.id + " span").css({"color": "gold", "opacity": "0.75"});
+                                $('#' + postSection_SC_1.id).append("<p>I've created a <i>Quizlet Clone</i>!</p>");
+                                $('#' + postSection_SC_1.id).append("<p>  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi sint fuga magnam animi error aspernatur incidunt blanditiis eius, quae non odit cupiditate facere est explicabo saepe repellendus! Dolore, ab iusto.</p>");
+                                    $('#' + postSection_SC_1.id + ' p').css("text-align", "left");
+
+                            $('#' + posts_SC.id).append(postSection_SC_2.createElement());
+                                $('#' + postSection_SC_2.id).append("<h4><span>Ver. 1.1.0: </span>Site Edited</h4>");
+                                    $('#' + postSection_SC_2.id + " h4").css({"color": "lightgrey"});
+                                    $('#' + postSection_SC_2.id + " span").css({"color": "gold", "opacity": "0.75"});
+                                $('#' + postSection_SC_2.id).append("<p>I've edited a <i>Quizlet Clone</i>!</p>");
+                                $('#' + postSection_SC_2.id).append("<p>  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi sint fuga magnam animi error aspernatur incidunt blanditiis eius, quae non odit cupiditate facere est explicabo saepe repellendus! Dolore, ab iusto.</p>");
+                                    $('#' + postSection_SC_2.id + ' p').css("text-align", "left");
+
+
                 $(body).append(ctg_SC.createElement());
+                    $('#' + ctg_SC.id).append("<h2>Categories</h2>");
+                        $('#' + ctg_SC.id + ' h2').css("text-decoration", 'underline');
         });
+// HEADER
         headerCPT.createContainer()
         .then((head)=>{
             $(document.body).prepend(head);
