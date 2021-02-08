@@ -87,7 +87,7 @@ const FORM_CONTAINER = document.getElementById('form_container');
                 children:
                 {
                     form: FORM,
-                    formChildren:
+                    form_Children:
                     {
                         subMessage: SUB_MSG,
                         nameLabel: NAME_LABEL,
