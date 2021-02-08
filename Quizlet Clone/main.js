@@ -5,6 +5,7 @@ import { generateElementList } from "./Initialization/app.elements.js";
 
 import { headerMain } from "./Header/header.js";
 import { homeMain } from "./Home/home.js";
+import { categoryMain } from "./Categories/categories.js";
 import { formMain } from "./Subscription_Form/form.js";
 
 
@@ -19,6 +20,7 @@ window.addEventListener("DOMContentLoaded", async ()=>{
 
         headerMain(APP_ELEMENTS_LIST[0].Header);
         homeMain(APP_ELEMENTS_LIST[1].Body);
+        categoryMain(APP_ELEMENTS_LIST[1].Body);
         formMain(APP_ELEMENTS_LIST[2].Form);
     })
 });
