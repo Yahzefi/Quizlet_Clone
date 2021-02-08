@@ -1,9 +1,8 @@
 export class Component {
-    constructor(element, id, className, hasInLineStyling, hasStorage) {
+    constructor(element, id, className, hasStorage) {
         this.cptTagName = element;
         this.cpt_ID = id;
         this.cpt_Class = className;
-        this.hasInlineStyling = hasInLineStyling;
         this.cptStg = hasStorage;
     };
     createContainer(){
@@ -12,9 +11,6 @@ export class Component {
                 let newElement = document.createElement(this.cptTagName);
                 newElement.setAttribute('id', this.cpt_ID);
                 newElement.setAttribute('class', this.cpt_Class);
-                if(this.hasInLineStyling){
-                    this.insertStyling();
-                };
                 resolve(newElement);
             } else {
                 reject('Component Must Be A Container Element ("div" or "section")');
@@ -28,9 +24,4 @@ export class Component {
             console.log("The " + this.cptTagName.id + " does NOT have animations toggled.")
         };
     };
-    insertStyling() {
-        if(this.hasInLineStyling){
-            
-        };
-    }
 };
