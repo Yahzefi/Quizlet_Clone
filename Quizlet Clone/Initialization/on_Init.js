@@ -7,38 +7,36 @@ import { Subcomponent } from "../Initialization/Subcomponent.js";
 
 // Components (CONTAINERS)
 
-let headerCPT = new Component("div", 'header_container', 'h-container', false, false);
-let bodyCPT = new Component("div", "page_container", "p-container", false, false);
-let formCPT = new Component("div", "form_container", "form-container", false, false);
+let headerCPT = new Component("div", 'header_container', 'h-container');
+let bodyCPT = new Component("div", "page_container", "p-container");
+let formCPT = new Component("div", "form_container", "form-container");
 
 // Subcomponents (CHILDREN ELEMENTS)
 
 // HEADER
-    let logInLinks_SC = new Subcomponent('div', 'logIn_Links', 'log-links', false);
-        let mainHeadTxt_SC = new Subcomponent('h1', 'main_header', 'm_Header', false);
-        let logNav_SC = new Subcomponent('nav', 'logIn_Nav', '', false);
-            let logAnchor_SC = new Subcomponent('a', 'log_A', '', false);
-        let regNav_SC = new Subcomponent('nav', 'register_Nav', '', false);
-            let regAnchor_SC = new Subcomponent('a', 'reg_A', '', false);
-    let banner_SC = new Subcomponent('div', 'banner_graphic', 'ban-graphic', false);
-    let pageNavDiv_SC = new Subcomponent('div', 'page_navigation', 'pg_nav', false);
-        let pageNav_SC = new Subcomponent('nav', 'routing_nav', '', false);
-            let tempNavOne_SC = new Subcomponent('a', 'navOne', '', false);
-            let tempNavTwo_SC = new Subcomponent('a', 'navTwo', '', false);
-            let tempNavThree_SC = new Subcomponent('a', 'navThree', '', false);
+    let logInLinks_SC = new Subcomponent('div', 'logIn_Links', 'log-links');
+        let mainHeadTxt_SC = new Subcomponent('h1', 'main_header', 'm_Header');
+        let logNav_SC = new Subcomponent('nav', 'logIn_Nav', '');
+            let logAnchor_SC = new Subcomponent('a', 'log_A', '');
+        let regNav_SC = new Subcomponent('nav', 'register_Nav', '');
+            let regAnchor_SC = new Subcomponent('a', 'reg_A', '');
+    let banner_SC = new Subcomponent('div', 'banner_graphic', 'ban-graphic');
+    let pageNavDiv_SC = new Subcomponent('div', 'page_navigation', 'pg_nav');
+        let pageNav_SC = new Subcomponent('nav', 'routing_nav', '');
+            let tempNavOne_SC = new Subcomponent('a', 'navOne', '');
+            let tempNavTwo_SC = new Subcomponent('a', 'navTwo', '');
+            let tempNavThree_SC = new Subcomponent('a', 'navThree', '');
 // BODY
-    let home_SC = new Subcomponent("div", "home_container", "home-container", false);
-        let posts_SC = new Subcomponent("div", "post_container", "post-container", false);
-            let postSection_SC_1 = new Subcomponent("section", "post_section_1", "post-sect", false);
-            let postSection_SC_2 = new Subcomponent("section", "post_section_2", "post-sect", false);
-    let ctg_SC = new Subcomponent("div", "category_container", "ctg-container", false);
+    let home_SC = new Subcomponent("div", "home_container", "home-container");
+        let posts_SC = new Subcomponent("div", "post_container", "post-container");
+    let ctg_SC = new Subcomponent("div", "category_container", "ctg-container");
 // FORM
-    let form_SC = new Subcomponent("form", "subscription_form", "sub-form", false);
-        let subMessage_SC = new Subcomponent('p', 'sub_message', 'sub-msg', false);
-        let nameLabel_SC = new Subcomponent('label', 'name_label', 'form-label', false);
-        let nameInput_SC = new Subcomponent("input", "name_input", "txt-inp", false);
-        let emailLabel_SC = new Subcomponent('label', 'email_label', 'form-label', false);
-        let emailInput_SC = new Subcomponent('input', 'email_input', 'txt-inp', false);
+    let form_SC = new Subcomponent("form", "subscription_form", "sub-form");
+        let subMessage_SC = new Subcomponent('p', 'sub_message', 'sub-msg');
+        let nameLabel_SC = new Subcomponent('label', 'name_label', 'form-label');
+        let nameInput_SC = new Subcomponent("input", "name_input", "txt-inp");
+        let emailLabel_SC = new Subcomponent('label', 'email_label', 'form-label');
+        let emailInput_SC = new Subcomponent('input', 'email_input', 'txt-inp');
 
 
 //                                      ||   ON INIT (DOM CONSTRUCTION)   ||                                      \\
@@ -67,23 +65,6 @@ export function initWebLoad(){
                     $('#' + home_SC.id).append("<h2>Recent Updates</h2>");
                         $('#' + home_SC.id + ' h2').css("text-decoration", 'underline');
                     $('#' + home_SC.id).append(posts_SC.createElement());
-                            $('#' + posts_SC.id).append(postSection_SC_1.createElement());
-                                $('#' + postSection_SC_1.id).append("<h4><span>Ver. 1.0.0: </span>Site Initialized</h4>");
-                                    $('#' + postSection_SC_1.id + " h4").css({"color": "lightgrey"});
-                                    $('#' + postSection_SC_1.id + " span").css({"color": "gold", "opacity": "0.75"});
-                                $('#' + postSection_SC_1.id).append("<p>I've created a <i>Quizlet Clone</i>!</p>");
-                                $('#' + postSection_SC_1.id).append("<p>  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi sint fuga magnam animi error aspernatur incidunt blanditiis eius, quae non odit cupiditate facere est explicabo saepe repellendus! Dolore, ab iusto.</p>");
-                                    $('#' + postSection_SC_1.id + ' p').css("text-align", "left");
-
-                            $('#' + posts_SC.id).append(postSection_SC_2.createElement());
-                                $('#' + postSection_SC_2.id).append("<h4><span>Ver. 1.1.0: </span>Site Edited</h4>");
-                                    $('#' + postSection_SC_2.id + " h4").css({"color": "lightgrey"});
-                                    $('#' + postSection_SC_2.id + " span").css({"color": "gold", "opacity": "0.75"});
-                                $('#' + postSection_SC_2.id).append("<p>I've edited a <i>Quizlet Clone</i>!</p>");
-                                $('#' + postSection_SC_2.id).append("<p>  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi sint fuga magnam animi error aspernatur incidunt blanditiis eius, quae non odit cupiditate facere est explicabo saepe repellendus! Dolore, ab iusto.</p>");
-                                    $('#' + postSection_SC_2.id + ' p').css("text-align", "left");
-
-
                 $(body).append(ctg_SC.createElement());
                     $('#' + ctg_SC.id).append("<h2>Categories</h2>");
                         $('#' + ctg_SC.id + ' h2').css("text-decoration", 'underline');
@@ -93,7 +74,7 @@ export function initWebLoad(){
         .then((head)=>{
             $(document.body).prepend(head);
                 $(head).append(logInLinks_SC.createElement());
-                    $('#' + logInLinks_SC.id).append(mainHeadTxt_SC.createElement([{attr:"", content:"", innerText:"Welcome to the Quizlet Clone"}]));
+                    $('#' + logInLinks_SC.id).append(mainHeadTxt_SC.createElement([{attr:"", content:"", innerText:"Welcome to Q-Clone"}]));
                     $('#' + logInLinks_SC.id).append(logNav_SC.createElement());
                         $('#' + logNav_SC.id).append(logAnchor_SC.createElement([{attr:"href", content:"#", innerText: "LOGIN"}]));
                     $('#' + logInLinks_SC.id).append(regNav_SC.createElement());
