@@ -38,6 +38,10 @@ export class Subcomponent {
                 case "href":
                     newElement.setAttribute('href', attrData[i].content);
                     break;
+// TARGET
+                case "target":
+                    newElement.setAttribute('target', attrData[i].content);
+                    break;
 // SRC
                 case "src":
                     newElement.setAttribute('src', attrData[i].content);
