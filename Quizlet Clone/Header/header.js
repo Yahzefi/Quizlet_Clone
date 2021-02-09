@@ -56,6 +56,7 @@ function navLink(e){
             console.log("register");
             break;
         case "navOne":
+            // navOne["href"]="test.html";
             console.log("Nav One");
             break;
         case "navTwo":
