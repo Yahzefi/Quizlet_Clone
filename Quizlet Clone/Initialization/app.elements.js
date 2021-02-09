@@ -14,6 +14,8 @@ export function generateElementList(){
             const PAGENAV_A3 = document.getElementById('navThree');
 
 const BODY = document.getElementById('page_container');
+    const MODAL_ONE = document.getElementById('modalBox_1');
+    const MODAL_TWO = document.getElementById('modalBox_2');
     const HOME = document.getElementById('home_container');
         const POSTS = document.getElementById('post_container');
     const CATEGORIES = document.getElementById('category_container');
@@ -71,6 +73,8 @@ const FORM_CONTAINER = document.getElementById('form_container');
                 container: BODY,
                 children:
                 {
+                    modalOne: MODAL_ONE,
+                    modalTwo: MODAL_TWO,
                     home: HOME,
                     home_Children:
                     {
