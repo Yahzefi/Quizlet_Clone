@@ -27,6 +27,8 @@ let formCPT = new Component("div", "form_container", "form-container");
             let tempNavTwo_SC = new Subcomponent('a', 'navTwo', '');
             let tempNavThree_SC = new Subcomponent('a', 'navThree', '');
 // BODY
+    let modalBox1_SC = new Subcomponent("div", "modalBox_1", "modal-box");
+    let modalBox2_SC = new Subcomponent("div", "modalBox_2", "modal-box");
     let home_SC = new Subcomponent("div", "home_container", "home-container");
         let posts_SC = new Subcomponent("div", "post_container", "post-container");
     let ctg_SC = new Subcomponent("div", "category_container", "ctg-container");
@@ -61,6 +63,8 @@ export function initWebLoad(){
         bodyCPT.createContainer()
         .then((body)=>{
             $(document.body).prepend(body);
+                $(body).append(modalBox1_SC.createElement());
+                $(body).append(modalBox2_SC.createElement());
                 $(body).append(home_SC.createElement())
                     $('#' + home_SC.id).append("<h2>Recent Updates</h2>");
                         $('#' + home_SC.id + ' h2').css("text-decoration", 'underline');
@@ -76,19 +80,19 @@ export function initWebLoad(){
                 $(head).append(logInLinks_SC.createElement());
                     $('#' + logInLinks_SC.id).append(mainHeadTxt_SC.createElement([{attr:"", content:"", innerText:"Welcome to Q-Clone"}]));
                     $('#' + logInLinks_SC.id).append(logNav_SC.createElement());
-                        $('#' + logNav_SC.id).append(logAnchor_SC.createElement([{attr:"href", content:"#", innerText: "LOGIN"}]));
+                        $('#' + logNav_SC.id).append(logAnchor_SC.createElement([{attr:"href", content:"#", innerText: "LOGIN"}, {attr:"target", content:"_blank"}]));
                     $('#' + logInLinks_SC.id).append(regNav_SC.createElement());
-                        $('#' + regNav_SC.id).append(regAnchor_SC.createElement([{attr:"href", content:"#", innerText:"REGISTER"}]));
+                        $('#' + regNav_SC.id).append(regAnchor_SC.createElement([{attr:"href", content:"#", innerText:"REGISTER"}, {attr:"target", content:"_blank"}]));
                 $(head).append(banner_SC.createElement());
                 $(head).append(pageNavDiv_SC.createElement());
                     $('#' + pageNavDiv_SC.id).append(pageNav_SC.createElement());
-                        $('#' + pageNav_SC.id).append(tempNavOne_SC.createElement([{attr:"href", content:"#", innerText:"Nav One"}]));
+                        $('#' + pageNav_SC.id).append(tempNavOne_SC.createElement([{attr:"href", content:"#", innerText:"Nav One"}, {attr:"target", content:"_blank"}]));
                             $("<span>| </span>").prependTo('#' + tempNavOne_SC.id);
                             $("<span> | </span>").appendTo('#' + tempNavOne_SC.id);
-                        $('#' + pageNav_SC.id).append(tempNavTwo_SC.createElement([{attr:"href", content:"#", innerText:"Nav Two"}]));
+                        $('#' + pageNav_SC.id).append(tempNavTwo_SC.createElement([{attr:"href", content:"#", innerText:"Nav Two"}, {attr:"target", content:"_blank"}]));
                             $("<span>| </span>").prependTo('#' + tempNavTwo_SC.id);
                             $("<span> | </span>").appendTo('#' + tempNavTwo_SC.id);
-                        $('#' + pageNav_SC.id).append(tempNavThree_SC.createElement([{attr:"href", content:"#", innerText:"Nav Three"}]));
+                        $('#' + pageNav_SC.id).append(tempNavThree_SC.createElement([{attr:"href", content:"#", innerText:"Nav Three"}, {attr:"target", content:"_blank"}]));
                             $("<span>| </span>").prependTo('#' + tempNavThree_SC.id);
                             $("<span> |</span>").appendTo('#' + tempNavThree_SC.id);
         });
