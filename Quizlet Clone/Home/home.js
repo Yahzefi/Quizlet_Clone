@@ -1,6 +1,7 @@
 //                                      ||      IMPORTS     ||                                      \\
 
 import { Subcomponent } from "../Initialization/Subcomponent.js";
+import { openMathPage } from "../Categories/c_Redirect.js";
 
 //                                      ||   LINKED FUNCTION   ||                                      \\
 export function homeMain(data){
@@ -31,6 +32,7 @@ export function homeMain(data){
             let modalText_SC_2 = new Subcomponent("p", "modalTextTwo", "modal-text");
 
     let catSection_SC_1 = new Subcomponent("section", "category_section_1", "category-sect");
+        let catMathIMG_SC = new Subcomponent("img", "math_category", "category-img");
     let catSection_SC_2 = new Subcomponent("section", "category_section_2", "category-sect");
     let catSection_SC_3 = new Subcomponent("section", "category_section_3", "category-sect");
 
@@ -68,7 +70,7 @@ export function homeMain(data){
 
 
     $(categoryDiv).append(catSection_SC_1.createElement());
-        $("<p>Hello From Section One!</p>").appendTo('#' + catSection_SC_1.id);
+        $('#' + catSection_SC_1.id).append(catMathIMG_SC.createElement([{attr:"src", content: "https://p3cdn4static.sharpschool.com/UserFiles/Servers/Server_770743/Image/Technology/Other%20Pictures/math.jpg"}]));
     $(categoryDiv).append(catSection_SC_2.createElement());
         $("<p>Hello From Section Two!</p>").appendTo('#' + catSection_SC_2.id);
     $(categoryDiv).append(catSection_SC_3.createElement());
@@ -89,15 +91,18 @@ export function homeMain(data){
         $('#' + modalContentDiv_SC_2.id).append(modalSection_SC_2.createElement());
             $('#' + modalSection_SC_2.id).append(modalText_SC_2.createElement());
             $('#' + modalText_SC_2.id).html($('#'+postContent_SC_2.id).html());
-// MODAL POPUP
 
+
+// MODAL POPUP
     $('#' + moreInfo_SC_1.id + ' a').click((e)=>showPostModal(e));
     $('#' + moreInfo_SC_2.id + ' a').click((e)=>showPostModal(e));
 
 // MODAL CLOSE
-
     $('#' + modalClose_SC_1.id).click(()=>{$(modalBox_1).css("display", "")});
     $('#' + modalClose_SC_2.id).click(()=>{$(modalBox_2).css("display", "")});
+
+// CATEGORY LINKS
+    $('#' + catMathIMG_SC.id).click(openMathPage)
 }
 
 function showPostModal(ev){
@@ -113,3 +118,4 @@ function showPostModal(ev){
             throw new Error("Text Not Found");
     }
 }
+
