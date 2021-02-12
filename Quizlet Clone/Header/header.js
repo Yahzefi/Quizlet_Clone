@@ -56,14 +56,13 @@ function navLink(e){
             console.log("register");
             break;
         case "navOne":
-            // navOne["href"]="test.html";
-            console.log("Nav One");
+            navOne["href"]= "../Top_Sets/index.topSets.html";
             break;
         case "navTwo":
-            console.log("Nav Two");
+            navTwo["href"]="../Games/index.games.html";
             break;
         case "navThree":
-            console.log("Nav Three");
+            navThree["href"]="../About/index.about.html"
             break;
         case "":
             break;
