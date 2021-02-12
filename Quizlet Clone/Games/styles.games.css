@@ -6,3 +6,6 @@ body {
     background-color: rgb(85, 85, 85);
     color:white;
 }
+    #gameOne {
+        border: 1px solid black;
+    }
