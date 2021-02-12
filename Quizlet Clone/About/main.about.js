@@ -1,5 +1,9 @@
 // ANIMATIONS
 
-// Changing position once DOM is loaded causes glitch-type response when page is loaded.  Gonna have to change it in stylesheet and fix it to correct positioning later in js file
-
-$(document).ready(()=>{});
+$(document).ready(()=>{
+    $('#about_container h1').slideDown(750);
+    $('.abt-head').animate({left: "0px"}, 1500);
+    $('#about_message p').animate({left: "0px"}, 2500);
+    $('#about_image').animate({opacity: "1"}, 3000);
+    $('#about_image img').animate({opacity: "1"}, 3000);
+})
