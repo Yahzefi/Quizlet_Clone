@@ -98,15 +98,18 @@ function updateGameArea(){
     gameTemplate.frameNo++;
     if(gameTemplate.frameNo == 1 || everyInterval(150)){
         x = gameTemplate.canvas.width;
+        y = gameTemplate.canvas.height;
         // y = gameTemplate.canvas.height - 200;
         let minHeight = 20;
         let maxHeight = 200;
-        let height = Math.floor(Math.random()*((maxHeight - minHeight+1)+ minHeight));
+        let height = Math.floor(Math.random()*maxHeight);
         let minGap = 50;
         let maxGap = 200;
-        let gap = Math.floor(Math.random()*((maxGap - minGap + 1) + minGap));
-        myObstacles.push(new Character(15, height, "green", x, 0));
-        myObstacles.push(new Character(15, (x - height - gap), "green", x, height + gap))
+        let gap = Math.floor(Math.random()*maxGap);
+        if(height < minHeight){height = minHeight};
+        if(gap < minGap){gap = minGap};
+        myObstacles.push(new Character(15, height - gap, "green", x, 0));
+        myObstacles.push(new Character(15, height + gap, "green", x, y - gap));
     }
     $(myObstacles).each((i)=>{
         myObstacles[i].x--;
