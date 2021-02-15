@@ -23,3 +23,13 @@
         border: 2.5px solid lightblue;
         outline: none;
     }
+    .sub-submit {
+        background-color: green;
+        border: 2px solid black;
+        border-radius: 24px;
+        outline: none;
+        color: white;
+    }
+    .sub-submit:active {
+        border: 2px solid grey;
+    }
