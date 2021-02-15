@@ -1,7 +1,7 @@
 //                                      ||      IMPORTS     ||                                      \\
 
 import { Subcomponent } from "../Initialization/Subcomponent.js";
-import { openMathPage } from "../Categories/c_Redirect.js";
+import { openMathPage, openCodingPage, openHistoryPage } from "../Categories/c_Redirect.js";
 
 //                                      ||   LINKED FUNCTION   ||                                      \\
 export function homeMain(data){
@@ -34,7 +34,9 @@ export function homeMain(data){
     let catSection_SC_1 = new Subcomponent("section", "category_section_1", "category-sect");
         let catMathIMG_SC = new Subcomponent("img", "math_category", "category-img");
     let catSection_SC_2 = new Subcomponent("section", "category_section_2", "category-sect");
+        let catCodingIMG_SC = new Subcomponent("img", "coding_category", "category-img");
     let catSection_SC_3 = new Subcomponent("section", "category_section_3", "category-sect");
+        let catHistoryIMG_SC = new Subcomponent("img", "history_category", "category-img");
 
         let postSection_SC_1 = new Subcomponent("section", "post_section_1", "post-sect");
             let postHeader_SC_1 = new Subcomponent("h4", "postHeaderOne", "post-header");
@@ -72,9 +74,23 @@ export function homeMain(data){
     $(categoryDiv).append(catSection_SC_1.createElement());
         $('#' + catSection_SC_1.id).append(catMathIMG_SC.createElement([{attr:"src", content: "https://p3cdn4static.sharpschool.com/UserFiles/Servers/Server_770743/Image/Technology/Other%20Pictures/math.jpg"}]));
     $(categoryDiv).append(catSection_SC_2.createElement());
-        $("<p>Hello From Section Two!</p>").appendTo('#' + catSection_SC_2.id);
+        $('#' + catSection_SC_2.id).append(catCodingIMG_SC.createElement([{attr:"src", content:"https://images.ctfassets.net/yr4qj72ki4ky/6G2JeQnM8bsnjgoJBjljCh/f30782e127727ee309ebf87fb59cf446/best-programming-languages-2020-Hero.jpg?q=72"}]))
+        $("<h4>Coding</h4>").appendTo('#' + catSection_SC_2.id);
+            $('#' + catSection_SC_2.id + ' h4').css({
+                "position":"relative",
+                "left": "0px",
+                "top": "-55px"
+            })
+            $('#' + catSection_SC_2.id + ' h4').hover(function(){
+                $(this).css("cursor", "pointer");
+                $('#' + catCodingIMG_SC.id).css("border", "thin dotted red");
+            }, function(){
+                $(this).css("cursor", "");
+                $('#'+ catCodingIMG_SC.id).css("border", "");
+            })
     $(categoryDiv).append(catSection_SC_3.createElement());
-        $("<p>Hello From Section Three!</p>").appendTo('#' + catSection_SC_3.id);
+        $('#' + catSection_SC_3.id).append(catHistoryIMG_SC.createElement([{attr:"src", content:"https://www.lse.ac.uk/International-History/Images/Banners/whystudyhistory.jpg"}]))
+
 
 
     $(modalBox_1).append(modalContentDiv_SC_1.createElement());
@@ -103,6 +119,9 @@ export function homeMain(data){
 
 // CATEGORY LINKS
     $('#' + catMathIMG_SC.id).click(openMathPage)
+    $('#' + catCodingIMG_SC.id).click(openCodingPage);
+    $('#' + catSection_SC_2.id + ' h4').click(openCodingPage);
+    $('#' + catHistoryIMG_SC.id).click(openHistoryPage);
 }
 
 function showPostModal(ev){
