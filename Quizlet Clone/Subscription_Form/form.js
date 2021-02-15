@@ -15,8 +15,13 @@ export function formMain(data) {
             let nameInput = FORM_COLLECTION.children["form_Children"].nameInput;
             let emailLabel = FORM_COLLECTION.children["form_Children"].emailLabel;
             let emailInput = FORM_COLLECTION.children["form_Children"].emailInput;
+            let formSubmit = FORM_COLLECTION.children["form_Children"].formSubmit;
 
 //                                      ||      START NEW CODE HERE     ||                                      \\
+    $(formSubmit).click((e)=>submitForm(e));
+}
 
+function submitForm(ev){
+    ev.preventDefault();
 }
 
