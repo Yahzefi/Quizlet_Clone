@@ -1,6 +1,7 @@
 export function generateElementList(){
     const HEADER = document.getElementById('header_container');
         const LOGIN_MODAL = document.getElementById("log_modal");
+        const REGISTER_MODAL = document.getElementById("reg_modal");
         const USER_NAVBAR = document.getElementById("user_nav");
             const USER_PROFILE = document.getElementById("user_profile");
                 const USER_DROPDOWN = document.getElementById("user_dropdown");
@@ -49,6 +50,7 @@ const FORM_CONTAINER = document.getElementById('form_container');
                 children: 
                 {
                     logModal: LOGIN_MODAL,
+                    regModal: REGISTER_MODAL,
                     userNavBar: USER_NAVBAR,
                     userNavBar_Children: 
                     {
