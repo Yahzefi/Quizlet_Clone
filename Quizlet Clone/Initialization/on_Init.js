@@ -14,7 +14,8 @@ let formCPT = new Component("div", "form_container", "form-container");
 // Subcomponents (CHILDREN ELEMENTS)
 
 // HEADER
-    let logInModal_SC = new Subcomponent("div", "log_modal", "log-modal_container");
+    let logInModal_SC = new Subcomponent("div", "log_modal", "logModal_container");
+    let registerModal_SC = new Subcomponent("div", "reg_modal", "regModal_container")
     let userNavBar_SC = new Subcomponent("nav", "user_nav", "user-nav");
         let userProfile_SC = new Subcomponent("span", "user_profile", "user-profile");
         let profileDropDown_SC = new Subcomponent("div", "user_dropdown", "user-drop");
@@ -91,7 +92,9 @@ export function initWebLoad(){
         .then((head)=>{
             $(document.body).prepend(head);
                 $(head).append(logInModal_SC.createElement());
+                $(head).append(registerModal_SC.createElement());
                 $(head).append(userNavBar_SC.createElement());
+                    // $('#' + userNavBar_SC.id).css("display", "none");
                     $('#' + userNavBar_SC.id).append(userProfile_SC.createElement([{attr:"", content:"", innerText: "Profile"}]));
                         $('#' + userProfile_SC.id).append(profileDropDown_SC.createElement());
                             $('#' + profileDropDown_SC.id).append(profileOptionOne_SC.createElement([{attr:"", content:"", innerText:"Option 1"}]));
