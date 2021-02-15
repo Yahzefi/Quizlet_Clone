@@ -30,6 +30,10 @@ export class Subcomponent {
                 case "type":
                     newElement.setAttribute('type', attrData[i].content);
                     break;
+// VALUE
+                case "value":
+                    newElement.setAttribute("value", attrData[i].content);
+                    break;
 // NAME
                 case "name":
                     newElement.setAttribute('name', attrData[i].content);
