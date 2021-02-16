@@ -1,6 +1,7 @@
 //                                      ||   IMPORTS   ||                                      \\
 
 import { Subcomponent } from "../Initialization/Subcomponent.js";
+import { checkPassword } from "./verification.js";
 
 //                                      ||   LINKED FUNCTION   ||                                      \\
 
@@ -51,6 +52,7 @@ export function headerMain(data){
                 let logFormUsernameInput_SC = new Subcomponent("input", "username_input", "log-inp");
                 let logFormPasswordLabel_SC = new Subcomponent("label", "password_label", "log-label");
                 let logFormPasswordInput_SC = new Subcomponent("input", "password_input", "log-inp");
+                let logFormSubmit_SC = new Subcomponent("input", "log_submit", "log-submit");
             let logRegisterPrompt_SC = new Subcomponent("p", "register_prompt", "reg-prompt");
 
     // REGISTRY MODAL
@@ -71,7 +73,6 @@ export function headerMain(data){
         $('#' + logModalDiv_SC.id).append(logModalContent_SC.createElement());
             $('#' + logModalContent_SC.id).append(logModalClose_SC.createElement());
                 $('#' + logModalClose_SC.id).html("&xotime;");
-                    $('#' + logModalClose_SC.id).click(()=>$(logModal).css("display", "none"));
             $("<br>").appendTo("#" + logModalContent_SC.id);
             $('#' + logModalContent_SC.id).append(logContentHeader_SC.createElement([{attr:"",content:"",innerText:"Want to Start Learning?  Great!  This Is Where It All Starts!"}]))
             $("<br>").appendTo('#' + logModalContent_SC.id);
@@ -80,7 +81,9 @@ export function headerMain(data){
                 $('#' + logContentForm_SC.id).append(logFormUsernameInput_SC.createElement([{attr:"name",content:"userInput"}]));
                 $("<br>").appendTo('#' + logContentForm_SC.id);
                 $('#' + logContentForm_SC.id).append(logFormPasswordLabel_SC.createElement([{attr:"for",content:"passInput",innerText:"Password: "}]));
-                $('#' + logContentForm_SC.id).append(logFormPasswordInput_SC.createElement([{attr:"name",content:"passInput"}]));
+                $('#' + logContentForm_SC.id).append(logFormPasswordInput_SC.createElement([{attr:"type", content:"password"},{attr:"name",content:"passInput"}]));
+                $("<br>").appendTo("#" + logContentForm_SC.id);
+                $('#' + logContentForm_SC.id).append(logFormSubmit_SC.createElement([{attr:"type", content:"submit"}, {attr:"value", content:"Log In"}]));
             $("<br>").appendTo('#' + logModalContent_SC.id);
             $('#' + logModalContent_SC.id).append(logRegisterPrompt_SC.createElement([{attr:"",content:"",innerText:"Don't have an account?  That's okay! Click to "}]));
                 $("<span>Register</span>").appendTo('#' + logRegisterPrompt_SC.id);
@@ -91,17 +94,15 @@ export function headerMain(data){
         $('#' + regModalDiv_SC.id).append(regModalContent_SC.createElement());
             $('#' + regModalContent_SC.id).append(regModalClose_SC.createElement());
                 $('#' + regModalClose_SC.id).html("&xotime;");
-                    $('#' + regModalClose_SC.id).click(()=>$(regModal).css("display", "none"));
             $('#' + regModalContent_SC.id).append(regContentHeader_SC.createElement([{attr:"",content:"",innerText:"REGISTER"}]))
             $('#' + regModalContent_SC.id).append(regContentForm_SC.createElement());
                 $('#' + regContentForm_SC.id).append(regFormUsernameLabel_SC.createElement([{attr:"for",content:"regUser",innerText:"Username: "}]));
                 $('#' + regContentForm_SC.id).append(regFormUsernameInput_SC.createElement([{attr:"name",content:"regUser"}]));
                 $("<br>").appendTo("#" + regContentForm_SC.id);
                 $('#' + regContentForm_SC.id).append(regFormPasswordLabel_SC.createElement([{attr:"for",content:"regPass",innerText:"Password: "}]));
-                $('#' + regContentForm_SC.id).append(regFormPasswordInput_SC.createElement([{attr:"name",content:"regPass"}]));
+                $('#' + regContentForm_SC.id).append(regFormPasswordInput_SC.createElement([{attr:"type", content:"password"},{attr:"name",content:"regPass"}]));
                 $("<br>").appendTo("#" + regContentForm_SC.id);
                 $('#' + regContentForm_SC.id).append(regFormSubmit_SC.createElement([{attr:"type", content: "submit"},{attr:"value", content:"Submit"}]));
-
 
 // CHANGE NAV TEXT
     pageNav_A1.textContent = "| Home |"
@@ -127,12 +128,35 @@ export function headerMain(data){
     $(log_A).click((e)=>navLink(e));
     $(reg_A).click((e)=>navLink(e));
 
-
-
     $(pageNav_A1).click((e)=>navLink(e))
     $(pageNav_A2).click((e)=>navLink(e))
     $(pageNav_A3).click((e)=>navLink(e))
     $(pageNav_A4).click((e)=>navLink(e))
+
+// CLICK EVENTS FOR MODAL CLOSE
+
+    $('#' + logModalClose_SC.id).click(()=>{
+        $(logModal).css("display", "none");
+        $('#' + logFormUsernameInput_SC.id).val("");
+        $('#' + logFormPasswordInput_SC.id).val("");
+    });
+    $('#' + regModalClose_SC.id).click(()=>{
+        $(regModal).css("display", "none");
+        $('#' + regFormUsernameInput_SC.id).val("");
+        $('#' + regFormPasswordInput_SC.id).val("");
+    });
+
+// LOGIN PASSWORD VALIDATION
+
+    const TEST_USERNAME = "admin";
+    const TEST_PASSWORD = "pw123";
+
+    $("#" + logFormSubmit_SC.id).click((e)=>{
+        e.preventDefault();
+        checkPassword($('#' + logFormUsernameInput_SC.id).val(), $('#' + logFormPasswordInput_SC.id).val());
+    })
+
+// REGISTRY INFORMATION SUBMISSION
 };
 
 // NAVIGATION REDIRECT
@@ -161,9 +185,13 @@ function navLink(e){
             $('#page_container').slideDown(1250);
             $('#form_container').slideDown(1250);
             $('#nav_frame').slideUp(1000);
-            $('#banner_graphic').css("display", "");
-            $('#logIn_Links').css("display", "");
-            $('#user_nav').css("display", "");
+            $('#banner_graphic').slideDown(1250);
+            if(document.getElementById("user_nav").style.visibility === "hidden"){
+                $('#logIn_Links').slideDown(1250);
+            } else {
+                $('#logIn_Links').css("display", "none");
+            }
+            $('#user_nav').slideDown(1250);
             break;
 // TOP FLASHCARD SETS
         case "navTwo":
