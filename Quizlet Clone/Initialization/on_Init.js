@@ -94,7 +94,7 @@ export function initWebLoad(){
                 $(head).append(logInModal_SC.createElement());
                 $(head).append(registerModal_SC.createElement());
                 $(head).append(userNavBar_SC.createElement());
-                    // $('#' + userNavBar_SC.id).css("display", "none");
+                    $('#' + userNavBar_SC.id).css("visibility", "hidden");
                     $('#' + userNavBar_SC.id).append(userProfile_SC.createElement([{attr:"", content:"", innerText: "Profile"}]));
                         $('#' + userProfile_SC.id).append(profileDropDown_SC.createElement());
                             $('#' + profileDropDown_SC.id).append(profileOptionOne_SC.createElement([{attr:"", content:"", innerText:"Option 1"}]));
