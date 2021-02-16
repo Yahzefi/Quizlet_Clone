@@ -142,4 +142,4 @@ function everyInterval(n){
 
 export function startGameOne(){
     gameTemplate.start();
-}
+};
