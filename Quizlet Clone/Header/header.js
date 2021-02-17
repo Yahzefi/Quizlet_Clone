@@ -2,6 +2,7 @@
 
 import { Subcomponent } from "../Initialization/Subcomponent.js";
 import { checkPassword } from "./verification.js";
+import { navLink } from "./navigation.js";
 
 //                                      ||   LINKED FUNCTION   ||                                      \\
 
@@ -61,6 +62,10 @@ export function headerMain(data){
             let regModalClose_SC = new Subcomponent("span", "reg_close", "modal-close");
             let regContentHeader_SC = new Subcomponent("h4", "reg_header", "reg-head");
             let regContentForm_SC = new Subcomponent("form", "reg_form", "reg-form");
+                let regFormFullNameLabel_SC = new Subcomponent("label", "fullName_label", "reg-label");
+                let regFormFullNameInput_SC = new Subcomponent("input", "fullName_input", "reg-inp");
+                let regFormBirthdateLabel_SC = new Subcomponent("label", "birthDate_label", "reg-label");
+                let regFormBirthdateInput_SC = new Subcomponent("input", "birthDate_input", "reg-inp");
                 let regFormUsernameLabel_SC = new Subcomponent("label", "regUser_label", "reg-label");
                 let regFormUsernameInput_SC = new Subcomponent("input", "regUser_input", "reg-inp");
                 let regFormPasswordLabel_SC = new Subcomponent("label", "regPass_label", "reg-label");
@@ -96,10 +101,16 @@ export function headerMain(data){
                 $('#' + regModalClose_SC.id).html("&xotime;");
             $('#' + regModalContent_SC.id).append(regContentHeader_SC.createElement([{attr:"",content:"",innerText:"REGISTER"}]))
             $('#' + regModalContent_SC.id).append(regContentForm_SC.createElement());
+                $('#' + regContentForm_SC.id).append(regFormFullNameLabel_SC.createElement([{attr:"for", content:"fullName", innerText:"Full Name: "}]));
+                $('#' + regContentForm_SC.id).append(regFormFullNameInput_SC.createElement([{attr:"name", content:"fullName"}]));
+                $("<br>").appendTo("#" + regContentForm_SC.id);
+                $('#' + regContentForm_SC.id).append(regFormBirthdateLabel_SC.createElement([{attr:"for", content:"userBirthdate", innerText:"DOB: "}]));
+                $('#' + regContentForm_SC.id).append(regFormBirthdateInput_SC.createElement([{attr:"name", content:"userBirthdate"},{attr:"type", content:"date"}]));
+                $("<br>").appendTo("#" + regContentForm_SC.id);
                 $('#' + regContentForm_SC.id).append(regFormUsernameLabel_SC.createElement([{attr:"for",content:"regUser",innerText:"Username: "}]));
                 $('#' + regContentForm_SC.id).append(regFormUsernameInput_SC.createElement([{attr:"name",content:"regUser"}]));
                 $("<br>").appendTo("#" + regContentForm_SC.id);
-                $('#' + regContentForm_SC.id).append(regFormPasswordLabel_SC.createElement([{attr:"for",content:"regPass",innerText:"Password: "}]));
+                $('#' + regContentForm_SC.id).append(regFormPasswordLabel_SC.createElement([{attr:"for",content:"regPass",innerText:"Create Password: "}]));
                 $('#' + regContentForm_SC.id).append(regFormPasswordInput_SC.createElement([{attr:"type", content:"password"},{attr:"name",content:"regPass"}]));
                 $("<br>").appendTo("#" + regContentForm_SC.id);
                 $('#' + regContentForm_SC.id).append(regFormSubmit_SC.createElement([{attr:"type", content: "submit"},{attr:"value", content:"Submit"}]));
@@ -148,9 +159,6 @@ export function headerMain(data){
 
 // LOGIN PASSWORD VALIDATION
 
-    const TEST_USERNAME = "admin";
-    const TEST_PASSWORD = "pw123";
-
     $("#" + logFormSubmit_SC.id).click((e)=>{
         e.preventDefault();
         checkPassword($('#' + logFormUsernameInput_SC.id).val(), $('#' + logFormPasswordInput_SC.id).val());
@@ -158,70 +166,3 @@ export function headerMain(data){
 
 // REGISTRY INFORMATION SUBMISSION
 };
-
-// NAVIGATION REDIRECT
-
-function navLink(e){
-    switch(e.target.id){
-//  LOGIN
-        case "log_A":
-            $("#log_modal").fadeIn(1000);
-            break;
-// REGISTER
-        case "reg_A":
-            $('#reg_modal').fadeIn(1000);
-            break;
-// MY LIBRARY
-        case "user_library":
-            displayNav("");
-            break;
-// CREATE NEW SET
-        case "user_newSet":
-            displayNav("");
-            break;
-// HOME
-        case "navOne":
-            $(document.body).css("overflow", "");
-            $('#page_container').slideDown(1250);
-            $('#form_container').slideDown(1250);
-            $('#nav_frame').slideUp(1000);
-            $('#banner_graphic').slideDown(1250);
-            if(document.getElementById("user_nav").style.visibility === "hidden"){
-                $('#logIn_Links').slideDown(1250);
-            } else {
-                $('#logIn_Links').css("display", "none");
-            }
-            $('#user_nav').slideDown(1250);
-            break;
-// TOP FLASHCARD SETS
-        case "navTwo":
-            displayNav("/Top_Sets/index.topSets.html");
-            break;
-// GAMES
-        case "navThree":
-            displayNav("/Games/index.games.html");
-            $(document.body).css("overflow", "hidden");
-            break;
-// ABOUT PAGE
-        case "navFour":
-            displayNav("/About/index.about.html");
-            break;
-// CLICKS OUTSIDE ELEMENT
-        case "":
-            break;
-// ERROR HANDLER
-        default:
-            throw new Error("Route Not Found");
-    }
-}
-
-function displayNav(src){
-    $(document.body).css("overflow", "");
-    $('#page_container').slideUp(1000);
-    $('#form_container').slideUp(1000);
-    $('#nav_frame').attr("src", src);
-    $('#nav_frame').css("display", "");
-    $('#user_nav').slideUp(1000);
-    $('#banner_graphic').slideUp(1000);
-    $('#logIn_Links').slideUp(1000);
-}
