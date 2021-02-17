@@ -77,12 +77,15 @@
                 border: 1px solid black;
                 width:50%;
                 margin: auto;
+                text-align: center;
             }
                 .reg-label {
+                    text-decoration: underline;
                     padding: 8px;
                     color: #2b2f3f;
                 }
                 .reg-inp {
+                    margin: auto;
                     margin-top: 8px;
                 }
                 .reg-submit {
