@@ -164,5 +164,17 @@ export function headerMain(data){
         checkPassword($('#' + logFormUsernameInput_SC.id).val(), $('#' + logFormPasswordInput_SC.id).val());
     })
 
+// REGISTER PROMPT CLICK EVENT
+    $('#' + logRegisterPrompt_SC.id + " span").click(()=>{
+        $(logModal).fadeOut(1000);
+        $(regModal).fadeIn(1000);
+    });
+
 // REGISTRY INFORMATION SUBMISSION
+    $('#' + regFormSubmit_SC.id).click((e)=>{
+        e.preventDefault();
+        registryInfoArr.push($('#' + regFormFullNameInput_SC.id).val());
+    })
 };
+
+let registryInfoArr = [];
