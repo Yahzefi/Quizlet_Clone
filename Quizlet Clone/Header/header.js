@@ -1,179 +1,80 @@
 //                                      ||   IMPORTS   ||                                      \\
 
-import { Subcomponent } from "../Initialization/Subcomponent.js";
-import { checkPassword } from "./verification.js";
+import { appendHeader } from "./header.subcomponents.js";
+import { checkPassword, checkValidity } from "./verification.js";
 import { navLink } from "./navigation.js";
 
 //                                      ||   LINKED FUNCTION   ||                                      \\
 
 export function headerMain(data){
-    // PASS PARAM INTO SCOPED VARIABLE
-    const HEADER_COLLECTION = data;
-
-    // PULL EACH ELEMENT OF COLLECTION AREA
-    let headerDiv = HEADER_COLLECTION.container;
-        let logModal = HEADER_COLLECTION.children["logModal"];
-        let regModal = HEADER_COLLECTION.children["regModal"];
-        let userNavBar = HEADER_COLLECTION.children["userNavBar"];
-            let userProfile = HEADER_COLLECTION.children["userNavBar_Children"].userProfile;
-                let userDropDown = HEADER_COLLECTION.children["userNavBar_Children"].userProfile_Children["userDropDown"];
-                    let profileOptionOne = HEADER_COLLECTION.children["userNavBar_Children"].userProfile_Children["userDropDown_Children"].profileOptionOne;
-                    let profileOptionTwo = HEADER_COLLECTION.children["userNavBar_Children"].userProfile_Children["userDropDown_Children"].profileOptionTwo;
-                    let profileOptionThree = HEADER_COLLECTION.children["userNavBar_Children"].userProfile_Children["userDropDown_Children"].profileOptionThree;
-            let userLibrary = HEADER_COLLECTION.children["userNavBar_Children"].userLibrary;
-            let userCreateSet = HEADER_COLLECTION.children["userNavBar_Children"].userCreateSet;
-        let credDiv = HEADER_COLLECTION.children["credentialsDiv"];
-            let mainHeading = HEADER_COLLECTION.children["credDiv_Children"].mainHeading;
-            let logNav = HEADER_COLLECTION.children["credDiv_Children"].logIn_Nav;
-                let log_A = HEADER_COLLECTION.children["credDiv_Children"].logInAnchors["logAnchor"];
-            let regNav = HEADER_COLLECTION.children["credDiv_Children"].register_Nav;
-                let reg_A = HEADER_COLLECTION.children["credDiv_Children"].registerAnchors["regAnchor"];
-        let bannerDiv = HEADER_COLLECTION.children["banner"];
-        let pageNavDiv = HEADER_COLLECTION.children["pageNavDiv"];
-            let pageNav = HEADER_COLLECTION.children["navDiv_Children"].pageNav;
-                let pageNav_A1 = HEADER_COLLECTION.children["navDiv_Children"].nav_Children["pageNav_A1"];
-                let pageNav_A2 = HEADER_COLLECTION.children["navDiv_Children"].nav_Children["pageNav_A2"];
-                let pageNav_A3 = HEADER_COLLECTION.children["navDiv_Children"].nav_Children["pageNav_A3"];
-                let pageNav_A4 = HEADER_COLLECTION.children["navDiv_Children"].nav_Children["pageNav_A4"];
-
-//                                      ||      START NEW CODE HERE     ||                                      \\
-
-// SUBCOMPONENTS (FOR NEW ELEMENTS OUTSIDE OF INITIAL TEMPLATE)
-
-    let bannerIMG_SC = new Subcomponent("img", "banner_img", "ban-img");
-    let navFrame_SC = new Subcomponent("iframe", "nav_frame", "nav-frame");
-
-    // LOGIN MODAL 
-    let logModalDiv_SC = new Subcomponent("div", "logModal_div", "log-div");
-        let logModalContent_SC = new Subcomponent("div", "logModal_content", "log-content");
-            let logModalClose_SC = new Subcomponent("span", "log_close", "modal-close");
-            let logContentHeader_SC = new Subcomponent("h4", "log_header", "log-head");
-            let logContentForm_SC = new Subcomponent("form", "log_form", "log-form");
-                let logFormUsernameLabel_SC = new Subcomponent("label", "username_label", "log-label");
-                let logFormUsernameInput_SC = new Subcomponent("input", "username_input", "log-inp");
-                let logFormPasswordLabel_SC = new Subcomponent("label", "password_label", "log-label");
-                let logFormPasswordInput_SC = new Subcomponent("input", "password_input", "log-inp");
-                let logFormSubmit_SC = new Subcomponent("input", "log_submit", "log-submit");
-            let logRegisterPrompt_SC = new Subcomponent("p", "register_prompt", "reg-prompt");
-
-    // REGISTRY MODAL
-    let regModalDiv_SC = new Subcomponent("div", "regModal_div", "reg-div");
-        let regModalContent_SC = new Subcomponent("div", "regModal_content", "reg-content");
-            let regModalClose_SC = new Subcomponent("span", "reg_close", "modal-close");
-            let regContentHeader_SC = new Subcomponent("h4", "reg_header", "reg-head");
-            let regContentForm_SC = new Subcomponent("form", "reg_form", "reg-form");
-                let regFormFullNameLabel_SC = new Subcomponent("label", "fullName_label", "reg-label");
-                let regFormFullNameInput_SC = new Subcomponent("input", "fullName_input", "reg-inp");
-                let regFormBirthdateLabel_SC = new Subcomponent("label", "birthDate_label", "reg-label");
-                let regFormBirthdateInput_SC = new Subcomponent("input", "birthDate_input", "reg-inp");
-                let regFormUsernameLabel_SC = new Subcomponent("label", "regUser_label", "reg-label");
-                let regFormUsernameInput_SC = new Subcomponent("input", "regUser_input", "reg-inp");
-                let regFormPasswordLabel_SC = new Subcomponent("label", "regPass_label", "reg-label");
-                let regFormPasswordInput_SC = new Subcomponent("input", "regPass_input", "reg-inp");
-                let regFormSubmit_SC = new Subcomponent("input", "register_submit", "reg-submit");
-
-//  LOGIN MODAL BUILD
-
-    $(logModal).append(logModalDiv_SC.createElement());
-        $('#' + logModalDiv_SC.id).append(logModalContent_SC.createElement());
-            $('#' + logModalContent_SC.id).append(logModalClose_SC.createElement());
-                $('#' + logModalClose_SC.id).html("&xotime;");
-            $("<br>").appendTo("#" + logModalContent_SC.id);
-            $('#' + logModalContent_SC.id).append(logContentHeader_SC.createElement([{attr:"",content:"",innerText:"Want to Start Learning?  Great!  This Is Where It All Starts!"}]))
-            $("<br>").appendTo('#' + logModalContent_SC.id);
-            $('#' + logModalContent_SC.id).append(logContentForm_SC.createElement());
-                $('#' + logContentForm_SC.id).append(logFormUsernameLabel_SC.createElement([{attr:"for",content:"userInput",innerText:"Username: "}]));
-                $('#' + logContentForm_SC.id).append(logFormUsernameInput_SC.createElement([{attr:"name",content:"userInput"}]));
-                $("<br>").appendTo('#' + logContentForm_SC.id);
-                $('#' + logContentForm_SC.id).append(logFormPasswordLabel_SC.createElement([{attr:"for",content:"passInput",innerText:"Password: "}]));
-                $('#' + logContentForm_SC.id).append(logFormPasswordInput_SC.createElement([{attr:"type", content:"password"},{attr:"name",content:"passInput"}]));
-                $("<br>").appendTo("#" + logContentForm_SC.id);
-                $('#' + logContentForm_SC.id).append(logFormSubmit_SC.createElement([{attr:"type", content:"submit"}, {attr:"value", content:"Log In"}]));
-            $("<br>").appendTo('#' + logModalContent_SC.id);
-            $('#' + logModalContent_SC.id).append(logRegisterPrompt_SC.createElement([{attr:"",content:"",innerText:"Don't have an account?  That's okay! Click to "}]));
-                $("<span>Register</span>").appendTo('#' + logRegisterPrompt_SC.id);
-
-// REGISTRY MODAL BUILD
-
-    $(regModal).append(regModalDiv_SC.createElement());
-        $('#' + regModalDiv_SC.id).append(regModalContent_SC.createElement());
-            $('#' + regModalContent_SC.id).append(regModalClose_SC.createElement());
-                $('#' + regModalClose_SC.id).html("&xotime;");
-            $('#' + regModalContent_SC.id).append(regContentHeader_SC.createElement([{attr:"",content:"",innerText:"REGISTER"}]))
-            $('#' + regModalContent_SC.id).append(regContentForm_SC.createElement());
-                $('#' + regContentForm_SC.id).append(regFormFullNameLabel_SC.createElement([{attr:"for", content:"fullName", innerText:"Full Name: "}]));
-                $('#' + regContentForm_SC.id).append(regFormFullNameInput_SC.createElement([{attr:"name", content:"fullName"}]));
-                $("<br>").appendTo("#" + regContentForm_SC.id);
-                $('#' + regContentForm_SC.id).append(regFormBirthdateLabel_SC.createElement([{attr:"for", content:"userBirthdate", innerText:"DOB: "}]));
-                $('#' + regContentForm_SC.id).append(regFormBirthdateInput_SC.createElement([{attr:"name", content:"userBirthdate"},{attr:"type", content:"date"}]));
-                $("<br>").appendTo("#" + regContentForm_SC.id);
-                $('#' + regContentForm_SC.id).append(regFormUsernameLabel_SC.createElement([{attr:"for",content:"regUser",innerText:"Username: "}]));
-                $('#' + regContentForm_SC.id).append(regFormUsernameInput_SC.createElement([{attr:"name",content:"regUser"}]));
-                $("<br>").appendTo("#" + regContentForm_SC.id);
-                $('#' + regContentForm_SC.id).append(regFormPasswordLabel_SC.createElement([{attr:"for",content:"regPass",innerText:"Create Password: "}]));
-                $('#' + regContentForm_SC.id).append(regFormPasswordInput_SC.createElement([{attr:"type", content:"password"},{attr:"name",content:"regPass"}]));
-                $("<br>").appendTo("#" + regContentForm_SC.id);
-                $('#' + regContentForm_SC.id).append(regFormSubmit_SC.createElement([{attr:"type", content: "submit"},{attr:"value", content:"Submit"}]));
+// APPENDENGES TO HEADER TEMPLATE
+    appendHeader(data);
 
 // CHANGE NAV TEXT
-    pageNav_A1.textContent = "| Home |"
-    pageNav_A2.textContent = "| Top Flashcard Sets |"
-    pageNav_A3.textContent = "| Games |"
-    pageNav_A4.textContent = "| About Q-Clone |"
-
-// SET BANNER ART SRC
-
-    $(bannerDiv).append(bannerIMG_SC.createElement([{attr:"src", content:"https://elearningindustry.com/wp-content/uploads/2019/10/how-design-thinking-transforming-learning-experience-free-ebook.jpg"}]));
-
-// APPEND IFRAME FOR IMPLEMENTATION OF EXTERNAL HTML FILES
-
-    $(document.body).append(navFrame_SC.createElement());
-        $('#' + navFrame_SC.id).css("display", "none");
+    document.getElementById("navOne").textContent = "| Home |"
+    document.getElementById("navTwo").textContent = "| Top Flashcard Sets |"
+    document.getElementById("navThree").textContent = "| Games |"
+    document.getElementById("navFour").textContent = "| About Q-Clone |"
 
 // ATTACH CLICK EVENTS TO HEADER NAVS
 
-    $(userProfile).click(()=>$(userDropDown).slideToggle(1000))
-    $(userLibrary).click((e)=>navLink(e));
-    $(userCreateSet).click((e)=>navLink(e));
+    $('#user_profile').click(()=>$('#user_dropdown').slideToggle(1000))
+    $('#user_library').click((e)=>navLink(e));
+    $('#user_newSet').click((e)=>navLink(e));
 
-    $(log_A).click((e)=>navLink(e));
-    $(reg_A).click((e)=>navLink(e));
+    $('#log_A').click((e)=>navLink(e));
+    $('#reg_A').click((e)=>navLink(e));
 
-    $(pageNav_A1).click((e)=>navLink(e))
-    $(pageNav_A2).click((e)=>navLink(e))
-    $(pageNav_A3).click((e)=>navLink(e))
-    $(pageNav_A4).click((e)=>navLink(e))
+    $('#navOne').click((e)=>navLink(e))
+    $('#navTwo').click((e)=>navLink(e))
+    $('#navThree').click((e)=>navLink(e))
+    $('#navFour').click((e)=>navLink(e))
 
 // CLICK EVENTS FOR MODAL CLOSE
 
-    $('#' + logModalClose_SC.id).click(()=>{
-        $(logModal).css("display", "none");
-        $('#' + logFormUsernameInput_SC.id).val("");
-        $('#' + logFormPasswordInput_SC.id).val("");
+    $('#log_close').click(()=>{
+        $('#log_modal').css("display", "none");
+        $('#username_input').val("");
+        $('#password_input').val("");
     });
-    $('#' + regModalClose_SC.id).click(()=>{
-        $(regModal).css("display", "none");
-        $('#' + regFormUsernameInput_SC.id).val("");
-        $('#' + regFormPasswordInput_SC.id).val("");
+    $('#reg_close').click(()=>{
+        $('#reg_modal').css("display", "none");
+        $('#fullName_input').val("");
+        $('#birthDate_input').val("");
+        $('#regUser_input').val("");
+        $('#regPass_input').val("");
     });
+
+// FILLED FORM CHECK \\
+    // USERNAME FIELD CHECK
+    $('#username_input').keyup((e)=>checkValidity(e))
+    // PASSWORD FIELD CHECK
+    $('#password_input').keyup((e)=>checkValidity(e))
 
 // LOGIN PASSWORD VALIDATION
-
-    $("#" + logFormSubmit_SC.id).click((e)=>{
+    $("#log_submit").click((e)=>{
         e.preventDefault();
-        checkPassword($('#' + logFormUsernameInput_SC.id).val(), $('#' + logFormPasswordInput_SC.id).val());
+        checkPassword($('#username_input').val(), $('#password_input').val());
     })
 
 // REGISTER PROMPT CLICK EVENT
-    $('#' + logRegisterPrompt_SC.id + " span").click(()=>{
-        $(logModal).fadeOut(1000);
-        $(regModal).fadeIn(1000);
+    $('#register_prompt span').click(()=>{
+        $('#log_modal').fadeOut(1000);
+        $('#reg_modal').fadeIn(1000);
     });
 
 // REGISTRY INFORMATION SUBMISSION
-    $('#' + regFormSubmit_SC.id).click((e)=>{
+    $('#register_submit').click((e)=>{
         e.preventDefault();
-        registryInfoArr.push($('#' + regFormFullNameInput_SC.id).val());
+        registryInfoArr.push(
+        {
+            fullName: $('#fullName_input').val(),
+            DOB: $('#birthDate_input').val(),
+            username: $('#regUser_input').val(),
+            password: $('#regPass_input').val()
+        }
+    );
+        console.log(registryInfoArr);
     })
 };
 
