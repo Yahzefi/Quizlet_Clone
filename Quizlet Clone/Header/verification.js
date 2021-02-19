@@ -16,8 +16,54 @@ export function checkPassword(user, pw){
                 
         } else {
             alert("Password Incorrect");
+            $('#password_input').css({
+                border: "0.5px solid red",
+                boxShadow: "0px 0px 4px 0.5px red"
+            })
         }
     } else {
         alert("User Not Found");
+        $('#username_input').css({
+            border: "0.5px solid red",
+            boxShadow: "0px 0px 4px 0.5px red"
+        })
+    }
+}
+
+export function checkValidity(ev){
+    if(ev.target.id === "username_input"){
+        if($('#username_input').val() === ""){
+            $('#username_input').css({
+                border: "0.5px solid red",
+                boxShadow: "0px 0px 4px 0.5px red"
+            })
+        } else {
+            $('#username_input').css({
+                border: "",
+                boxShadow: ""
+            })
+        }
+        if($('#username_input').val() !== "" && $('#password_input').val() !== ""){
+            document.getElementById('log_submit').disabled = false;
+        } else {
+            document.getElementById('log_submit').disabled = true;
+        }
+    } else if(ev.target.id === "password_input"){
+        if($('#password_input').val() === ""){
+            $('#password_input').css({
+                border: "0.5px solid red",
+                boxShadow: "0px 0px 4px 0.5px red"
+            })
+        } else {
+            $('#password_input').css({
+                border: "",
+                boxShadow: ""
+            })
+        }
+        if($('#username_input').val() !== "" && $('#password_input').val() !== ""){
+            document.getElementById('log_submit').disabled = false;
+        } else {
+            document.getElementById('log_submit').disabled = true;
+        }
     }
 }
