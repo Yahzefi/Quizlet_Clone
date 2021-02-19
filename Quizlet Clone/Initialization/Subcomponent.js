@@ -50,6 +50,13 @@ export class Subcomponent {
                 case "src":
                     newElement.setAttribute('src', attrData[i].content);
                     break;
+// REQUIRED
+                case "required":
+                    newElement.setAttribute("required", true);
+                    break;
+// DISABLED
+                case "disabled":
+                    newElement.setAttribute("disabled", true);
 // UNDEFINED
                 case undefined:
                     break;
