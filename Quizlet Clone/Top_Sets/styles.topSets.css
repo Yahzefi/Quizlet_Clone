@@ -6,3 +6,21 @@ body {
     background-color: rgb(85, 85, 85);
     color:white;
 }
+
+    .top-table{
+        border: 12px solid black;
+    }
+        .tab-row {
+            text-align: center;
+            outline: 4px solid green;
+        }
+            .tab-row th {
+                text-decoration: underline;
+                padding: 12px;
+                border: thin solid red;
+            }
+            .tab-data{
+                padding: 12px;
+                border: thin solid blue;
+            }
+    
