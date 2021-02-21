@@ -91,6 +91,7 @@
         z-index: 1;
     }
         .modal-contentDiv {
+            display: none;
             position:relative;
             left: 50px;
             top: 50px;
