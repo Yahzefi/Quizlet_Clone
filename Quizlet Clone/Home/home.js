@@ -12,8 +12,8 @@ export function homeMain(data){
     $('#more_Info_2 a').click((e)=>showPostModal(e));
 
 // MODAL CLOSE
-    $('#modalCloseOne').click(()=>{$('#modalBox_1').css("display", "")});
-    $('#modalCloseTwo').click(()=>{$('#modalBox_2').css("display", "")});
+    $('#modalCloseOne').click(()=>{$('#modalBox_1').css("display", "");$('#modalDivOne').css("display", "")});
+    $('#modalCloseTwo').click(()=>{$('#modalBox_2').css("display", "");$('#modalDivTwo').css("display", "")});
 
 // CATEGORY LINKS
     $('#math_category').click(openMathPage)
@@ -26,10 +26,12 @@ function showPostModal(ev){
     console.log(ev.target.id);
     switch(ev.target.id){
         case "openModal_1":
-            $('#modalBox_1').css("display", "block");
+            $('#modalBox_1').fadeIn(1000);
+            $('#modalDivOne').slideDown(1000);
             break;
         case "openModal_2":
-            $('#modalBox_2').css("display", "block");
+            $('#modalBox_2').fadeIn(1000);
+            $('#modalDivTwo').slideDown(1000);
             break;
         default:
             throw new Error("Text Not Found");
