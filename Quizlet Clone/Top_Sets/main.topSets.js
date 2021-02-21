@@ -62,6 +62,16 @@ $(document).ready(()=>{
                     cursor:""
                 })
             })
+
+            $('#' + titleData_SC.id).click(()=>{
+                console.log("title");
+            })
+            $('#' + userData_SC.id).click(()=>{
+                console.log("user");
+            })
+            $('#' + subjectData_SC.id).click(()=>{
+                console.log("subject");
+            })
         })
     })
     .then(()=>{
