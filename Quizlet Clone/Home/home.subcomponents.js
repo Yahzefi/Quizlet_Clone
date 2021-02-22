@@ -33,6 +33,8 @@ export function appendHome(data){
         let catCodingIMG_SC = new Subcomponent("img", "coding_category", "category-img");
     let catSection_SC_3 = new Subcomponent("section", "category_section_3", "category-sect");
         let catHistoryIMG_SC = new Subcomponent("img", "history_category", "category-img");
+    let catSection_SC_4 = new Subcomponent("section", "category_section_4", "category-sect");
+        let catSpanishIMG_SC = new Subcomponent('img', 'spanish_category', 'category-img');
 
         let postSection_SC_1 = new Subcomponent("section", "post_section_1", "post-sect");
             let postHeader_SC_1 = new Subcomponent("h4", "postHeaderOne", "post-header");
@@ -71,7 +73,7 @@ export function appendHome(data){
         $('#' + catSection_SC_1.id).append(catMathIMG_SC.createElement([{attr:"src", content: "https://p3cdn4static.sharpschool.com/UserFiles/Servers/Server_770743/Image/Technology/Other%20Pictures/math.jpg"}]));
     $(categoryDiv).append(catSection_SC_2.createElement());
         $('#' + catSection_SC_2.id).append(catCodingIMG_SC.createElement([{attr:"src", content:"https://images.ctfassets.net/yr4qj72ki4ky/6G2JeQnM8bsnjgoJBjljCh/f30782e127727ee309ebf87fb59cf446/best-programming-languages-2020-Hero.jpg?q=72"}]))
-        $("<h4>Coding</h4>").appendTo('#' + catSection_SC_2.id);
+        $("<h4>Programming</h4>").appendTo('#' + catSection_SC_2.id);
             $('#' + catSection_SC_2.id + ' h4').css({
                 "position":"relative",
                 "left": "0px",
@@ -86,6 +88,8 @@ export function appendHome(data){
             })
     $(categoryDiv).append(catSection_SC_3.createElement());
         $('#' + catSection_SC_3.id).append(catHistoryIMG_SC.createElement([{attr:"src", content:"https://www.lse.ac.uk/International-History/Images/Banners/whystudyhistory.jpg"}]))
+    $(categoryDiv).append(catSection_SC_4.createElement());
+            $('#' + catSection_SC_4.id).append(catSpanishIMG_SC.createElement([{attr:"src", content:"https://dp4g669tqdae4.cloudfront.net/content/uploads/2019/09/12161658/Espanol.-Translation-Spanish.-Language-hand-drawn-doodles-and-lettering.-1087621188_7013x4954.jpg"}]))
 
     $(modalBox_1).append(modalContentDiv_SC_1.createElement());
         $('#' + modalContentDiv_SC_1.id).append(modalClose_SC_1.createElement());
