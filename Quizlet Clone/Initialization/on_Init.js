@@ -99,9 +99,9 @@ export function initWebLoad(){
                         $('#' + userProfile_SC.id).append(profileDropDown_SC.createElement());
                             $('#' + profileDropDown_SC.id).append(profileOptionOne_SC.createElement([{attr:"", content:"", innerText:"Option 1"}]));
 
-                            $('#' + profileDropDown_SC.id).append(profileOptionTwo_SC.createElement([{attr:"", content:"", innerText:"Option 2"}]));
+                            $('#' + profileDropDown_SC.id).append(profileOptionTwo_SC.createElement([{attr:"", content:"", innerText:"Settings"}]));
 
-                            $('#' + profileDropDown_SC.id).append(profileOptionThree_SC.createElement([{attr:"", content:"", innerText:"Option 3"}]));
+                            $('#' + profileDropDown_SC.id).append(profileOptionThree_SC.createElement([{attr:"", content:"", innerText:"Log Out"}]));
                                 $('#' + profileDropDown_SC.id).css("display", "none");
                     $('#' + userNavBar_SC.id).append(userLibrary_SC.createElement([{attr:"", content:"", innerText:"My Library"}]));
                     $('#' + userNavBar_SC.id).append(userCreateSet_SC.createElement([{attr:"", content:"", innerText:"Create New Set"}]));
