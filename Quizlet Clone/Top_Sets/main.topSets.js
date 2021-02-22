@@ -70,7 +70,7 @@ $(document).ready(()=>{
                 console.log("user");
             })
             $('#' + subjectData_SC.id).click(()=>{
-                console.log("subject");
+                window.open("/Categories/c_" + $('#' + subjectData_SC.id).text() + "/index." + $('#' + subjectData_SC.id).text() + ".html");
             })
         })
     })
