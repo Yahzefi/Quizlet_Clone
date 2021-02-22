@@ -1,7 +1,7 @@
 //                                      ||      IMPORTS     ||                                      \\
 
 import { appendHome } from "./home.subcomponents.js";
-import { openMathPage, openCodingPage, openHistoryPage } from "../Categories/c_Redirect.js";
+import { openMathPage, openProgrammingPage, openHistoryPage, openSpanishPage } from "../Categories/c_Redirect.js";
 
 //                                      ||   LINKED FUNCTION   ||                                      \\
 export function homeMain(data){
@@ -17,9 +17,10 @@ export function homeMain(data){
 
 // CATEGORY LINKS
     $('#math_category').click(openMathPage)
-    $('#coding_category').click(openCodingPage);
-    $('#category_section_2 h4').click(openCodingPage);
+    $('#coding_category').click(openProgrammingPage);
+    $('#category_section_2 h4').click(openProgrammingPage);
     $('#history_category').click(openHistoryPage);
+    $('#spanish_category').click(openSpanishPage);
 }
 
 function showPostModal(ev){
