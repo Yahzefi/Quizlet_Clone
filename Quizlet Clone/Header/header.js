@@ -18,7 +18,10 @@ export function headerMain(data){
 
 // ATTACH CLICK EVENTS TO HEADER NAVS
 
-    $('#user_profile').click(()=>$('#user_dropdown').slideToggle(1000))
+    $('#user_profile').click(()=>{console.log("hello");$('#user_dropdown').slideToggle(1000)})
+        $('#opt_1').click(()=>window.open("/Header/Profile/index.Profile.html"));
+        $('#opt_2').click(()=>{})
+        $('#opt_3').click(()=>location.reload());
     $('#user_library').click((e)=>navLink(e));
     $('#user_newSet').click((e)=>navLink(e));
 
