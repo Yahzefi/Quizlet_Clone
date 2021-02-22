@@ -8,19 +8,26 @@ body {
 }
 
     .top-table{
-        border: 12px solid black;
+        border: thin solid black;
     }
         .tab-row {
             text-align: center;
-            outline: 4px solid green;
         }
             .tab-row th {
                 text-decoration: underline;
                 padding: 12px;
-                border: thin solid red;
+                border-bottom: 1px dashed black;
+                border-left: 1px dashed black;
+            }
+            .tab-row th:first-child {
+                border-left: none;
             }
             .tab-data{
                 padding: 12px;
-                border: thin solid blue;
+                border-bottom: 1px dashed black;
+                border-left: 1px dashed black;
+            }
+            .tab-data:first-child {
+                border: none;
             }
     
