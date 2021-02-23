@@ -104,7 +104,7 @@ $(regModal).append(regModalDiv_SC.createElement());
 
     // SET BANNER ART SRC
 
-    $(bannerDiv).append(bannerIMG_SC.createElement([{attr:"src", content:"https://elearningindustry.com/wp-content/uploads/2019/10/how-design-thinking-transforming-learning-experience-free-ebook.jpg"}]));
+    $(bannerDiv).append(bannerIMG_SC.createElement([{attr:"src", content:"/Images/banner_img.jpg"}]));
 
 // APPEND IFRAME FOR IMPLEMENTATION OF EXTERNAL HTML FILES
 
