@@ -1,10 +1,28 @@
 body {
     display:flex;
+    width: 100%;
+    height: 100%;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: rgb(85, 85, 85);
+    background-image: url("https://www.thoughtco.com/thmb/mvmMSSC5cnBtqNmQ_hfFSTD7yew=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/css-code-in-text-editor--web-page-internet-technology-862672426-5c8455ddc9e77c0001a67650.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     color:white;
+}
+
+@keyframes loadBannerArt {
+    from {
+        width: 0%;
+        height: 0px;
+        transform: rotate(0deg);
+    }
+    to {
+        width: 90%;
+        height: 300px;
+        transform:rotate(720deg);
+    }
 }
 
     .primary-cont {
@@ -12,27 +30,63 @@ body {
         align-items: center;
         flex-direction: column;
         text-align: center;
+        background-color: rgba(0, 0, 0, 0.90);
+        box-shadow: 0px 0px 18px 12px black;
         width: 100%;
-        height: 100%;
-        border: 1px solid black;
+        height: 750px;
     }
+
         .head-cont {
-            width: 100%;
+            width: 75%;
             height: 15%;
-            border: 1px solid red;
         }
             .ban-img {
                 width: 90%;
-                height: 250px;
-                border-radius: 24px;
+                height: 300px;
+                border-radius: 50%;
+                box-shadow: 0px 0px 18px 12px rgba(0, 44, 189, 0.85);
             }
+            .nav-bar {
+                margin-top: 5%;
+            }
+                .nav-bar > a {
+                    padding: 12px;
+                    border-left: thin dashed white;
+                }
+                .nav-bar > a:hover {
+                    color:rgba(31, 84, 255, 0.85);
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+                .nav-bar > a:first-child {
+                    border-left: none;
+                }
+                .nav-bar > a:last-child {
+                    border-right: none;
+                }
+
         .body-cont {
-            width: 75%;
+            width: 100%;
             height: 70%;
-            border: 1px solid purple;
+            margin-top: 25%;
         }
+            .intro-msg {
+                position: relative;
+                left: -1250px;
+                top: 0px;
+            }
+            #showTime_btn {
+                border-radius: 50%;
+                width: 175px;
+                height: 75px;
+                letter-spacing: 5px;
+                font-size: 18px;
+                font-weight: bolder;
+                text-align: center;
+            }
+
         .foot-cont {
             width: 100%;
             height: 15%;
-            border: 1px solid green;
+            margin-top: 5%;
         }
