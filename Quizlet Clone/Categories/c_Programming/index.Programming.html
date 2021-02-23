@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.Programming.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Categories - Programming</title>
@@ -11,18 +12,26 @@
 <body>
     <div id="primary_container" class="primary-cont">
         <div id="header_container" class="head-cont">
-            <img class="ban-img" src="https://static.vecteezy.com/system/resources/previews/000/344/684/non_2x/programming-code-on-laptop-banner-vector-flat-illustration.jpg">
-            <!-- Header Content -->
+            <img id="banner_image" class="ban-img" src="https://static.vecteezy.com/system/resources/previews/000/344/684/non_2x/programming-code-on-laptop-banner-vector-flat-illustration.jpg">
+            <nav id="topic_navBar" class="nav-bar">
+                <a>HTML</a>
+                <a>CSS</a>
+                <a>JavaScript</a>
+                <a>React</a>
+                <a>Node.js</a>
+            </nav>
         </div>
         <div id="body_container" class="body-cont">
-            <h2>This is the body</h2>
+            <h2 id="introMsg_1" class="intro-msg">Hello there!  You're eager to start learning, huh?  Well I have great news!</h2>
+            <h4 id="introMsg_2" class="intro-msg">You can get started right away!  All you need is a single button press!</h4>
+            <br><br>
+            <button id="showTime_btn" class="btn btn-success">START</button>
             <!-- Body Content -->
         </div>
         <div id="footer_container" class="foot-cont">
-            <h2>This is the footer</h2>
             <!-- Footer Content -->
         </div>
     </div>
-    <script src="main.Programming.js"></script>
+    <script type="module" src="main.Programming.js"></script>
 </body>
 </html>
