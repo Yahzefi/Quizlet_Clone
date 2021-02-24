@@ -9,13 +9,18 @@ $('#topic_navBar').css("display", "none");
 $(document).ready(()=>{
     bannerAnimation()
     .then(async ()=>{
-        $('#introMsg_1').animate({left: "50px"}, 1000);
+        $('#introMsg_1').animate({left: "100px"}, 1000);
         $('#introMsg_1').animate({left: "0px"});
         await pause(1500);
     })
     .then(async ()=>{
         $('#introMsg_2').animate({left: "25px"}, 1000);
         $('#introMsg_2').animate({left: "0px"});
+        await pause(1500);
+    })
+    .then(async ()=>{
+        $('#introMsg_3').animate({left: "50px"}, 1000);
+        $('#introMsg_3').animate({left: "0px"});
         await pause(1500);
     })
     .then(()=>{
