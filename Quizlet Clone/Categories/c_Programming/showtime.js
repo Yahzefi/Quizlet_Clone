@@ -16,6 +16,7 @@ function hideElements(){
         $('#showTime_btn').slideUp(1000);
         $('#introMsg_1').fadeOut(1000);
         $('#introMsg_2').fadeOut(1000);
+        $('#introMsg_3').fadeOut(1000);
         await pause(1000);
         $(BANNER).css({position: "relative", top: "0px"})
         $(BANNER).animate({top: "300px"}, 1000)
