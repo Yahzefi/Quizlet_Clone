@@ -68,12 +68,14 @@ body {
         .body-cont {
             width: 100%;
             height: 70%;
-            margin-top: 25%;
+            margin-top: 18%;
         }
             .intro-msg {
                 position: relative;
                 left: -1250px;
                 top: 0px;
+                width: 75%;
+                margin:auto;
             }
             #showTime_btn {
                 border-radius: 50%;
