@@ -28,10 +28,35 @@ export function initShowTime(){
         await pause(1000);
             $('#' + chatBox_SC.id).slideDown(1000);
         await pause(1000);
-            $('#' + chatBox_SC.id).append(chatBoxMsg_SC.createElement());
+        $('#' + chatBox_SC.id).append(chatBoxMsg_SC.createElement());
+        $(avatar).fadeOut(250);
+        await pause(250);
+        avatar.src = "/Images/Assistants/Programming/programGuy_shocked.png"
+        $(avatar).fadeIn(250);
+        await pause(250);
+        typeMessage("Uh Oh.")
+        .then(async()=>{
+
+
+            // CREATE A FUNCTION FOR ALL THESE PAUSES/POSE CHANGES TO AVOID EXCESSIVE CODE
+
+
+            await pause(500);
+            $(avatar).fadeOut(250)
+            await pause(250);
+            avatar.src = "/Images/Assistants/Programming/programGuy_neutral.png"
+            $(avatar).fadeIn(250);
+            await pause(250);
+            typeMessage("  That's not good...")
+            .then(async()=>{
+                await pause(1000);
+                $('#chat_message').text("");
+            })
+        })
+        .then(()=>{console.log("End")})
     })
     .then(()=>{
-        $(document.body).css("overflow", "auto")
+        // $(document.body).css("overflow", "auto")
     })
 }
 
@@ -56,5 +81,37 @@ function hideElements(){
         $('#footer_container').css('display', 'none');
         $('#primary_container').css({top: "1000px", height: "350px"})
         resolve();
+    })
+}
+
+function typeMessage(msg){
+    return new Promise(resolve=>{
+        let x = 0;
+        let chatArr = msg.split("");
+        chatArr.join("");
+    
+    // USING TIMEOUT
+    
+        // let printLetter = function(){
+        //     if(x < chatArr.length){
+        //         $("#chat_message").append(chatArr[x])
+        //         x++;
+        //         setTimeout(printLetter, 100);
+        //     }
+        // }
+        // printLetter();
+        
+    // USING INTERVAL
+    
+        let splitByLetter = function(){
+            if(x < chatArr.length){
+                $('#chat_message').append(chatArr[x])
+                x++;
+            } else {
+                clearInterval(myInterval);
+                resolve();
+            }
+        }
+        let myInterval = setInterval(splitByLetter, 100)
     })
 }
