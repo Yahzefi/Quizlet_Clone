@@ -101,7 +101,8 @@ body {
         }
         .chat-box {
             width: 20%;
-            height: 100px;
+            min-height: 50px;
+            height: auto;
             margin-right: 45%;
             margin-top: 2.5%;
             border-radius: 24px;
