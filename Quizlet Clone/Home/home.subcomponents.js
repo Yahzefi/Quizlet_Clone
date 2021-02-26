@@ -53,16 +53,16 @@ export function appendHome(data){
 
     // $(homeDiv).append("");
         $(postDiv).append(postSection_SC_1.createElement());
-            $('#' + postSection_SC_1.id).append(postHeader_SC_1.createElement([{attr:"", content:"", innerText: "Site Initialized"}]));
-                $("<span>Ver 1.0.0: </span>").prependTo('#' + postHeader_SC_1.id);
+            $('#' + postSection_SC_1.id).append(postHeader_SC_1.createElement([{attr:"", content:"", innerText: "  Site Initialized"}]));
+                $("<span>Ver 1.0.0:</span>").prependTo('#' + postHeader_SC_1.id);
             $('#' + postSection_SC_1.id).append(postContent_SC_1.createElement([{attr:"",content:"",innerText:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi sint fuga magnam animi error aspernatur incidunt blanditiis eius, quae non odit cupiditate facere est explicabo saepe repellendus! Dolore, ab iusto."}]));
                 $("<p>I created a <i>Quizlet Clone</i>!</p>").prependTo('#' + postContent_SC_1.id);
             $('#' + postSection_SC_1.id).append(moreInfo_SC_1.createElement())
                 $('#' + moreInfo_SC_1.id).append(moreAnchor_SC_1.createElement([{attr:"", content:"", innerText:"More..."}]));
 
         $(postDiv).append(postSection_SC_2.createElement());
-            $('#' + postSection_SC_2.id).append(postHeader_SC_2.createElement([{attr:"", content:"", innerText: "Site Edited"}]));
-            $("<span>Ver 1.1.0: </span>").prependTo('#' + postHeader_SC_2.id);
+            $('#' + postSection_SC_2.id).append(postHeader_SC_2.createElement([{attr:"", content:"", innerText: "  Site Edited"}]));
+            $("<span>Ver 1.1.0:</span>").prependTo('#' + postHeader_SC_2.id);
             $('#' + postSection_SC_2.id).append(postContent_SC_2.createElement([{attr:"",content:"",innerText:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi sint fuga magnam animi error aspernatur incidunt blanditiis eius, quae non odit cupiditate facere est explicabo saepe repellendus! Dolore, ab iusto."}]));
                 $("<p>I edited the <i>Quizlet Clone</i>!</p>").prependTo('#' + postContent_SC_2.id);
             $('#' + postSection_SC_2.id).append(moreInfo_SC_2.createElement())
@@ -77,7 +77,7 @@ export function appendHome(data){
             $('#' + catSection_SC_2.id + ' h4').css({
                 "position":"relative",
                 "left": "0px",
-                "top": "-55px"
+                "bottom": "72px"
             })
             $('#' + catSection_SC_2.id + ' h4').hover(function(){
                 $(this).css("cursor", "pointer");
