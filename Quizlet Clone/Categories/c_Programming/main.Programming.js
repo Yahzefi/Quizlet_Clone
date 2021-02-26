@@ -22,7 +22,7 @@ $(document).ready(()=>{
     .then(async ()=>{
         $('#showTime_btn').slideDown(1000);
         $('#showTime_btn').css("display", "inline")
-        await pause(1000)
+        await pause(1000);
     })
     .then(()=>{
         $(document.body).css("overflow", "auto")
