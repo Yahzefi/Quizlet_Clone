@@ -13,12 +13,14 @@
         .post-container {
             width:75%;
             text-align: left;
+            margin: auto;
         }
         .post-container section {
             margin-bottom: 18px;
             margin-top: 6px;
         }
             .post-sect {
+                font-size: 24px;
                 height: auto;
                 text-align: center;
                 border: 1px solid black;
@@ -33,10 +35,12 @@
             }
                 .post-header {
                     color: lightgrey;
+                    margin-bottom: 5%;
                 }
                 .post-header > span {
                     color: gold;
                     opacity: 0.75;
+                    text-decoration: underline;
                 }
                 .more-info {
                     text-align: right;
@@ -60,12 +64,12 @@
     }   
         .category-sect {
             width: 75%;
-            height: 75px;
+            height: 110px;
             border: 1px solid red;
             border-radius: 12px;
             margin:auto;
             margin-bottom: 8px;
-            margin-top: 4px;
+            margin-top: 18px;
         }
             .category-img {
                 width: 100%;
