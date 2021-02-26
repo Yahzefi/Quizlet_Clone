@@ -106,7 +106,8 @@ export function initWebLoad(){
                     $('#' + userNavBar_SC.id).append(userLibrary_SC.createElement([{attr:"", content:"", innerText:"My Library"}]));
                     $('#' + userNavBar_SC.id).append(userCreateSet_SC.createElement([{attr:"", content:"", innerText:"Create New Set"}]));
                 $(head).append(logInLinks_SC.createElement());
-                    $('#' + logInLinks_SC.id).append(mainHeadTxt_SC.createElement([{attr:"", content:"", innerText:"Welcome to Q-Clone"}]));
+                    $('#' + logInLinks_SC.id).append(mainHeadTxt_SC.createElement([{attr:"", content:"", innerText:"Welcome to Q-Clone!"}]));
+                        $('#' + mainHeadTxt_SC.id).css("font-size", "72px")
                     $('#' + logInLinks_SC.id).append(logNav_SC.createElement());
                         $('#' + logNav_SC.id).append(logAnchor_SC.createElement([{attr:"", content:"", innerText: "LOGIN"}]));
                     $('#' + logInLinks_SC.id).append(regNav_SC.createElement());
