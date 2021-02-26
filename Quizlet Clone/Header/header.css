@@ -28,8 +28,11 @@
                 .log-form {
                     display: grid;
                     grid-template-columns: 25% 65%;
-                    border: 1px solid black;
-                    width:50%;
+                    grid-template-rows: 7.5% 5%;
+                    /* border: 1px solid black; */
+                    width:33%;
+                    height: 500px;
+                    align-content: center;
                     margin: auto;
                     text-align: left;
                 }
@@ -51,7 +54,7 @@
                     }
                     .log-submit {
                         grid-column: 2/2;
-                        margin: 24px 144px 4px 20px;
+                        margin: 48px 144px 4px 20px;
                         align-self: start;
                         border: thin solid darkblue;
                         outline: none;
@@ -96,15 +99,16 @@
                 grid-template-columns: 25% 37.5% 35%;
                 justify-content: start;
                 align-content: center;
-                border: 1px solid black;
-                width:50%;
+                /* border: 1px solid black; */
+                width:33%;
+                height: 500px;
                 margin: auto;
                 text-align: left;
             }
                 .reg-label {
                     grid-column: 1 / 3;
                     text-decoration: underline;
-                    padding: 4px 0px;
+                    padding: 8px 0px 0px 0px;
                     color: #2b2f3f;
                 }
                 .reg-inp {
@@ -113,10 +117,11 @@
                     border: thin solid black;
                     border-radius: 24px;
                     outline: none;
+                    height: 66%;
                 }
                 .reg-submit {
                     grid-column: 2 / 2;
-                    margin: 18px auto;
+                    margin: 72px 18px 18px 18px;
                     border: thin solid darkblue;
                     outline: none;
                     border-radius: 24px;
@@ -182,7 +187,7 @@
         height: 300px;
     }
         .ban-img {
-            width: 100%;
+            width: 75%;
             height: 100%;
             border-radius: 12px;
         }
@@ -202,7 +207,7 @@
         }
             .log-links a {
                 color:white;
-                font-size: 12px;
+                font-size: 24px;
                 text-decoration: none;
             }
             #bs_Override .log-links a:hover {
@@ -217,6 +222,7 @@
             text-decoration: none;
             padding-right: 12px;
             padding-left: 12px;
+            font-size: 24px;
         }
         #bs_Override .pg_nav a:hover{
             cursor: pointer;
