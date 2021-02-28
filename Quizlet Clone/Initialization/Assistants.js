@@ -1,20 +1,25 @@
+import { Subcomponent } from "./Subcomponent.js";
+
 export class Assistant{
-    constructor(id, src, width, height, positionRight){
+    constructor(id, hasIntroduced, category){
         this.id = id;
-        this.src = src;
-        this.width = width;
-        this.height = height;
-        this.positionRight = positionRight;
+        this.hasIntroduced = hasIntroduced;
+        this.category = category;
+        
+        this.smile = "/Images/Assistants/" + this.category + "/" + this.category + "Guy_smile.png";
+        this.open = "/Images/Assistants/" + this.category + "/" + this.category + "Guy_smileOpen.png";
+        this.default = "/Images/Assistants/" + this.category + "/" + this.category + "Guy_neutral.png";
+        this.shocked = "/Images/Assistants/" + this.category + "/" + this.category + "Guy_shocked.png";
     }
     generate(){
         let newAssistant = document.createElement("img");
         newAssistant.id = this.id;
-        newAssistant.src = this.src;
-        newAssistant.style.width = this.width;
-        newAssistant.style.height = this.height;
+        newAssistant.src = this.default;
+        newAssistant.style.width = "300px";
+        newAssistant.style.height = "400px";
         newAssistant.style.position = "fixed";
         newAssistant.style.top = "100%";
-        newAssistant.style.right = this.positionRight;
+        newAssistant.style.right = "82.5%";
         return newAssistant;
     }
     async display(positionTop){
@@ -25,17 +30,43 @@ export class Assistant{
         return new Promise(async (res)=>{
             $('#' + this.id).fadeOut(500);
             await pause(500);
-            $('#' + this.id).attr("src", newSrc);
+            switch(newSrc){
+                case "smile":
+                    $('#' + this.id).attr("src", this.smile);
+                    break;
+                case "open":
+                    $('#' + this.id).attr("src", this.open);
+                    break;
+                case "default":
+                    $('#' + this.id).attr("src", this.default);
+                    break;
+                case "shocked":
+                    $('#' + this.id).attr("src", this.shocked);
+                    break;
+                default:
+                    throw new Error("Expression Not Found");
+            }
             $('#' + this.id).fadeIn(500);
-            await pause(250);
             res();
         })
     }
+    shake() {
+        $('#' + this.id).animate({right: "82%", height: "407.5px"}, 15)
+        $('#' + this.id).animate({right: "83%", height: "415px"}, 15)
+        $('#' + this.id).animate({right: "82.5%", height: "425px"}, 10)
+        $('#' + this.id).animate({right: "82%", height: "415px"}, 15)
+        $('#' + this.id).animate({right: "83%", height: "407.5px"}, 15)
+        $('#' + this.id).animate({right: "82.5%", height: "400px"}, 10)
+    }
 }
 
-export function toggleDialogueBox(){
-    //
+export function create_dBox(){
+    return new Promise((resolve)=>{
+        let dBox_SC = new Subcomponent("div", "dialogue_box", "d-box")
+        resolve(dBox_SC.createElement());
+    })
 }
+
 
 function pause(ms){
     return new Promise((resolve)=>{
