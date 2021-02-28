@@ -2,6 +2,7 @@
 
 import { Component } from "../Initialization/Component.js";
 import { Subcomponent } from "../Initialization/Subcomponent.js";
+import { Assistant } from "../Initialization/Assistants.js";
 
 //                                      ||   INSTANTIATIONS   ||                                      \\
 
@@ -52,6 +53,19 @@ let formCPT = new Component("div", "form_container", "form-container");
         let emailInput_SC = new Subcomponent('input', 'email_input', 'txt-inp');
         let submitForm_SC = new Subcomponent("input", "sub_submit", "sub-submit");
 
+//                                      ||   ASSISTANTS   ||                                      \\
+
+    let avatar_Tom = new Assistant("program_assistant", false, "Programming");
+    let avatar_Kinsley = new Assistant("math_assistant", false, "Math");
+    let avatar_Fredrick = new Assistant("history_assistant", false, "History");
+    let avatar_Damien = new Assistant("spanish_assistant", false, "Spanish");
+
+    export const ASSISTANT_LIST = {
+        Tom: avatar_Tom,
+        Kinsley: avatar_Kinsley,
+        Fredrick: avatar_Fredrick,
+        Damien: avatar_Damien
+    }
 
 //                                      ||   ON INIT (DOM CONSTRUCTION)   ||                                      \\
 
