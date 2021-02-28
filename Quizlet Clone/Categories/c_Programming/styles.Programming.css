@@ -59,7 +59,7 @@ body {
                     padding: 12px;
                     border-left: thin dashed white;
                 }
-                .nav-bar > a:hover {
+                #override .nav-bar > a:hover {
                     color:rgba(31, 84, 255, 0.85);
                     cursor: pointer;
                     text-decoration: underline;
@@ -108,4 +108,47 @@ body {
             border-radius: 24px;
             background-color: white;
             color: black;
+        }
+    .white-chat {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        top: 1000px;
+        right: 0px;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        background-color: rgba(200, 200, 200, 0.9);
+        box-shadow: 0px 0px 18px 8px white;
+        width: 100%;
+        height: 1000px;
+    }
+        .b-chat-box{
+            width: 20%;
+            min-height: 50px;
+            height: auto;
+            margin-right: 45%;
+            margin-top: 2.5%;
+            border-radius: 24px;
+            background-color: black;
+            color: white;
+        }
+        .assist-name {
+            position: absolute;
+            left: 0%;
+            top: 1%;
+            opacity: 0;
+            letter-spacing: 1px;
+            color: blue;
+            font-weight: bold;
+            font-style: italic;
+        }
+        .d-box {
+            position: absolute;
+            left: 17%;
+            top: 15%;
+            width: 66%;
+            height: 175px;
+            background-color: rgb(124, 124, 124);
+            border-radius: 24px;
         }
