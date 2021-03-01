@@ -7,25 +7,25 @@ let avatar_Tom = ASSISTANT_LIST.Tom;
 $(document).ready(()=>{
     bannerAnimation()
     .then(async ()=>{
-        $(BANNER).style.animationPlayState = "paused";
-        $('#introMsg_1').animate({left: "100px"}, 1000);
+        BANNER.style.animation = "none";
+        $('#introMsg_1').animate({left: "100px"}, 0);
         $('#introMsg_1').animate({left: "0px"});
-        await pause(1500);
+        // await pause(1500);
     })
     .then(async ()=>{
-        $('#introMsg_2').animate({left: "25px"}, 1000);
+        $('#introMsg_2').animate({left: "25px"}, 0);
         $('#introMsg_2').animate({left: "0px"});
-        await pause(1500);
+        // await pause(1500);
     })
     .then(async ()=>{
-        $('#introMsg_3').animate({left: "50px"}, 1000);
+        $('#introMsg_3').animate({left: "50px"}, 0);
         $('#introMsg_3').animate({left: "0px"});
-        await pause(1500);
+        // await pause(1500);
     })
     .then(async ()=>{
         $('#showTime_btn').slideDown(1000);
         $('#showTime_btn').css("display", "inline")
-        await pause(1000);
+        // await pause(1000);
     })
     .then(()=>{
         $(document.body).css("overflow", "auto")
@@ -34,9 +34,10 @@ $(document).ready(()=>{
 
 // localStorage.removeItem("assistantHasAppeared")
 
-if(localStorage.getItem("assistantHasAppeared") !== null){
-    avatar_Tom.hasIntroduced = true;
-}
+// if(localStorage.getItem("assistantHasAppeared") !== null){
+//     avatar_Tom.hasIntroduced = true;
+// }
+
 
 if(!avatar_Tom.hasIntroduced){
     $('#showTime_btn').click(initShowTime);
@@ -52,9 +53,9 @@ function bannerAnimation(){
         await pause(1000);
         $(BANNER).css("display", "inline");
         BANNER.style.animationName = "loadBannerArt";
-        BANNER.style.animationDuration = "2s";
+        BANNER.style.animationDuration = "0.5s";
         BANNER.style.animationTimingFunction = "ease-in";
-        await pause(2000);
+        await pause(500);
         resolve();
     })
 }
