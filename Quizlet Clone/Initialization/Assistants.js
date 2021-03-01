@@ -51,12 +51,12 @@ export class Assistant{
         })
     }
     shake() {
-        $('#' + this.id).animate({right: "82%", height: "407.5px"}, 15)
-        $('#' + this.id).animate({right: "83%", height: "415px"}, 15)
-        $('#' + this.id).animate({right: "82.5%", height: "425px"}, 10)
-        $('#' + this.id).animate({right: "82%", height: "415px"}, 15)
-        $('#' + this.id).animate({right: "83%", height: "407.5px"}, 15)
-        $('#' + this.id).animate({right: "82.5%", height: "400px"}, 10)
+        $('#' + this.id).animate({right: "82%", height: "407.5px"}, 25)
+        $('#' + this.id).animate({right: "83%", height: "415px"}, 25)
+        $('#' + this.id).animate({right: "82.5%", height: "425px"}, 15)
+        $('#' + this.id).animate({right: "82%", height: "415px"}, 25)
+        $('#' + this.id).animate({right: "83%", height: "407.5px"}, 25)
+        $('#' + this.id).animate({right: "82.5%", height: "400px"}, 15)
     }
 }
 
