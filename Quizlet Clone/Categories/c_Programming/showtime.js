@@ -18,12 +18,12 @@ let whiteChatDiv_SC = new Subcomponent("div", "white_chatDiv", "white-chat");
 
 export function initShowTime(){
     // console.log(localStorage.getItem("assistantHasAppeared"));
-    if(localStorage.getItem("assistantHasAppeared") == null){
-        localStorage.setItem("assistantHasAppeared", true)
-    }
-    let storedValue = localStorage.getItem("assistantHasAppeared");
+    // if(localStorage.getItem("assistantHasAppeared") == null){
+    //     localStorage.setItem("assistantHasAppeared", true)
+    // }
+    // let storedValue = localStorage.getItem("assistantHasAppeared");
     // console.log(localStorage.getItem("assistantHasAppeared"));
-    console.log(storedValue);
+    // console.log(storedValue);
     hideElements()
     .then(async ()=>{
         $(document.body).css("background-image", "url('https://noware.tech/wp-content/uploads/sites/140/2018/10/bluescreen-t-1024x538.jpg')")
@@ -46,16 +46,16 @@ export function initShowTime(){
 
         // BEGINNING OF DIALOGUE
         avatar_Tom.switchExpression("shocked")
-        .then(()=>avatar_Tom.shake())
-        .then(async()=>{
-            await pause(250);
-            typeMessage("W-What?!")
-            await pause(500);
-        })
-        .then(async ()=>{
-            await pause(750);
-            $('#chat_message').text("");
-        })
+        // .then(()=>avatar_Tom.shake())
+        // .then(async()=>{
+        //     await pause(250);
+        //     typeMessage("W-What?!")
+        //     await pause(500);
+        // })
+        // .then(async ()=>{
+        //     await pause(750);
+        //     $('#chat_message').text("");
+        // })
         // .then(()=>avatar_Tom.switchExpression("default"))
         // .then(()=>typeMessage("Well that's not good..."))
         // .then(async()=>{
@@ -81,8 +81,8 @@ export function initShowTime(){
         //     $('#chat_message').text("");
         //     await pause(500);
         // })
-        .then(()=>avatar_Tom.switchExpression("default"))
-        .then(()=>typeMessage("Hold on, I'll be right back!"))
+        // .then(()=>avatar_Tom.switchExpression("default"))
+        // .then(()=>typeMessage("Hold on, I'll be right back!"))
         .then(async()=>{
             await pause(500);
             $('#chat_message').text("");
@@ -110,10 +110,14 @@ export function initShowTime(){
                 $('#' + whiteChatDiv_SC.id).css("display", "flex");
                 $('#' + whiteChatDiv_SC.id).animate({top: "625px"}, 500)
                 await pause(500);
-                $('#' + blackChatBox_SC.id).fadeIn(750);
+            })
+            .then(async()=>{
+                avatar_Tom.switchExpression("shocked")
+                .then(()=>{
+                    $('#' + blackChatBox_SC.id).fadeIn(750);
+                })
                 await pause(750);
             })
-            .then(()=>avatar_Tom.switchExpression("shocked"))
             .then(()=>typeMessage("Wow, I can't believe that actually worked."))
             .then(async()=>{
                 await pause(500);
@@ -134,7 +138,9 @@ export function initShowTime(){
             .then(async()=>{
                 $('#' + whiteChatDiv_SC.id).append(assistantName_SC.createElement([{attr:"",content:"",innerText:"Tom"}]));
                 $('#' + assistantName_SC.id).animate({left: "18.5%", opacity: 1}, 1000)
-                await pause(1000);
+                await pause(825);
+                $('#' + assistantName_SC.id).css("font-style", "normal")
+                await pause(175);
             })
             .then(()=>avatar_Tom.switchExpression("open"))
             .then(()=>typeMessage("It's a pleasure to meet you!"))
@@ -157,10 +163,10 @@ function hideElements(){
         $('#introMsg_3').fadeOut(1000);
         await pause(1000);
         $(BANNER).css({position: "relative", top: "0px"})
-        $(BANNER).animate({top: "500px"}, 1000)
-        $(BANNER).animate({height: "0px"},500)
-        $(BANNER).animate({width: "0%"}, 500);
-        await pause(2000);
+        $(BANNER).animate({top: "500px"}, 100)
+        $(BANNER).animate({height: "0px"},50)
+        $(BANNER).animate({width: "0%"}, 50);
+        await pause(200);
         $(BANNER).css("display", "none");
         $('#primary_container').slideUp(1000);
         await pause(1250);
@@ -173,7 +179,7 @@ function hideElements(){
     })
 }
 
-function typeMessage(msg){
+export function typeMessage(msg){
     return new Promise(resolve=>{
         let x = 0;
         let chatArr = msg.split("");
@@ -187,7 +193,7 @@ function typeMessage(msg){
                 resolve();
             }
         }
-        let myInterval = setInterval(splitByLetter, 75)
+        let myInterval = setInterval(splitByLetter, 35)
     })
 }
 
