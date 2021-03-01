@@ -141,14 +141,45 @@ body {
             letter-spacing: 1px;
             color: blue;
             font-weight: bold;
-            font-style: italic;
+            font-style:italic;
         }
         .d-box {
             position: absolute;
             left: 17%;
             top: 15%;
-            width: 66%;
+            width: 55%;
             height: 175px;
-            background-color: rgb(124, 124, 124);
+            background-color: rgb(36, 36, 36);
             border-radius: 24px;
         }
+            .d-instruct {
+                display: none;
+                font-style: italic;
+                text-decoration: underline;
+                letter-spacing: 4px;
+            }
+            .d-choice {
+                display: none;
+                font-size: 20px;
+            }
+            .d-choice:hover{
+                color:rgba(6, 88, 68, 0.85);
+                cursor: pointer;
+            }
+            .d-name {
+                text-align: left;
+                color: rgba(110, 0, 0, 0.85);
+                position: relative;
+                top: 2%;
+                left: 5%;
+                display: none;
+            }
+            .cont-msg {
+                display: none;
+                font-style: italic;
+                text-decoration: underline;
+                position: absolute;
+                text-align: right;
+                bottom: 0%;
+                right: 2%;
+            }
