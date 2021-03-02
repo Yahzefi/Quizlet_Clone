@@ -2,7 +2,7 @@
 import { pause } from "./main.Programming.js";
 import { Subcomponent } from "../../Initialization/Subcomponent.js";
 import { ASSISTANT_LIST } from "../../Initialization/on_Init.js";
-import { firstReply } from "../Dialogues/d.Programming.js";
+import { beginConversation } from "../Dialogues/Programming/d.Programming.js";
 
 //                                      ||   GLOBAL VARIABLES   ||                                      \\
 const BANNER = document.getElementById('banner_image');
@@ -84,18 +84,18 @@ export function initShowTime(){
         // .then(()=>avatar_Tom.switchExpression("default"))
         // .then(()=>typeMessage("Hold on, I'll be right back!"))
         .then(async()=>{
-            await pause(500);
-            $('#chat_message').text("");
+            // await pause(500);
+            // $('#chat_message').text("");
             $('#' + chatBox_SC.id).fadeOut(1000);
             await pause(1000);
             $('#' + chatBox_SC.id).remove();
-            $('#' + avatar_Tom.id).animate({right: "125%"}, 1000);
-            await pause(1000);
+            // $('#' + avatar_Tom.id).animate({right: "125%"}, 1000);
+            // await pause(1000);
             $('#' + avatar_Tom.id).remove();
             $('#primary_container').animate({top: "1000px"}, 500);
-            await pause(1000);
-            $(document.body).css("background-image", "url('https://miro.medium.com/max/1200/1*NXhs15W3eBIuLT9xWFXLcA.jpeg')");
-            await pause(1000);
+            // await pause(1000);
+            // $(document.body).css("background-image", "url('https://miro.medium.com/max/1200/1*NXhs15W3eBIuLT9xWFXLcA.jpeg')");
+            // await pause(1000);
             $(document.body).css("background-image", "url('https://www.thoughtco.com/thmb/mvmMSSC5cnBtqNmQ_hfFSTD7yew=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/css-code-in-text-editor--web-page-internet-technology-862672426-5c8455ddc9e77c0001a67650.jpg')");
             await pause(500);
         })
@@ -112,40 +112,41 @@ export function initShowTime(){
                 await pause(500);
             })
             .then(async()=>{
-                avatar_Tom.switchExpression("shocked")
+                // avatar_Tom.switchExpression("shocked")
+                avatar_Tom.switchExpression("smile")
                 .then(()=>{
                     $('#' + blackChatBox_SC.id).fadeIn(750);
                 })
                 await pause(750);
             })
-            .then(()=>typeMessage("Wow, I can't believe that actually worked."))
-            .then(async()=>{
-                await pause(500);
-                $('#chat_message').text("");
-            })
+            // .then(()=>typeMessage("Wow, I can't believe that actually worked."))
+            // .then(async()=>{
+            //     await pause(500);
+            //     $('#chat_message').text("");
+            // })
             // .then(()=>avatar_Tom.switchExpression("open"))
             // .then(()=>typeMessage("All I did was turn it off and turn it back on!  Can you believe that?"))
             // .then(async()=>{
             //     await pause(500);
             //     $('#chat_message').text("");
             // })
-            .then(()=>avatar_Tom.switchExpression("smile"))
-            .then(()=>typeMessage("Anyway, hello there!  My name's Tom."))
-            .then(async()=>{
-                await pause(500);
-                $('#chat_message').text("");
-            })
+            // .then(()=>avatar_Tom.switchExpression("smile"))
+            // .then(()=>typeMessage("Anyway, hello there!  My name's Tom."))
+            // .then(async()=>{
+            //     await pause(500);
+            //     $('#chat_message').text("");
+            // })
             .then(async()=>{
                 $('#' + whiteChatDiv_SC.id).append(assistantName_SC.createElement([{attr:"",content:"",innerText:"Tom"}]));
                 $('#' + assistantName_SC.id).animate({left: "18.5%", opacity: 1}, 1000)
-                await pause(825);
+                await pause(850);
                 $('#' + assistantName_SC.id).css("font-style", "normal")
-                await pause(175);
+                await pause(150);
             })
             .then(()=>avatar_Tom.switchExpression("open"))
             .then(()=>typeMessage("It's a pleasure to meet you!"))
             .then(()=>avatar_Tom.switchExpression("smile"))
-            .then(()=>firstReply());
+            .then(()=>beginConversation());
         })
     })
     // RE-ENABLE WEBPAGE SCROLLING
@@ -200,15 +201,15 @@ export function typeMessage(msg){
 function returnElements(){
     return new Promise(async(resolve)=>{
         $('#primary_container').css("height", "1000px");
-        $('#primary_container').animate({top: "0px"}, 1000)
-        await pause(1000);
+        $('#primary_container').animate({top: "0px"}, 0)
+        // await pause(1000);
         $("#header_container").css("display", "")
         $("#body_container").css("display", "")
         $("#footer_container").css("display", "")
         $(BANNER).css({display: "inline", top: "0px"});
-        $(BANNER).animate({width: "90%"}, 1000)
-        $(BANNER).animate({height: "300px"}, 1000)
-        await pause(1000);
+        $(BANNER).animate({width: "90%"}, 0)
+        $(BANNER).animate({height: "300px"}, 0)
+        // await pause(1000);
         $('#topic_navBar').slideDown(1000);
         await pause(1000);
 
