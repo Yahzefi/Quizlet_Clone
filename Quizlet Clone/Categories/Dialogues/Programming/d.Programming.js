@@ -13,13 +13,16 @@ let dialogueChoice_B_SC = new Subcomponent("p", "dChoice_B", "d-choice");
 let dialogueChoice_C_SC = new Subcomponent("p", "dChoice_C", "d-choice");
 let continueMessage_SC = new Subcomponent("p", "continue_message", "cont-msg");
 
-//                                      ||   GLOBAL VARIABLES   ||                                      \\
+//                                      ||   CONVERSATION OBJECT   ||                                      \\
 
-var isListening = false;
-var lineIsOver = false;
-var logisOver = false;
-var branchNo = 1;
-var logNum = 0;
+let Conversation = {
+    hasBegun: false,
+    hasListener: false,
+    branchIsOver: false,
+    isFinished: false,
+    branchNo: 0,
+    caseNum: 0
+}
 
 //                                      ||   INITIAL FUNCTION   ||                                      \\
 export function beginConversation(){
@@ -31,39 +34,13 @@ export function beginConversation(){
         $('#dialogue_box').slideDown(1000);
         await pause(1000);
         $('#dialogue_box').append(userName_SC.createElement([{attr:"",content:"",innerText:"User"}]));
-        $('#dialogue_box').append(dialogueInstructions_SC.createElement());
+        $('#dialogue_box').append(dialogueInstructions_SC.createElement([{attr:"",content:"",innerText:"Choose Your Reply"}]));
         $('#dialogue_box').append(dialogueChoice_A_SC.createElement());
         $('#dialogue_box').append(dialogueChoice_B_SC.createElement());
         $('#dialogue_box').append(dialogueChoice_C_SC.createElement());
         $('#dialogue_box').append(continueMessage_SC.createElement([{attr:"",content:"",innerText:"Press any key to continue.."}]))
         
-        $('#' + dialogueInstructions_SC.id).text("Choose Your Reply")
-        $('#' + dialogueChoice_A_SC.id).text("\"It's nice to meet you too!\"");
-        $('#' + dialogueChoice_B_SC.id).text("\"Uh...\"");
-        $('#' + dialogueChoice_C_SC.id).text("\"Please leave me alone...\"");
-
-        $('#black_chatBox').animate({opacity: 0.25}, 500)
-        await pause(500);
-        $('#' + dialogueInstructions_SC.id).fadeIn(500);
-        await pause(500);
-        $('#' + dialogueChoice_A_SC.id).slideDown(1000);
-        await pause(500);
-        $('#' + dialogueChoice_B_SC.id).slideDown(1000);
-        await pause(500);
-        $('#' + dialogueChoice_C_SC.id).slideDown(1000);
-        await pause(1000);
-
-        $('#' + dialogueChoice_A_SC.id).click(()=>{
-            $('#chat_message').text("");
-            userSpeak("A")
-            .then(()=>maintainDialogue("A"));
-        })
-        $('#' + dialogueChoice_B_SC.id).click(()=>{
-            //
-        })
-        $('#' + dialogueChoice_C_SC.id).click(()=>{
-            //
-        })
+        maintainDialogue("Z");
     })
 }
 
@@ -79,38 +56,41 @@ function maintainDialogue(responseChar){
     $('#continue_message').css("visibility", "hidden");
     let statusUpdate = function(){
         $('#chat_message').text("");
-        if(!logisOver){
-            if(lineIsOver){
-                lineIsOver = false;
+        if(!Conversation.isFinished){
+            if(Conversation.branchIsOver){
+                Conversation.branchIsOver = false;
             }
             continueDialogue(responseChar)
             .then((data)=>{
-                if(data === 0 && !isListening){
+                // IF DATA == 0 ... SEQUENCE OF DIALOGUE AFTER CHOICE HAS BEGUN
+                if(data === 0 && !Conversation.hasListener){
                     document.addEventListener("keyup", statusUpdate);
-                    isListening = true;
+                    Conversation.hasListener = true;
+                // IF DATA == 1 ... SEQUENCE HAS REACHED END OF DIALOGUE BEFORE ADDITIONAL CHOICE
                 } else if(data === 1) {
                     document.removeEventListener("keyup", statusUpdate);
+                    Conversation.hasListener = false;
                     clearInterval(msgInterval);
-                    displayChoices(responseChar)
+                    displayChoices()
                     .then(()=>{
                         $('#dialogue_box').click((e)=>{
                             switch(e.target.id){
                                 case "dChoice_A":
-                                    lineIsOver = true;
-                                    branchNo++;
-                                    logNum = 1;
+                                    Conversation.branchIsOver = true;
+                                    Conversation.branchNo++;
+                                    Conversation.caseNum = 0;
                                     userSpeak("A").then(()=>maintainDialogue("A"));
                                     break;
                                 case "dChoice_B":
-                                    lineIsOver = true;
-                                    branchNo++;
-                                    logNum = 1;
+                                    Conversation.branchIsOver = true;
+                                    Conversation.branchNo++;
+                                    Conversation.caseNum = 0;
                                     maintainDialogue("B");
                                     break;
                                 case "dChoice_C":
-                                    lineIsOver = true;
-                                    branchNo++;
-                                    logNum = 1;
+                                    Conversation.branchIsOver = true;
+                                    Conversation.branchNo++;
+                                    Conversation.caseNum = 0;
                                     maintainDialogue("C");
                                     break;
                                 default:
@@ -118,6 +98,7 @@ function maintainDialogue(responseChar){
                             }
                         })
                     })
+                // IF DATA == -1 ... THE CONVERSATION HAS CONCLUDED
                 } else if(data === -1){
                     endDialogue(msgInterval);
                     document.removeEventListener("keyup", statusUpdate);
@@ -128,7 +109,8 @@ function maintainDialogue(responseChar){
             alert("End");
         }
     }
-    if(!logisOver && logNum === 0 || !logisOver && lineIsOver){
+    if(!Conversation.hasBegun && !Conversation.isFinished || !Conversation.isFinished && Conversation.branchIsOver){
+        Conversation.hasBegun = true;
         statusUpdate()
     }
 }
@@ -200,44 +182,44 @@ function displayChoices(){
 function endDialogue(msgInterval){
     clearInterval(msgInterval);
     $('#dialogue_box').children().css("display", "none");
-    logisOver = true;
+    Conversation.isFinished = true;
 }
 
 async function continueDialogue(responseChar){
-    $('#continue_message').css("visibility", "hidden");
-    $('#d_userName').css("display", "none");
-    $('#dialogue_box').animate({opacity: 0.25}, 500)
-    $('#black_chatBox').animate({opacity: 1}, 500)
-    await pause(500);
-    $('#dChoice_' + responseChar).fadeOut(500);
-    await pause(500);
-    $('#dChoice_' + responseChar).remove();
-    if(responseChar === "A"){
-        let choice = dialogueChoice_A_SC.createElement();
-        $('#d_instructions').after(choice);
-    } else if(responseChar === "B"){
-        let choice = dialogueChoice_B_SC.createElement();
-        $('#' + dialogueChoice_A_SC.id).after(choice);
-    } else if(responseChar === "C"){
-        let choice = dialogueChoice_C_SC.createElement();
-        $('#' + dialogueChoice_B_SC.id).after(choice);
-    }
-    let update =  nextLine(branchNo, logNum, responseChar)
-    .then(async(data)=>{
-        logNum++;
+
+    if(responseChar === "Z"){
+        return nextLine(Conversation.branchNo, Conversation.caseNum, responseChar)
+    } else {
+        $('#continue_message').css("visibility", "hidden");
+        $('#d_userName').css("display", "none");
+        $('#dialogue_box').animate({opacity: 0.25}, 500)
+        $('#black_chatBox').animate({opacity: 1}, 500)
         await pause(500);
-        if(data == 0){
-            $('#continue_message').css("visibility", "");
+        $('#dChoice_' + responseChar).fadeOut(500);
+        await pause(500);
+        $('#dChoice_' + responseChar).remove();
+        if(responseChar === "A"){
+            let choice = dialogueChoice_A_SC.createElement();
+            $('#d_instructions').after(choice);
+        } else if(responseChar === "B"){
+            let choice = dialogueChoice_B_SC.createElement();
+            $('#' + dialogueChoice_A_SC.id).after(choice);
+        } else if(responseChar === "C"){
+            let choice = dialogueChoice_C_SC.createElement();
+            $('#' + dialogueChoice_B_SC.id).after(choice);
         }
-        $('#dialogue_box').animate({opacity: 1}, 500);
-        $('#black_chatBox').animate({opacity: 0.25},500)
-        await pause(500);
-        return data;
-    })
-    return update;
+        let update =  nextLine(Conversation.branchNo, Conversation.caseNum, responseChar)
+        .then(async(data)=>{
+            Conversation.caseNum++;
+            await pause(500);
+            if(data == 0){
+                $('#continue_message').css("visibility", "");
+            }
+            $('#dialogue_box').animate({opacity: 1}, 500);
+            $('#black_chatBox').animate({opacity: 0.25},500)
+            await pause(500);
+            return data;
+        })
+        return update;
+    }
 }
-
-
-
-
-
