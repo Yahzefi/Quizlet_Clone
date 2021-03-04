@@ -9,3 +9,29 @@ body {
     #gameOne {
         border: 1px solid black;
     }
+
+    #button_container{
+        display: grid;
+        grid-template-columns: 100px 100px 100px;
+        justify-content: center;
+    }
+        #left_btn, #right_btn, #up_btn, #down_btn {
+            margin: 12px;
+        }
+        #left_btn {
+            grid-column: 1 / 1;
+            grid-row: 2/2;
+        }
+        #right_btn {
+            grid-column: 3 / 3;
+            grid-row: 2/2;
+        }
+        #up_btn {
+            grid-column: 2/2;
+            grid-row: 1/1;
+        }
+        #down_btn{
+            grid-column: 2/2;
+            grid-row: 3/3;
+        }
+
