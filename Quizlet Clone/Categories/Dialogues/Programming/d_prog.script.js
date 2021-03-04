@@ -7,6 +7,19 @@ let avatar = ASSISTANT_LIST.Tom;
 export function nextLine(branchNum, d_Num, responseChar){
     return new Promise((resolve)=>{
         let logUpdate;
+        let introScript = function(){
+            switch(d_Num){
+                case 0:
+                    $('#dChoice_A').text("\"It's nice to meet you too!\"");
+                    $('#dChoice_B').text("\"Uh...\"");
+                    $('#dChoice_C').text("\"Please leave me alone...\"");
+                    logUpdate = 1;
+                    resolve(logUpdate);
+                    break;
+                default:
+                    throw new Error("Line Not Found");
+            }
+        }
         let firstBranch = function(){
             if(responseChar === "A"){
                 switch(d_Num){
@@ -27,17 +40,6 @@ export function nextLine(branchNum, d_Num, responseChar){
                         $('#dChoice_A').text("It just kinda does, I'm not sure why.");
                         $('#dChoice_B').text("I feel danger.");
                         $('#dChoice_C').text("Shut up, tool!");
-                        break;
-                    case 2:
-                        typeMessage("Oh okay, that's fine.  See ya around.")
-                        .then(async()=>{
-                            await pause(500);
-                            $('#chat_message').text("");
-                        })
-                        .then(()=>{
-                            logUpdate = -1;
-                            resolve(logUpdate);
-                        })
                         break;
                     default:
                         throw new Error("Line Not Found.")
@@ -62,12 +64,39 @@ export function nextLine(branchNum, d_Num, responseChar){
                 }
             }
         }
+        let secondBranch = function(){
+            if(responseChar === "A"){
+                switch(d_Num){
+                    case 0:
+                        break;
+                    default:
+                        throw new Error("Line Not Found");
+                }
+            } else if(responseChar === "B"){
+                switch(d_Num){
+                    case 0:
+                        break;
+                    default:
+                        throw new Error("Line Not Found");
+                }
+            } else if(responseChar === "C"){
+                switch(d_Num){
+                    case 0:
+                        break;
+                    default:
+                        throw new Error("Line Not Found");
+                }
+            }
+        }
         switch(branchNum){
+            case 0:
+                introScript();
             case 1:
                 firstBranch();
                 break;
             case 2:
                 console.log("Second Branch Here");
+                secondBranch();
                 break;
             default:
                 break;
