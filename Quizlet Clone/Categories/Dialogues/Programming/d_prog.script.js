@@ -1,10 +1,10 @@
-import { pause } from "../../c_Programming/main.Programming.js";
-import { typeMessage } from "../../c_Programming/showtime.js";
-import { ASSISTANT_LIST } from "../../../Initialization/on_Init.js";
+import { pause } from "../../c_Redirect.js";
+import { typeMessage, dialogueLB } from "../../c_Programming/showtime.js"
+;import { ASSISTANT_LIST } from "../../../Initialization/on_Init.js";
 
 let avatar = ASSISTANT_LIST.Tom;
 
-export function nextLine(branchNum, d_Num, responseChar){
+export function nextLine_Prog(branchNum, d_Num, responseChar){
     return new Promise((resolve)=>{
         let logUpdate;
         let introScript = function(){
@@ -44,10 +44,13 @@ export function nextLine(branchNum, d_Num, responseChar){
                         $('#dChoice_B').text("Eh, not really.");
                         $('#dChoice_C').text("Sick");
                         avatar.switchExpression("smile")
-                        .then(()=>typeMessage("So then, I take it you're interested in learning to code?"))
+                        .then(()=>typeMessage("So then..."))
+                        .then(async()=>{await dialogueLB();})
+                        .then(()=>typeMessage("Are you ready to start coding?"))
+                        .then(async()=>{await dialogueLB();})
                         .then(()=>{
-                        logUpdate = 1;
-                        resolve(logUpdate);
+                            logUpdate = 1;
+                            resolve(logUpdate);
                         })
                         break;
                     default:
@@ -88,25 +91,21 @@ export function nextLine(branchNum, d_Num, responseChar){
                         throw new Error("Line Not Found");
                 }
             } else if(responseChar === "B"){
-                console.log("hello from b");
                 switch(d_Num){
                     case 0:
                         avatar.switchExpression("default")
                         .then(()=>typeMessage("Really?  That's too bad..."))
-                        .then(async()=>{
-                            await pause(500);
-                            $('#chat_message').text("");
-                        })
+                        .then(async()=>{await dialogueLB();})
                         .then(()=>typeMessage("Maybe next time, then."))
                         .then(()=>{
                             logUpdate = -1;
                             resolve(logUpdate);
                         })
                         .then(async()=>{
+                            await dialogueLB();
                             await pause(500);
-                            $('#chat_message').text("");
-                            await pause(500);
-                        }).then(()=>{window.close()})
+                        })
+                        .then(()=>{window.close()})
                         break;
                     default:
                         throw new Error("Line Not Found");
@@ -129,10 +128,6 @@ export function nextLine(branchNum, d_Num, responseChar){
                 break;
             case 2:
                 secondBranch();
-                console.log(branchNum);
-                console.log("Second Branch Here");
-                break;
-            case 3:
                 break;
             default:
                 throw new Error("No Branch Found");
