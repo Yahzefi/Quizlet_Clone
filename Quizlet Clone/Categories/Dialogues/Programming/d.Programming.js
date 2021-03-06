@@ -57,35 +57,38 @@ function maintainDialogue(responseChar){
     let statusUpdate = function(){
         $('#chat_message').text("");
         if(!Conversation.isFinished){
-            if(Conversation.branchIsOver){
-                Conversation.branchIsOver = false;
-            }
             continueDialogue(responseChar)
             .then((data)=>{
                 // IF DATA == 0 ... SEQUENCE OF DIALOGUE AFTER CHOICE HAS BEGUN
                 if(data === 0 && !Conversation.hasListener){
+                    if(Conversation.branchIsOver){
+                        Conversation.branchIsOver = false;
+                    }
                     document.addEventListener("keyup", statusUpdate);
                     Conversation.hasListener = true;
                 // IF DATA == 1 ... SEQUENCE HAS REACHED END OF DIALOGUE BEFORE ADDITIONAL CHOICE
                 } else if(data === 1) {
                     document.removeEventListener("keyup", statusUpdate);
                     Conversation.hasListener = false;
-                    clearInterval(msgInterval);
+                    // clearInterval(msgInterval);
                     displayChoices()
                     .then(()=>{
                         $('#dialogue_box').click((e)=>{
                             switch(e.target.id){
                                 case "dChoice_A":
-                                    Conversation.branchIsOver = true;
                                     Conversation.branchNo++;
                                     Conversation.caseNum = 0;
-                                    userSpeak("A").then(()=>maintainDialogue("A"));
+                                    userSpeak("A").then(()=>statusUpdate())
+                                    // PUT IF STATEMENT AT TOP OF MAINTAIN FUNCTION TO SEE IF YOU CAN CHECK A BOOLEAN FOR IF BRANCH IS OVER TO THEN RUN STATUS UPDATE THEREBY BYPASSING THE INTERVAL AS WELL AS PASSING THE CHARACTER PARAMETER
                                     break;
                                 case "dChoice_B":
+                                    console.log("B");
+                                    
                                     Conversation.branchIsOver = true;
-                                    Conversation.branchNo++;
+                                    Conversation.branchNo += 1;
                                     Conversation.caseNum = 0;
-                                    maintainDialogue("B");
+                                    console.log(Conversation.branchNo);
+                                    userSpeak("B").then(()=>{maintainDialogue("B")});
                                     break;
                                 case "dChoice_C":
                                     Conversation.branchIsOver = true;
@@ -109,10 +112,10 @@ function maintainDialogue(responseChar){
             alert("End");
         }
     }
-    if(!Conversation.hasBegun && !Conversation.isFinished || !Conversation.isFinished && Conversation.branchIsOver){
+    if(!Conversation.hasBegun && !Conversation.isFinished){
         Conversation.hasBegun = true;
         statusUpdate()
-    }
+    } 
 }
 
 function userSpeak(responseChar){
