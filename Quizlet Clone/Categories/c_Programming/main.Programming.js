@@ -1,5 +1,6 @@
 import { initShowTime } from "./showtime.js";
 import { ASSISTANT_LIST } from "../../Initialization/on_Init.js";
+import { pause } from "../c_Redirect.js";
 
 const BANNER = document.getElementById("banner_image");
 let avatar_Tom = ASSISTANT_LIST.Tom;
@@ -63,5 +64,3 @@ function bannerAnimation(){
 function skipShowTime(){
     console.log("Skipped");
 }
-
-export function pause(ms){return new Promise(resolve=>setTimeout(resolve, ms))};
