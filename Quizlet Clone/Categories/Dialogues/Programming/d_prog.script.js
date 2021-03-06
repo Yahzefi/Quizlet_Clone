@@ -24,7 +24,7 @@ export function nextLine(branchNum, d_Num, responseChar){
             if(responseChar === "A"){
                 switch(d_Num){
                     case 0:
-                        avatar.switchExpression("open")
+                        avatar.switchExpression("shocked")
                         .then(()=>typeMessage("Oh, you're nice?  Well that's a pleasant surprise!"))
                         .then(()=>{
                             logUpdate = 0;
@@ -32,14 +32,23 @@ export function nextLine(branchNum, d_Num, responseChar){
                         })
                         break;
                     case 1:
-                        typeMessage("What do you mean it only comes naturally?!")
+                        avatar.switchExpression("open")
+                        .then(()=>typeMessage("You have no idea how rare that is nowadays..."))
                         .then(()=>{
-                            logUpdate = 1;
+                            logUpdate = 0;
                             resolve(logUpdate);
                         })
-                        $('#dChoice_A').text("It just kinda does, I'm not sure why.");
-                        $('#dChoice_B').text("I feel danger.");
-                        $('#dChoice_C').text("Shut up, tool!");
+                        break;
+                    case 2:
+                        $('#dChoice_A').text("Absolutely!");
+                        $('#dChoice_B').text("Eh, not really.");
+                        $('#dChoice_C').text("Sick");
+                        avatar.switchExpression("smile")
+                        .then(()=>typeMessage("So then, I take it you're interested in learning to code?"))
+                        .then(()=>{
+                        logUpdate = 1;
+                        resolve(logUpdate);
+                        })
                         break;
                     default:
                         throw new Error("Line Not Found.")
@@ -68,13 +77,36 @@ export function nextLine(branchNum, d_Num, responseChar){
             if(responseChar === "A"){
                 switch(d_Num){
                     case 0:
+                        avatar.switchExpression("open")
+                        .then(()=>typeMessage("Glad to hear it!  Alright then, let's get started!"))
+                        .then(()=>{
+                            logUpdate = -1;
+                            resolve(logUpdate);
+                        })
                         break;
                     default:
                         throw new Error("Line Not Found");
                 }
             } else if(responseChar === "B"){
+                console.log("hello from b");
                 switch(d_Num){
                     case 0:
+                        avatar.switchExpression("default")
+                        .then(()=>typeMessage("Really?  That's too bad..."))
+                        .then(async()=>{
+                            await pause(500);
+                            $('#chat_message').text("");
+                        })
+                        .then(()=>typeMessage("Maybe next time, then."))
+                        .then(()=>{
+                            logUpdate = -1;
+                            resolve(logUpdate);
+                        })
+                        .then(async()=>{
+                            await pause(500);
+                            $('#chat_message').text("");
+                            await pause(500);
+                        }).then(()=>{window.close()})
                         break;
                     default:
                         throw new Error("Line Not Found");
@@ -91,15 +123,19 @@ export function nextLine(branchNum, d_Num, responseChar){
         switch(branchNum){
             case 0:
                 introScript();
+                break;
             case 1:
                 firstBranch();
                 break;
             case 2:
-                console.log("Second Branch Here");
                 secondBranch();
+                console.log(branchNum);
+                console.log("Second Branch Here");
+                break;
+            case 3:
                 break;
             default:
-                break;
+                throw new Error("No Branch Found");
         }
     })
 }
