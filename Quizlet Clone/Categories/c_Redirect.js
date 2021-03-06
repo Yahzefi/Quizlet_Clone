@@ -13,3 +13,9 @@ export function openHistoryPage(){
 export function openSpanishPage(){
     window.open("/Categories/c_Spanish/index.Spanish.html");
 }
+
+export function pause(ms){
+    return new Promise((resolve)=>{
+        setTimeout(resolve, ms);
+    })
+}
