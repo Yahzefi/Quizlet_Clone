@@ -1,8 +1,8 @@
 //                                      ||   IMPORTS   ||                                      \\
-import { pause } from "./main.Programming.js";
+import { pause } from "../c_Redirect.js";
 import { Subcomponent } from "../../Initialization/Subcomponent.js";
 import { ASSISTANT_LIST } from "../../Initialization/on_Init.js";
-import { beginConversation } from "../Dialogues/Programming/d.Programming.js";
+import { beginConversation } from "../Dialogues/d.Main.js";
 
 //                                      ||   GLOBAL VARIABLES   ||                                      \\
 const BANNER = document.getElementById('banner_image');
@@ -58,34 +58,20 @@ export function initShowTime(){
         // })
         // .then(()=>avatar_Tom.switchExpression("default"))
         // .then(()=>typeMessage("Well that's not good..."))
-        // .then(async()=>{
-        //     await pause(500);
-        //     $('#chat_message').text("");
-        // })
+        // .then(async()=>{await dialogueLB();})
         // .then(()=>avatar_Tom.switchExpression("open"))
         // .then(()=>typeMessage("Well this is kind of awkward!"))
-        // .then(async()=>{
-        //     await pause(500);
-        //     $('#chat_message').text("");
-        // })
+        // .then(async()=>{await dialogueLB();})
         // .then(()=>typeMessage("I'm actually kind of new here, but the other devs had their hands full"))
-        // .then(async()=>{
-        //     await pause(500);
-        //     $('#chat_message').text("");
-        // })
+        // .then(async()=>{await dialogueLB();})
         // .then(()=>avatar_Tom.switchExpression("shocked"))
         // .then(()=>avatar_Tom.shake())
         // .then(()=>typeMessage("Wait...  I wonder if..."))
-        // .then(async()=>{
-        //     await pause(500);
-        //     $('#chat_message').text("");
-        //     await pause(500);
-        // })
+        // .then(async()=>{await dialogueLB();})
         // .then(()=>avatar_Tom.switchExpression("default"))
         // .then(()=>typeMessage("Hold on, I'll be right back!"))
         .then(async()=>{
-            // await pause(500);
-            // $('#chat_message').text("");
+            await dialogueLB();
             $('#' + chatBox_SC.id).fadeOut(1000);
             await pause(1000);
             $('#' + chatBox_SC.id).remove();
@@ -120,22 +106,13 @@ export function initShowTime(){
                 await pause(750);
             })
             // .then(()=>typeMessage("Wow, I can't believe that actually worked."))
-            // .then(async()=>{
-            //     await pause(500);
-            //     $('#chat_message').text("");
-            // })
+            // .then(async()=>{await dialogueLB();})
             // .then(()=>avatar_Tom.switchExpression("open"))
             // .then(()=>typeMessage("All I did was turn it off and turn it back on!  Can you believe that?"))
-            // .then(async()=>{
-            //     await pause(500);
-            //     $('#chat_message').text("");
-            // })
+            // .then(async()=>{await dialogueLB();})
             // .then(()=>avatar_Tom.switchExpression("smile"))
             // .then(()=>typeMessage("Anyway, hello there!  My name's Tom."))
-            // .then(async()=>{
-            //     await pause(500);
-            //     $('#chat_message').text("");
-            // })
+            // .then(async()=>{await dialogueLB();})
             .then(async()=>{
                 $('#' + whiteChatDiv_SC.id).append(assistantName_SC.createElement([{attr:"",content:"",innerText:"Tom"}]));
                 $('#' + assistantName_SC.id).animate({left: "18.5%", opacity: 1}, 1000)
@@ -196,6 +173,12 @@ export function typeMessage(msg){
         }
         let myInterval = setInterval(splitByLetter, 35)
     })
+}
+
+// Inserts a 500ms pause before clearing out the message string || Useful for when the sentence is too long
+export async function dialogueLB(){
+    await pause(500);
+    $('#chat_message').text("");
 }
 
 function returnElements(){
