@@ -1,6 +1,6 @@
 import { pause } from "../../c_Redirect.js";
-import { typeMessage, dialogueLB } from "../../c_Programming/showtime.js"
-;import { ASSISTANT_LIST } from "../../../Initialization/on_Init.js";
+import { typeMessage, dialogueLB } from "../../../Initialization/Assistants.js";
+import { ASSISTANT_LIST } from "../../../Initialization/on_Init.js";
 
 let avatar = ASSISTANT_LIST.Tom;
 
