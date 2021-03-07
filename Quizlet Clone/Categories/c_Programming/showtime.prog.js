@@ -2,6 +2,7 @@
 import { pause } from "../c_Redirect.js";
 import { Subcomponent } from "../../Initialization/Subcomponent.js";
 import { ASSISTANT_LIST } from "../../Initialization/on_Init.js";
+import { typeMessage, dialogueLB } from "../../Initialization/Assistants.js";
 import { beginConversation } from "../Dialogues/d.Main.js";
 
 //                                      ||   GLOBAL VARIABLES   ||                                      \\
@@ -123,12 +124,8 @@ export function initShowTime(){
             .then(()=>avatar_Tom.switchExpression("open"))
             .then(()=>typeMessage("It's a pleasure to meet you!"))
             .then(()=>avatar_Tom.switchExpression("smile"))
-            .then(()=>beginConversation());
+            .then(()=>beginConversation())
         })
-    })
-    // RE-ENABLE WEBPAGE SCROLLING
-    .then(()=>{
-        // $(document.body).css("overflow", "auto")
     })
 }
 
@@ -157,30 +154,6 @@ function hideElements(){
     })
 }
 
-export function typeMessage(msg){
-    return new Promise(resolve=>{
-        let x = 0;
-        let chatArr = msg.split("");
-        chatArr.join("");
-        let splitByLetter = function(){
-            if(x < chatArr.length){
-                $('#chat_message').append(chatArr[x])
-                x++;
-            } else {
-                clearInterval(myInterval);
-                resolve();
-            }
-        }
-        let myInterval = setInterval(splitByLetter, 35)
-    })
-}
-
-// Inserts a 500ms pause before clearing out the message string || Useful for when the sentence is too long
-export async function dialogueLB(){
-    await pause(500);
-    $('#chat_message').text("");
-}
-
 function returnElements(){
     return new Promise(async(resolve)=>{
         $('#primary_container').css("height", "1000px");
@@ -203,4 +176,9 @@ function returnElements(){
             $('#' + blackChatBox_SC.id).css("display", "none");
         resolve();
     })
+}
+
+// This category's specific function to continue from after the load/initial conversation with assistant is completed
+export function endOfTheLine_Prog(){
+    //
 }
