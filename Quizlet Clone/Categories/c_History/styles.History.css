@@ -21,13 +21,40 @@ body {
             height: 15%;
             border: 1px solid red;
         }
+            .ban-div{
+                max-height: 300px;
+                margin-bottom: 2.5%;
+            }
+                .ban-img{
+                    width: 75%;
+                    height: 250px;
+                    border-radius: 50%;
+                }
+            .pg-nav {
+                /* border: 1px solid black; */
+                margin-bottom: 2.5%;
+            }
+                .pg-nav a {
+                    border-right: thin solid black;
+                    padding-left: 12px;
+                    padding-right: 12px;
+                }
+                .pg-nav a:last-child {
+                    border-right: none;
+                }
+                .pg-nav a:hover {
+                    color: blue;
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
         .body-cont {
             width: 75%;
             height: 70%;
             border: 1px solid purple;
         }
         .foot-cont {
-            width: 100%;
-            height: 15%;
+            width: 33%;
+            height: 0px;
+            min-height: 50px;
             border: 1px solid green;
         }
