@@ -60,6 +60,30 @@ export class Assistant{
     }
 }
 
+export function typeMessage(msg){
+    return new Promise(resolve=>{
+        let x = 0;
+        let chatArr = msg.split("");
+        chatArr.join("");
+        let splitByLetter = function(){
+            if(x < chatArr.length){
+                $('#chat_message').append(chatArr[x])
+                x++;
+            } else {
+                clearInterval(myInterval);
+                resolve();
+            }
+        }
+        let myInterval = setInterval(splitByLetter, 35)
+    })
+}
+
+// Inserts a 500ms pause before clearing out the message string || Useful for when the sentence is too long
+export async function dialogueLB(){
+    await pause(500);
+    $('#chat_message').text("");
+}
+
 export function create_dBox(){
     return new Promise((resolve)=>{
         let dBox_SC = new Subcomponent("div", "dialogue_box", "d-box")
