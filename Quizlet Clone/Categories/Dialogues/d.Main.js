@@ -3,6 +3,7 @@ import { create_dBox } from "../../Initialization/Assistants.js"
 import { pause } from "../c_Redirect.js"
 import { Subcomponent } from "../../../Initialization/Subcomponent.js";
 import { nextLine_Prog } from "../Dialogues/Programming/d_prog.script.js";
+import { ASSISTANT_LIST } from "../../Initialization/on_Init.js";
 
 
 //                                      ||   SUBCOMPONENTS   ||                                      \\
@@ -22,6 +23,15 @@ let Conversation = {
     isFinished: false,
     branchNo: 0,
     caseNum: 0
+}
+
+//                                      ||   ASSISTANTS   ||                                      \\
+
+const CURRENT_CATEGORY = {
+    isProgramming: ASSISTANT_LIST.Tom,
+    isMath: ASSISTANT_LIST.Kinsley,
+    isHistory: ASSISTANT_LIST.Fredrick,
+    isSpanish: ASSISTANT_LIST.Damien
 }
 
 //                                      ||   INITIAL FUNCTION   ||                                      \\
@@ -120,7 +130,45 @@ function maintainDialogue(responseChar){
     if(!Conversation.isFinished && Conversation.branchIsOver){
         Conversation.branchIsOver = false;
         statusUpdate()
+    }
+}
 
+async function continueDialogue(responseChar){
+    if(responseChar === "Z"){
+        return nextLine_Prog(Conversation.branchNo, Conversation.caseNum, responseChar)
+    } else {
+        $('#continue_message').css("visibility", "hidden");
+        $('#d_userName').css("display", "none");
+        $('#dialogue_box').animate({opacity: 0.25}, 500)
+        $('#black_chatBox').animate({opacity: 1}, 500)
+        $('#dChoice_' + responseChar).fadeOut(500);
+        await pause(500);
+        $('#dChoice_' + responseChar).remove();
+        return new Promise(async(resolve)=>{
+            // Conversation.caseNum++;
+            if(responseChar === "A"){
+                let choice = dialogueChoice_A_SC.createElement();
+                $('#d_instructions').after(choice);
+            } else if(responseChar === "B"){
+                let choice = dialogueChoice_B_SC.createElement();
+                $('#' + dialogueChoice_A_SC.id).after(choice);
+            } else if(responseChar === "C"){
+                let choice = dialogueChoice_C_SC.createElement();
+                $('#' + dialogueChoice_B_SC.id).after(choice);
+            }
+            if(CURRENT_CATEGORY.isProgramming){
+                nextLine_Prog(Conversation.branchNo, Conversation.caseNum, responseChar)
+                .then(async(data)=>{
+                    await pause(500);
+                    if(data == 0){
+                        $('#continue_message').css("visibility", "");
+                    }
+                    $('#dialogue_box').animate({opacity: 1}, 250);
+                    $('#black_chatBox').animate({opacity: 0.25}, 250)
+                    resolve(data)
+                })
+            }
+        })
     }
 }
 
@@ -188,46 +236,15 @@ function displayChoices(){
     })
 }
 
+
 function endDialogue(msgInterval){
     clearInterval(msgInterval);
     $('#dialogue_box').children().css("display", "none");
     Conversation.isFinished = true;
 }
 
-async function continueDialogue(responseChar){
-
-    if(responseChar === "Z"){
-        return nextLine_Prog(Conversation.branchNo, Conversation.caseNum, responseChar)
-    } else {
-        $('#continue_message').css("visibility", "hidden");
-        $('#d_userName').css("display", "none");
-        $('#dialogue_box').animate({opacity: 0.25}, 500)
-        $('#black_chatBox').animate({opacity: 1}, 500)
-        $('#dChoice_' + responseChar).fadeOut(500);
-        await pause(500);
-        $('#dChoice_' + responseChar).remove();
-        return new Promise(async(resolve)=>{
-            // Conversation.caseNum++;
-            if(responseChar === "A"){
-                let choice = dialogueChoice_A_SC.createElement();
-                $('#d_instructions').after(choice);
-            } else if(responseChar === "B"){
-                let choice = dialogueChoice_B_SC.createElement();
-                $('#' + dialogueChoice_A_SC.id).after(choice);
-            } else if(responseChar === "C"){
-                let choice = dialogueChoice_C_SC.createElement();
-                $('#' + dialogueChoice_B_SC.id).after(choice);
-            }
-            nextLine_Prog(Conversation.branchNo, Conversation.caseNum, responseChar)
-            .then(async(data)=>{
-                await pause(500);
-                if(data == 0){
-                    $('#continue_message').css("visibility", "");
-                }
-                $('#dialogue_box').animate({opacity: 1}, 250);
-                $('#black_chatBox').animate({opacity: 0.25}, 250)
-                resolve(data)
-            })
-        })
-    }
+// Once the dialogue with the assistant is over, this function will run.
+// If the conversation has already taken place, this function will be called in the main.Programming.js file
+export function returnUserControl(){
+    //
 }
