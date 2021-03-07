@@ -1,4 +1,4 @@
-import { initShowTime } from "./showtime.js";
+import { initShowTime } from "./showtime.prog.js";
 import { ASSISTANT_LIST } from "../../Initialization/on_Init.js";
 import { pause } from "../c_Redirect.js";
 
