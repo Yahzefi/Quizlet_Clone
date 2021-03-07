@@ -1,12 +1,12 @@
 export function checkPassword(user, pw){
     if(user === "Admin"){
-        if(pw === "pw123"){
+        if(pw === "pword"){
             $('.user-nav').css("overflow", "hidden")
             $('#logIn_Links').slideUp(1000);
             $('#username_input').val("");
             $('#password_input').val("");
             $('#logModal_content').animate({top: "200px"}, 500);
-            setTimeout(()=>{$('#logModal_content').animate({top: "-500px"}, 1000)}, 500);
+            setTimeout(()=>{$('#logModal_content').animate({top: "-1000px"}, 1000)}, 500);
             setTimeout(()=>{$('#log_modal').fadeOut(500)}, 1500);
             setTimeout(()=>{
                 $(".user-nav").css("visibility", "");
