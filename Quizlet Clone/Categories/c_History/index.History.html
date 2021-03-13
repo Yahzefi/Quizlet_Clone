@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../c_styles.css">
     <link rel="stylesheet" href="styles.History.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Categories - History</title>
 </head>
 <body>
-    
-    <div id="primary_container" class="primary-cont">
+    <div id="primary_container" class="h-primary-cont">
         <div id="header_container" class="head-cont">
             <h2>HISTORY</h2>
             <div id="banner_div" class="ban-div">
-                <img id="banner_image" class="ban-img" src="https://www.nationsonline.org/maps/physical_world_map_1600px.jpg" alt="">
+                <img id="banner_image" class="ban-art" src="https://www.nationsonline.org/maps/physical_world_map_1600px.jpg" alt="">
             </div><br>
-            <nav id="page_navigation" class="pg-nav">
+            <nav id="topic_navBar" class="pg-nav">
                 <a>North America</a>
                 <a>South America</a>
                 <a>Africa</a>
@@ -24,17 +25,14 @@
                 <a>Europe</a>
                 <a>Antartica</a>
             </nav>
-            <!-- Header Content -->
         </div>
         <div id="body_container" class="body-cont">
-            <h2>This is the body</h2>
-            <!-- Body Content -->
+            <h2 id="start_message">Begin Your Journey...</h2>
+            <img id="history_startBook" class="start-book" src="/Images/history_book.png" alt="">
         </div>
         <div id="footer_container" class="foot-cont">
-            <p>Copyright &copy; 2021</p>
-            <!-- Footer Content -->
         </div>
     </div>
-    <script src="main.History.js"></script>
+    <script type="module" src="main.History.js"></script>
 </body>
 </html>
