@@ -11,10 +11,9 @@ let avatar_Tom = ASSISTANT_LIST.Tom;
 
 //                                      ||   SUBCOMPONENTS   ||                                      \\
 let assistantName_SC = new Subcomponent("h3", "assistant_name", "assist-name");
-let chatBox_SC = new Subcomponent("div", "chat_box", "chat-box");
-    let chatBoxMsg_SC = new Subcomponent("h2", "chat_message", "chat-msg");
-let whiteChatDiv_SC = new Subcomponent("div", "white_chatDiv", "white-chat");
-    let blackChatBox_SC = new Subcomponent("div", "black_chatBox", "b-chat-box");
+let chatDiv_SC = new Subcomponent("div", "chat_div", "chat-div");
+    let chatBox_SC = new Subcomponent("div", "chat_box", "chat-box");
+        let chatBoxMsg_SC = new Subcomponent("h2", "chat_message", "chat-msg");
 
 
 export function initShowTime(){
@@ -31,19 +30,20 @@ export function initShowTime(){
         await pause(1000);
     })
     .then(async ()=>{
-        $('#primary_container').css("display", "flex");
-        $('#primary_container').animate({top: "625px"}, 1000);
-        await pause(500);
+
 
         // ASSISTANT ARRIVES
         $(document.body).append(avatar_Tom.generate());
         avatar_Tom.display("60%");
-        $('#primary_container').append(chatBox_SC.createElement());
+        $(document.body).prepend(chatDiv_SC.createElement());
+        await pause(1000);
+        $('#' + chatDiv_SC.id).append(chatBox_SC.createElement());
+            $('#' + chatBox_SC.id).append(chatBoxMsg_SC.createElement());
             $('#' + chatBox_SC.id).css("display", "none");
-        await pause(1000);
-            $('#' + chatBox_SC.id).fadeIn(1000);
-        await pause(1000);
-        $('#' + chatBox_SC.id).append(chatBoxMsg_SC.createElement());
+        $('#' + chatDiv_SC.id).animate({top: "625px"}, 750)
+        await pause(750);
+        $('#' + chatBox_SC.id).fadeIn(500);
+        await pause(500);
 
         // BEGINNING OF DIALOGUE
         avatar_Tom.switchExpression("shocked")
@@ -79,7 +79,9 @@ export function initShowTime(){
             // $('#' + avatar_Tom.id).animate({right: "125%"}, 1000);
             // await pause(1000);
             $('#' + avatar_Tom.id).remove();
-            $('#primary_container').animate({top: "1000px"}, 500);
+            $('#' + chatDiv_SC.id).animate({top: "1000px"}, 500)
+            await pause(500);
+            $('#' + chatDiv_SC.id).remove();
             // await pause(1000);
             // $(document.body).css("background-image", "url('https://miro.medium.com/max/1200/1*NXhs15W3eBIuLT9xWFXLcA.jpeg')");
             // await pause(1000);
@@ -94,15 +96,14 @@ export function initShowTime(){
                 $('#' + avatar_Tom.id).css({"z-index": "3", top: "60%", right: "100%"});
                 $('#' + avatar_Tom.id).animate({right: "82.5%"}, 1000)
                 await pause(1000);
-                $('#' + whiteChatDiv_SC.id).css("display", "flex");
-                $('#' + whiteChatDiv_SC.id).animate({top: "625px"}, 500)
+                $('#' + chatDiv_SC.id).animate({top: "625px"}, 500)
                 await pause(500);
             })
             .then(async()=>{
                 // avatar_Tom.switchExpression("shocked")
                 avatar_Tom.switchExpression("smile")
                 .then(()=>{
-                    $('#' + blackChatBox_SC.id).fadeIn(750);
+                    $('#' + chatBox_SC.id).fadeIn(750);
                 })
                 await pause(750);
             })
@@ -115,7 +116,7 @@ export function initShowTime(){
             // .then(()=>typeMessage("Anyway, hello there!  My name's Tom."))
             // .then(async()=>{await dialogueLB();})
             .then(async()=>{
-                $('#' + whiteChatDiv_SC.id).append(assistantName_SC.createElement([{attr:"",content:"",innerText:"Tom"}]));
+                $('#' + chatDiv_SC.id).append(assistantName_SC.createElement([{attr:"",content:"",innerText:"Tom"}]));
                 $('#' + assistantName_SC.id).animate({left: "18.5%", opacity: 1}, 1000)
                 await pause(850);
                 $('#' + assistantName_SC.id).css("font-style", "normal")
@@ -148,7 +149,6 @@ function hideElements(){
         $('#header_container').css("display", "none");
         $('#body_container').css('display', 'none');
         $('#footer_container').css('display', 'none');
-        $('#primary_container').css({top: "1000px", height: "350px"})
         await pause(500);
         resolve();
     })
@@ -156,8 +156,7 @@ function hideElements(){
 
 function returnElements(){
     return new Promise(async(resolve)=>{
-        $('#primary_container').css("height", "1000px");
-        $('#primary_container').animate({top: "0px"}, 0)
+        $('#primary_container').slideDown(1000);
         // await pause(1000);
         $("#header_container").css("display", "")
         $("#body_container").css("display", "")
@@ -169,11 +168,10 @@ function returnElements(){
         $('#topic_navBar').slideDown(1000);
         await pause(1000);
 
-        $(document.body).prepend(whiteChatDiv_SC.createElement());
-            $('#' + whiteChatDiv_SC.id).append(blackChatBox_SC.createElement());
-                $('#' + blackChatBox_SC.id).append(chatBoxMsg_SC.createElement());
-        $('#' + whiteChatDiv_SC.id).css("display", "none")
-            $('#' + blackChatBox_SC.id).css("display", "none");
+        $(document.body).append(chatDiv_SC.createElement())
+            $('#' + chatDiv_SC.id).append(chatBox_SC.createElement());
+                $('#' + chatBox_SC.id).append(chatBoxMsg_SC.createElement());
+                $('#' + chatBox_SC.id).css("display", "none");
         resolve();
     })
 }
