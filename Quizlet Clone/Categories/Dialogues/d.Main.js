@@ -1,8 +1,11 @@
 //                                      ||   IMPORTS   ||                                      \\
 import { create_dBox } from "../../Initialization/Assistants.js"
 import { pause } from "../c_Redirect.js"
-import { Subcomponent } from "../../../Initialization/Subcomponent.js";
+import { Subcomponent } from "../../Initialization/Subcomponent.js";
 import { nextLine_Prog } from "../Dialogues/Programming/d_prog.script.js";
+import { nextLine_Hist } from "../Dialogues/History/d_hist.script.js";
+import { nextLine_Span } from "../Dialogues/Spanish/d_span.script.js";
+import { nextLine_Math } from "../Dialogues/Math/d_math.script.js";
 import { ASSISTANT_LIST } from "../../Initialization/on_Init.js";
 
 
@@ -39,7 +42,7 @@ export function beginConversation(){
     create_dBox()
     .then(async(dBox)=>{
         await pause(500);
-        $('#white_chatDiv').append(dBox);
+        $('#chat_div').append(dBox);
         $('#dialogue_box').css("display", "none");
         $('#dialogue_box').slideDown(500);
         await pause(500);
@@ -158,6 +161,39 @@ async function continueDialogue(responseChar){
             }
             if(CURRENT_CATEGORY.isProgramming){
                 nextLine_Prog(Conversation.branchNo, Conversation.caseNum, responseChar)
+                .then(async(data)=>{
+                    await pause(500);
+                    if(data == 0){
+                        $('#continue_message').css("visibility", "");
+                    }
+                    $('#dialogue_box').animate({opacity: 1}, 250);
+                    $('#black_chatBox').animate({opacity: 0.25}, 250)
+                    resolve(data)
+                })
+            } else if(CURRENT_CATEGORY.isMath){
+                nextLine_Math(Conversation.branchNo, Conversation.caseNum, responseChar)
+                .then(async(data)=>{
+                    await pause(500);
+                    if(data == 0){
+                        $('#continue_message').css("visibility", "");
+                    }
+                    $('#dialogue_box').animate({opacity: 1}, 250);
+                    $('#black_chatBox').animate({opacity: 0.25}, 250)
+                    resolve(data)
+                })
+            } else if(CURRENT_CATEGORY.isHistory){
+                nextLine_Hist(Conversation.branchNo, Conversation.caseNum, responseChar)
+                .then(async(data)=>{
+                    await pause(500);
+                    if(data == 0){
+                        $('#continue_message').css("visibility", "");
+                    }
+                    $('#dialogue_box').animate({opacity: 1}, 250);
+                    $('#black_chatBox').animate({opacity: 0.25}, 250)
+                    resolve(data)
+                })
+            } else if(CURRENT_CATEGORY.isSpanish){
+                nextLine_Span(Conversation.branchNo, Conversation.caseNum, responseChar)
                 .then(async(data)=>{
                     await pause(500);
                     if(data == 0){
