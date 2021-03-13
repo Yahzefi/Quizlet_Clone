@@ -7,6 +7,15 @@ body {
     color:white;
 }
 
+@keyframes shadowPulse{
+    from {box-shadow: 0px 0px 0px 0px orange}
+    to {box-shadow: 0px 0px 12px 12px orange}
+}
+@keyframes shadowRetract {
+    from {box-shadow: 0px 0px 12px 12px orange}
+    to {box-shadow: 0px 0px 0px 0px orange}
+}
+
     .primary-cont {
         display: flex;
         align-items: center;
@@ -14,19 +23,57 @@ body {
         text-align: center;
         width: 100%;
         height: 100%;
-        border: 1px solid black;
+        background-color: rgb(12,12,12);
+        /* border: 1px solid black; */
     }
         .head-cont {
+            display:none;
             width: 100%;
             height: 15%;
-            border: 1px solid red;
+            /* border: 1px solid red; */
         }
+            .ban-div {
+                margin-bottom: 2.5%;
+            }
+                .ban-img{
+                    width: 75%;
+                    height: 350px;
+                    border-radius: 50%;
+                }
+            .pg-nav {
+                margin-bottom: 2.5%;
+            }
+                .pg-nav a {
+                    border-right: thin solid black;
+                    padding-left: 12px;
+                    padding-right: 12px;
+                }
+                .pg-nav a:last-child {
+                    border-right: none;
+                }
+                .pg-nav a:hover {
+                    color: blue;
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
         .body-cont {
             width: 75%;
             height: 70%;
-            border: 1px solid purple;
+            min-height: 300px;
+            /* border: 1px solid purple; */
         }
+            .calc-img {
+                width: 200px;
+                height: 200px;
+                margin: 36px;
+                border-radius: 50%;
+                box-shadow: 0px 0px 0px 0px orange;
+            }
+            .calc-img:hover {
+                cursor: pointer;
+            }
         .foot-cont {
+            display: none;
             width: 100%;
             height: 15%;
             border: 1px solid green;
