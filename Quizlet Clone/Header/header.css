@@ -16,33 +16,52 @@
             position: relative;
             left: 0px;
             top: 0px;
-            width:75%;
+            width:33%;
+            height: 25%;
             margin: auto;
             background-color: white;
+            border-radius: 24px;
             color: black;
         }
             .log-head {
+                margin-top: 12%;
                 letter-spacing: 4px;
                 line-height: 1.5;
             }
                 .log-form {
                     display: grid;
-                    grid-template-columns: 25% 65%;
-                    grid-template-rows: 7.5% 5%;
+                    grid-template-columns: 33% 66%;
+                    grid-template-rows: auto auto auto 0;
                     /* border: 1px solid black; */
-                    width:33%;
-                    height: 500px;
-                    align-content: center;
+                    width:75%;
+                    height: 300px;
                     margin: auto;
-                    text-align: left;
+                    align-items: center;
                 }
+                    #username_label {
+                        grid-row: 1/1;
+                        grid-column: 1/1;
+                    }
+                    #password_label {
+                        grid-row: 2/2;
+                        grid-column: 1/1;
+                    }
+                    #username_input {
+                        grid-row: 1/1;
+                        grid-column: 2/2;
+                    }
+                    #password_input {
+                        grid-row: 2/2;
+                        grid-column: 2/2;
+                    }
                     .log-label {
-                        grid-column: 1/2;
-                        padding: 8px 0px 0px;
+                        /* grid-column: 1/2; */
+                        padding: 8px 0px 0px 0px;
                         color: #2b2f3f;
                     }
                     .log-inp {
-                        grid-column: 2/2;
+                        /* grid-column: 2/2; */
+                        max-height: 28px;
                         margin-top: 8px;
                         outline: none;
                         border: thin solid black;
@@ -53,9 +72,11 @@
                         box-shadow: 0px 0px 4px 0.5px blue;
                     }
                     .log-submit {
-                        grid-column: 2/2;
-                        margin: 48px 144px 4px 20px;
-                        align-self: start;
+                        grid-row: 3/3;
+                        grid-column: 1/3;
+                        width: 75%;
+                        margin: auto;
+                        /* margin-top: 20%; */
                         border: thin solid darkblue;
                         outline: none;
                         border-radius: 24px;
@@ -87,6 +108,7 @@
             width:75%;
             margin: auto;
             background-color: white;
+            border-radius: 24px;
             color: black;
         }
             .reg-head {
@@ -96,32 +118,66 @@
             }
             .reg-form {
                 display: grid;
-                grid-template-columns: 25% 37.5% 35%;
+                grid-template-columns: 25% 75%;
                 justify-content: start;
                 align-content: center;
                 /* border: 1px solid black; */
-                width:33%;
+                width:50%;
                 height: 500px;
                 margin: auto;
                 text-align: left;
             }
+                #fullName_label {
+                    grid-row: 1 / 1;
+                    grid-column: 1 / 1;
+                }
+                #fullName_input {
+                    grid-row: 1 / 1;
+                    grid-column: 2 / 2;
+                }
+                #birthDate_label {
+                    grid-row: 2 / 2;
+                    grid-column: 1 / 1;
+                }
+                #birthDate_input {
+                    grid-row: 2 / 2;
+                    grid-column: 2 / 2;
+                }
+                #regUser_label {
+                    grid-row: 3 / 3;
+                    grid-column: 1 / 1;
+                }
+                #regUser_input {
+                    grid-row: 3 / 3;
+                    grid-column: 2 / 2;
+                }
+                #regPass_label {
+                    grid-row: 4 / 4;
+                    grid-column: 1 / 1;
+                }
+                #regPass_input {
+                    grid-row: 4 / 4;
+                    grid-column: 2 / 2;
+                }
                 .reg-label {
-                    grid-column: 1 / 3;
                     text-decoration: underline;
                     padding: 8px 0px 0px 0px;
                     color: #2b2f3f;
                 }
                 .reg-inp {
-                    grid-column: 3 / 3;
+                    width: 75%;
+                    margin: auto;
                     margin-top: 8px;
                     border: thin solid black;
                     border-radius: 24px;
                     outline: none;
-                    height: 66%;
                 }
                 .reg-submit {
-                    grid-column: 2 / 2;
-                    margin: 72px 18px 18px 18px;
+                    grid-column: 1 / 3;
+                    grid-row: 5 / 5;
+                    width: 50%;
+                    margin: auto;
+                    margin-top: 10%;
                     border: thin solid darkblue;
                     outline: none;
                     border-radius: 24px;
