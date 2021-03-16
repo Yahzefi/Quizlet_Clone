@@ -39,7 +39,6 @@
                 }
                 .post-header > span {
                     color: gold;
-                    opacity: 0.75;
                     text-decoration: underline;
                 }
                 .more-info {
@@ -97,19 +96,19 @@
         .modal-contentDiv {
             display: none;
             position:relative;
-            left: 50px;
-            top: 50px;
+            left: 125px;
+            top: 150px;
             border: 2px solid black;
             border-radius: 24px;
             background-color: rgb(146, 146, 146);
-            width: 90%;
-            height: 80%;
+            width: 66%;
+            height: 50%;
         }
             .modal-close {
                 float:right;
                 position: relative;
                 bottom: 18px;
-                font-size: 28px;
+                font-size: 48px;
             }
             .modal-close:hover {
                 color: red;
@@ -132,4 +131,5 @@
             }
                 .modal-text {
                     color: black;
+                    font-size: 24px;
                 }
