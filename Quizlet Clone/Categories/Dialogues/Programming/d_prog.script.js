@@ -10,6 +10,7 @@ export function nextLine_Prog(branchNum, d_Num, responseChar){
         let introScript = function(){
             switch(d_Num){
                 case 0:
+                    console.log("Programming");
                     $('#dChoice_A').text("\"It's nice to meet you too!\"");
                     $('#dChoice_B').text("\"Uh...\"");
                     $('#dChoice_C').text("\"Please leave me alone...\"");
