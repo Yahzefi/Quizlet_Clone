@@ -7,6 +7,7 @@ export function nextLine_Hist(branchNum, d_Num, responseChar){
         let introScript = function(){
             switch(d_Num){
                 case 0:
+                    console.log("History");
                     $('#dChoice_A').text("\"It's nice to meet you too!\"");
                     $('#dChoice_B').text("\"Uh...\"");
                     $('#dChoice_C').text("\"Please leave me alone...\"");
@@ -21,7 +22,7 @@ export function nextLine_Hist(branchNum, d_Num, responseChar){
             if(responseChar === "A"){
                 switch(d_Num){
                     case 0:
-                        logUpdate = null
+                        logUpdate = -1
                         resolve(logUpdate)
                         break;
                     case 1:
@@ -106,6 +107,7 @@ export function nextLine_Hist(branchNum, d_Num, responseChar){
                 introScript();
                 break;
             case 1:
+                console.log("first")
                 firstBranch();
                 break;
             case 2:
