@@ -35,24 +35,24 @@ export function nextLine_Prog(branchNum, d_Num, responseChar){
                     case 1:
                         avatar.switchExpression("open")
                         .then(()=>typeMessage("You have no idea how rare that is nowadays..."))
+                        .then(()=>avatar.switchExpression("smile"))
+                        .then(()=>typeMessage("So then..."))
+                        .then(async()=>{await dialogueLB();})
+                        .then(()=>typeMessage("Are you ready to start coding?"))
+                        .then(async()=>{await dialogueLB();})
                         .then(()=>{
                             logUpdate = 0;
                             resolve(logUpdate);
                         })
                         break;
                     case 2:
-                        $('#dChoice_A').text("Absolutely!");
-                        $('#dChoice_B').text("Eh, not really.");
-                        $('#dChoice_C').text("Sick");
-                        avatar.switchExpression("smile")
-                        .then(()=>typeMessage("So then..."))
-                        .then(async()=>{await dialogueLB();})
-                        .then(()=>typeMessage("Are you ready to start coding?"))
-                        .then(async()=>{await dialogueLB();})
-                        .then(()=>{
-                            logUpdate = 1;
-                            resolve(logUpdate);
-                        })
+                        $('#d_instructions').text("");
+                        $('#dChoice_C').css({fontSize: "54px", letterSpacing: "10px", position: "relative", top: "20%", left: "0%"})
+                        $('#dChoice_A').text("");
+                        $('#dChoice_B').text("");
+                        $('#dChoice_C').text("Click to Continue");
+                        logUpdate = 1;
+                        resolve(logUpdate);
                         break;
                     default:
                         throw new Error("Line Not Found.")
@@ -60,8 +60,32 @@ export function nextLine_Prog(branchNum, d_Num, responseChar){
             } else if(responseChar === "B"){
                 switch(d_Num){
                     case 0:
+                        avatar.switchExpression("shocked")
+                        .then(()=>typeMessage("Oh gosh, d-did I break you?"))
+                        .then(async()=>{await dialogueLB()})
+                        .then(()=>typeMessage("Are you broken?"))
+                        .then(async()=>{await dialogueLB()})
+                        .then(()=>avatar.switchExpression("open"))
+                        .then(()=>typeMessage("Don't worry, I can fix this."))
+                        .then(async()=>{await dialogueLB()})
+                        .then(()=>typeMessage("All you need is the awesome power of knowledge, right?"))
+                        .then(async()=>{await dialogueLB()})
+                        .then(()=>avatar.switchExpression("smile"))
+                        .then(()=>typeMessage("So then, let's begin!"))
+                        .then(async()=>{await dialogueLB()})
+                        .then(()=>{
+                            logUpdate = 0
+                            resolve(logUpdate)
+                        })
                         break;
                     case 1:
+                        $('#d_instructions').text("");
+                        $('#dChoice_C').css({fontSize: "54px", letterSpacing: "10px", position: "relative", top: "20%", left: "0%"})
+                        $('#dChoice_A').text("");
+                        $('#dChoice_B').text("");
+                        $('#dChoice_C').text("Click to Continue");
+                        logUpdate = 1;
+                        resolve(logUpdate);
                         break;
                     default:
                         throw new Error("Line Not Found")
@@ -69,8 +93,31 @@ export function nextLine_Prog(branchNum, d_Num, responseChar){
             } else if(responseChar === "C"){
                 switch(d_Num){
                     case 0:
+                        avatar.switchExpression("shocked")
+                        .then(()=>typeMessage("Wow...  Seriously?"))
+                        .then(async()=>{await dialogueLB()})
+                        .then(()=>avatar.switchExpression("default"))
+                        .then(()=>typeMessage("That kind of attitude won't get you very far, but..."))
+                        .then(async()=>{await dialogueLB()})
+                        .then(()=>typeMessage("I guess I'll have to accept it as it is, right?"))
+                        .then(async()=>{await dialogueLB()})
+                        .then(()=>typeMessage("If you change your mind, click the icon at the top left of the screen."))
+                        .then(async()=>{await dialogueLB()})
+                        .then(()=>typeMessage("Good luck on your journey!"))
+                        .then(async()=>{await dialogueLB()})
+                        .then(()=>{
+                            logUpdate = 0;
+                            resolve(logUpdate);
+                        })
                         break;
                     case 1:
+                        $('#d_instructions').text("");
+                        $('#dChoice_C').css({fontSize: "54px", letterSpacing: "10px", position: "relative", top: "20%", left: "0%"})
+                        $('#dChoice_A').text("");
+                        $('#dChoice_B').text("");
+                        $('#dChoice_C').text("Click to Continue");
+                        logUpdate = 1;
+                        resolve(logUpdate);
                         break;
                     default:
                         throw new Error("Line Not Found")
@@ -78,46 +125,13 @@ export function nextLine_Prog(branchNum, d_Num, responseChar){
             }
         }
         let secondBranch = function(){
-            if(responseChar === "A"){
-                switch(d_Num){
-                    case 0:
-                        avatar.switchExpression("open")
-                        .then(()=>typeMessage("Glad to hear it!  Alright then, let's get started!"))
-                        .then(()=>{
-                            logUpdate = -1;
-                            resolve(logUpdate);
-                        })
-                        break;
-                    default:
-                        throw new Error("Line Not Found");
-                }
-            } else if(responseChar === "B"){
-                switch(d_Num){
-                    case 0:
-                        avatar.switchExpression("default")
-                        .then(()=>typeMessage("Really?  That's too bad..."))
-                        .then(async()=>{await dialogueLB();})
-                        .then(()=>typeMessage("Maybe next time, then."))
-                        .then(()=>{
-                            logUpdate = -1;
-                            resolve(logUpdate);
-                        })
-                        .then(async()=>{
-                            await dialogueLB();
-                            await pause(500);
-                        })
-                        .then(()=>{window.close()})
-                        break;
-                    default:
-                        throw new Error("Line Not Found");
-                }
-            } else if(responseChar === "C"){
-                switch(d_Num){
-                    case 0:
-                        break;
-                    default:
-                        throw new Error("Line Not Found");
-                }
+            switch(d_Num){
+                case 0:
+                    logUpdate = -1
+                    resolve(logUpdate)
+                    break;
+                default:
+                    throw Error("Line Not Found");
             }
         }
         switch(branchNum){
