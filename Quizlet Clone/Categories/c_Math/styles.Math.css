@@ -1,28 +1,20 @@
 body {
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: rgb(85, 85, 85);
-    color:white;
+    margin: 0;
 }
 
 @keyframes shadowPulse{
-    from {box-shadow: 0px 0px 0px 0px orange}
-    to {box-shadow: 0px 0px 12px 12px orange}
-}
-@keyframes shadowRetract {
-    from {box-shadow: 0px 0px 12px 12px orange}
-    to {box-shadow: 0px 0px 0px 0px orange}
+    0% {box-shadow: 0px 0px 0px 0px orange;}
+    50% {box-shadow: 0px 0px 12px 12px orange;}
+    100% {box-shadow: 0px 0px 0px 0px orange;}
 }
 
-    .primary-cont {
+    .m-primary-cont {
         display: flex;
         align-items: center;
         flex-direction: column;
         text-align: center;
         width: 100%;
-        height: 100%;
+        height: 1080px;
         background-color: rgb(12,12,12);
         /* border: 1px solid black; */
     }
@@ -35,7 +27,7 @@ body {
             .ban-div {
                 margin-bottom: 2.5%;
             }
-                .ban-img{
+                .ban-art{
                     width: 75%;
                     height: 350px;
                     border-radius: 50%;
