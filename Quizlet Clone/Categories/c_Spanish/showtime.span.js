@@ -37,7 +37,16 @@ export async function initShowTime(){
         $('#' + assistantName_SC.id).css("font-style", "normal")
         await pause(150);
     })
-    .then(()=>typeMessage("Although if you're new to the language, I should say my name is Damien."))
+    .then(()=>avatar_Dame.switchExpression("default"))
+    .then(()=>typeMessage("Although if you're new to the language, you might be confused..."))
+    .then(async()=>{await dialogueLB()})
+    .then(()=>avatar_Dame.switchExpression("open"))
+    .then(()=>typeMessage("I guess I should start speaking in English then, huh?"))
+    .then(async()=>{await dialogueLB()})
+    .then(()=>avatar_Dame.switchExpression("smile"))
+    .then(()=>typeMessage("Now then, I assume you're here to learn a second language."))
+    .then(async()=>{await dialogueLB()})
+    .then(()=>typeMessage("What made you pick Spanish versus another language, though?"))
     .then(async()=>{await dialogueLB()})
     .then(()=>beginConversation("S"))
 }
