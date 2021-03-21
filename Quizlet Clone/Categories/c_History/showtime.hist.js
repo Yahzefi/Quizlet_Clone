@@ -24,9 +24,31 @@ export async function initShowTime(){
     await pause(750);
     $('#' + chatBox_SC.id).fadeIn(750);
     await pause(750);
-    avatar_Fred.switchExpression("open")
-    .then(()=>typeMessage("Hi there!"))
-    .then(async ()=>{await dialogueLB()})
+    avatar_Fred.switchExpression("default")
+    .then(()=>typeMessage("Hmm..."))
+    // .then(async ()=>{await dialogueLB()})
+    // .then(()=>avatar_Fred.switchExpression("shocked"))
+    // .then(()=>typeMessage("You must be a fellow historian, yes?"))
+    // .then(async()=>{await dialogueLB()})
+    // .then(()=>avatar_Fred.switchExpression("open"))
+    // .then(()=>avatar_Fred.shake())
+    // .then(async()=>{await pause(500)})
+    // .then(()=>typeMessage("Oh, no!  Where are my manners?"))
+    // .then(async()=>{await dialogueLB()})
+    // .then(()=>typeMessage("I'm Fredrick, it's a pleasure to make your aquaintance!"))
+    .then(async()=>{await dialogueLB()})
     .then(()=>avatar_Fred.switchExpression("smile"))
-    .then(()=>beginConversation())
+    .then(async ()=>{
+        $('#chat_div').prepend(assistantName_SC.createElement([{attr:"", content:"", innerText:"Fredrick"}]))
+        $('#' + assistantName_SC.id).animate({left: "18%", opacity: 1}, 1000)
+        await pause(850);
+        $('#' + assistantName_SC.id).css("font-style", "normal")
+        await pause(150);
+    })
+    .then(()=>beginConversation("H"))
+}
+
+// This category's specific function to continue from after the load/initial conversation with assistant is completed
+export function endLine_Hist(){
+    console.log("End History");
 }
