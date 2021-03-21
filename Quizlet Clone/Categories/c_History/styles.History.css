@@ -2,6 +2,12 @@ body {
     margin: 0;
 }
 
+@keyframes shadowPulse{
+    0% {box-shadow: 0px 0px 0px 0px rgba(215, 0, 0, 0.85);}
+    50% {box-shadow: 0px 0px 12px 12px rgba(215, 0, 0, 0.85);}
+    100% {box-shadow: 0px 0px 0px 0px rgba(215, 0, 0, 0.85);}
+}
+
     .h-primary-cont {
         display: flex;
         align-items: center;
@@ -58,7 +64,6 @@ body {
             .start-book:hover {
                 cursor: pointer;
                 background-color: rgba(200, 0, 0, 0.85);
-                box-shadow: 0px 0px 24px 12px red;
             }
         .foot-cont {
             display: none;
