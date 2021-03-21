@@ -1,13 +1,8 @@
 body {
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: rgb(85, 85, 85);
-    color:white;
+margin: 0;
 }
 
-    .primary-cont {
+    .s-primary-cont {
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -25,7 +20,7 @@ body {
             .ban-div {
                 margin-bottom: 2.5%;
             }
-                .ban-img {
+                .ban-art {
                     width: 75%;
                     height: 350px;
                     border-radius: 50%;
@@ -47,14 +42,17 @@ body {
                     text-decoration: underline;
                 }
         .body-cont {
+            display: flex;
+            flex-direction: column;
             width: 75%;
             height: 70%;
-            /* border: 1px solid purple; */
+            margin: auto;
         }
             .c-tort {
                 position: relative;
                 left: 0px;
                 top: 0px;
+                float:right;
                 width: 200px;
                 height: 200px;
             }
@@ -66,6 +64,7 @@ body {
                 position: relative;
                 right: 0px;
                 top: 0px;
+                float:left;
                 width: 200px;
                 height: 200px;
             }
