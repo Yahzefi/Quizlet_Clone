@@ -125,7 +125,7 @@ export function initShowTime(){
             .then(()=>avatar_Tom.switchExpression("open"))
             .then(()=>typeMessage("It's a pleasure to meet you!"))
             .then(()=>avatar_Tom.switchExpression("smile"))
-            .then(()=>beginConversation())
+            .then(()=>beginConversation("P"))
         })
     })
 }
@@ -177,6 +177,6 @@ function returnElements(){
 }
 
 // This category's specific function to continue from after the load/initial conversation with assistant is completed
-export function endOfTheLine_Prog(){
-    //
+export function endLine_Prog(){
+    console.log("End Programming");
 }
