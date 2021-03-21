@@ -6,6 +6,10 @@ import { nextLine_Prog } from "../Dialogues/Programming/d_prog.script.js";
 import { nextLine_Hist } from "../Dialogues/History/d_hist.script.js";
 import { nextLine_Span } from "../Dialogues/Spanish/d_span.script.js";
 import { nextLine_Math } from "../Dialogues/Math/d_math.script.js";
+import { endLine_Prog } from "../c_Programming/showtime.prog.js";
+import { endLine_Hist } from "../c_History/showtime.hist.js";
+import { endLine_Span } from "../c_Spanish/showtime.span.js";
+import { endLine_Math } from "../c_Math/showtime.math.js";
 import { ASSISTANT_LIST } from "../../Initialization/on_Init.js";
 
 
@@ -31,14 +35,14 @@ let Conversation = {
 //                                      ||   ASSISTANTS   ||                                      \\
 
 const CURRENT_CATEGORY = {
-    isProgramming: ASSISTANT_LIST.Tom,
-    isMath: ASSISTANT_LIST.Kinsley,
-    isHistory: ASSISTANT_LIST.Fredrick,
-    isSpanish: ASSISTANT_LIST.Damien
+    isProgramming: ASSISTANT_LIST.Tom.hasIntroduced,
+    isMath: ASSISTANT_LIST.Kinsley.hasIntroduced,
+    isHistory: ASSISTANT_LIST.Fredrick.hasIntroduced,
+    isSpanish: ASSISTANT_LIST.Damien.hasIntroduced
 }
 
 //                                      ||   INITIAL FUNCTION   ||                                      \\
-export function beginConversation(){
+export function beginConversation(categoryChar){
     create_dBox()
     .then(async(dBox)=>{
         await pause(500);
@@ -53,7 +57,19 @@ export function beginConversation(){
         $('#dialogue_box').append(dialogueChoice_C_SC.createElement());
         $('#dialogue_box').append(continueMessage_SC.createElement([{attr:"",content:"",innerText:"Press any key to continue.."}]))
         
-        maintainDialogue("Z");
+        if(categoryChar === "P"){
+            CURRENT_CATEGORY.isProgramming = true;
+            maintainDialogue("P");
+        } else if(categoryChar === "H"){
+            CURRENT_CATEGORY.isHistory = true;
+            maintainDialogue("H");
+        } else if(categoryChar === "S"){
+            CURRENT_CATEGORY.isSpanish = true;
+            maintainDialogue("S");
+        } else if(categoryChar === "M"){
+            CURRENT_CATEGORY.isMath = true;
+            maintainDialogue("M");
+        }
     })
 }
 
@@ -108,7 +124,7 @@ function maintainDialogue(responseChar){
                                     Conversation.branchIsOver = true;
                                     Conversation.branchNo++;
                                     Conversation.caseNum = 0;
-                                    maintainDialogue("C");
+                                    userSpeak("C").then(()=>{maintainDialogue("C")})
                                     break;
                                 default:
                                     break;
@@ -122,8 +138,17 @@ function maintainDialogue(responseChar){
                     statusUpdate();
                 } 
             })
-        } else {
-            alert("End");
+        } else if(Conversation.isFinished) {
+            console.log("End");
+            if(CURRENT_CATEGORY.isProgramming){
+                endLine_Prog();
+            } else if(CURRENT_CATEGORY.isHistory){
+                endLine_Hist();
+            } else if(CURRENT_CATEGORY.isSpanish){
+                endLine_Span();
+            } else if(CURRENT_CATEGORY.isMath){
+                endLine_Math();
+            }
         }
     }
     if(!Conversation.hasBegun && !Conversation.isFinished){
@@ -137,8 +162,14 @@ function maintainDialogue(responseChar){
 }
 
 async function continueDialogue(responseChar){
-    if(responseChar === "Z"){
+    if(responseChar === "P"){
         return nextLine_Prog(Conversation.branchNo, Conversation.caseNum, responseChar)
+    } else if(responseChar === "H"){
+        return nextLine_Hist(Conversation.branchNo, Conversation.caseNum, responseChar)
+    } else if(responseChar === "S"){
+        return nextLine_Span(Conversation.branchNo, Conversation.caseNum, responseChar)
+    } else if(responseChar === "M"){
+        return nextLine_Math(Conversation.branchNo, Conversation.caseNum, responseChar)
     } else {
         $('#continue_message').css("visibility", "hidden");
         $('#d_userName').css("display", "none");
@@ -274,13 +305,12 @@ function displayChoices(){
 
 
 function endDialogue(msgInterval){
+    // // Set Assistant "hasIntroduced" value to false
+    // if(CURRENT_CATEGORY.isProgramming){CURRENT_CATEGORY.isProgramming = false}
+    // if(CURRENT_CATEGORY.isHistory){CURRENT_CATEGORY.isHistory = false}
+    // if(CURRENT_CATEGORY.isSpanish){CURRENT_CATEGORY.isSpanish = false}
+    // if(CURRENT_CATEGORY.isMath){CURRENT_CATEGORY.isMath = false}
     clearInterval(msgInterval);
     $('#dialogue_box').children().css("display", "none");
     Conversation.isFinished = true;
-}
-
-// Once the dialogue with the assistant is over, this function will run.
-// If the conversation has already taken place, this function will be called in the main.Programming.js file
-export function returnUserControl(){
-    //
 }
