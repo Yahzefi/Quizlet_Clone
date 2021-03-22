@@ -106,13 +106,17 @@ export function nextLine_Math(branchNum, d_Num, responseChar){
                     .then(async()=>{await dialogueLB()})
                     .then(()=>typeMessage("If such a time comes, click on the icon at the top left of the screen."))
                     .then(async()=>{await dialogueLB()})
+                    .then(async()=>{
+                        $('#assistant_help').fadeIn(1000);
+                        await pause(1000);
+                    })
                     .then(()=>typeMessage("Until then..."))
                     .then(async()=>{await dialogueLB()})
                     .then(()=>{
                         logUpdate = 0
                         resolve(logUpdate)
-                        break;
                     })
+                    break;
                     case 1:
                         $('#d_instructions').text("");
                         $('#dChoice_C').css({fontSize: "54px", letterSpacing: "10px", position: "relative", top: "20%", left: "0%"})
@@ -122,7 +126,7 @@ export function nextLine_Math(branchNum, d_Num, responseChar){
                         logUpdate = 1;
                         resolve(logUpdate);
                         break;
-                    default:
+                        default:
                         throw new Error("Line Not Found")
                 }
             }
@@ -151,4 +155,8 @@ export function nextLine_Math(branchNum, d_Num, responseChar){
                 throw new Error("No Branch Found");
         }
     })
+}
+
+export function pageIntroduction(){
+    console.log("page intro")
 }
