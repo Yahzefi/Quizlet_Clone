@@ -44,14 +44,6 @@ let formCPT = new Component("div", "form_container", "form-container");
     let home_SC = new Subcomponent("div", "home_container", "home-container");
         let posts_SC = new Subcomponent("div", "post_container", "post-container");
     let ctg_SC = new Subcomponent("div", "category_container", "ctg-container");
-// FORM
-    let form_SC = new Subcomponent("form", "subscription_form", "sub-form");
-        let subMessage_SC = new Subcomponent('p', 'sub_message', 'sub-msg');
-        let nameLabel_SC = new Subcomponent('label', 'name_label', 'form-label');
-        let nameInput_SC = new Subcomponent("input", "name_input", "txt-inp");
-        let emailLabel_SC = new Subcomponent('label', 'email_label', 'form-label');
-        let emailInput_SC = new Subcomponent('input', 'email_input', 'txt-inp');
-        let submitForm_SC = new Subcomponent("input", "sub_submit", "sub-submit");
 
 //                                      ||   ASSISTANTS   ||                                      \\
 
@@ -71,22 +63,6 @@ let formCPT = new Component("div", "form_container", "form-container");
 
 export function initWebLoad(){
     return new Promise(resolve=>{
-// FORM
-        formCPT.createContainer()
-        .then((form)=>{
-            $(document.body).prepend(form);
-                $(form).append(form_SC.createElement());
-                    $('#' + form_SC.id).append(subMessage_SC.createElement([{attr:"", content: "", innerText:"Interested in Learning More?"}]));
-                        $("<br>").appendTo('#' + subMessage_SC.id);
-                        $("<span>Sign Up For Email Updates!</span>").appendTo('#' + subMessage_SC.id);
-                    $('#' + form_SC.id).append(nameLabel_SC.createElement([{attr:"for", content:"nameInput", innerText:"Name:"}]));
-                    $('#' + form_SC.id).append(nameInput_SC.createElement([{attr: "name", content: "nameInput"}]));
-                    $("<br>").appendTo('#' + form_SC.id);
-                    $('#' + form_SC.id).append(emailLabel_SC.createElement([{attr: "for", content:"emailInput", innerText:"Email:"}]));
-                    $('#' + form_SC.id).append(emailInput_SC.createElement([{attr:"type", content:"email"}, {attr:"name", content:"emailInput"}]));
-                    $("<br>").appendTo('#' + form_SC.id);
-                    $('#' + form_SC.id).append(submitForm_SC.createElement([{attr:"type", content:"submit"},{attr:"value", content:"Subscribe"}]));
-        })
 // BODY
         bodyCPT.createContainer()
         .then((body)=>{
