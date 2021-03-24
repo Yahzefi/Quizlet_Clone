@@ -36,7 +36,7 @@ export function nextLine_Math(branchNum, d_Num, responseChar){
                         .then(async()=>{await dialogueLB()})
                         .then(()=>typeMessage("You see, the Math department has never been very popular."))
                         .then(async()=>{await dialogueLB()})
-                        .then(()=>typeMessage("We've been steadily losing memebers for about two years now, and well..."))
+                        .then(()=>typeMessage("We've been steadily losing members for about two years now, and well..."))
                         .then(async()=>{await dialogueLB()})
                         .then(()=>avatar.switchExpression("open"))
                         .then(()=>typeMessage("I'm kinda the last one left..."))
@@ -51,18 +51,9 @@ export function nextLine_Math(branchNum, d_Num, responseChar){
                         .then(()=>typeMessage("So then, shall we begin?"))
                         .then(async()=>{await dialogueLB()})
                         .then(()=>{
-                            logUpdate = 0
+                            logUpdate = -1
                             resolve(logUpdate)
                         })
-                        break;
-                    case 1:
-                        $('#d_instructions').text("");
-                        $('#dChoice_C').css({fontSize: "54px", letterSpacing: "10px", position: "relative", top: "20%", left: "0%"})
-                        $('#dChoice_A').text("");
-                        $('#dChoice_B').text("");
-                        $('#dChoice_C').text("Click to Continue");
-                        logUpdate = 1;
-                        resolve(logUpdate);
                         break;
                     default:
                         throw new Error("Line Not Found")
@@ -77,18 +68,9 @@ export function nextLine_Math(branchNum, d_Num, responseChar){
                         .then(()=>typeMessage("Please, allow me to show you around!"))
                         .then(async()=>{await dialogueLB()})
                         .then(()=>{
-                            logUpdate = 0
+                            logUpdate = -1
                             resolve(logUpdate)
                         })
-                        break;
-                    case 1:
-                        $('#d_instructions').text("");
-                        $('#dChoice_C').css({fontSize: "54px", letterSpacing: "10px", position: "relative", top: "20%", left: "0%"})
-                        $('#dChoice_A').text("");
-                        $('#dChoice_B').text("");
-                        $('#dChoice_C').text("Click to Continue");
-                        logUpdate = 1;
-                        resolve(logUpdate);
                         break;
                     default:
                         throw new Error("Line Not Found")
@@ -112,33 +94,16 @@ export function nextLine_Math(branchNum, d_Num, responseChar){
                     })
                     .then(()=>typeMessage("Until then..."))
                     .then(async()=>{await dialogueLB()})
+                    .then(async()=>{$('#' + avatar.id).animate({right: "100%"}, 1000);await pause(1000);$('#' + avatar.id).remove()})
+                    .then(async()=>{$('#chat_div').fadeOut(1000);await pause(1000)})
                     .then(()=>{
-                        logUpdate = 0
+                        logUpdate = -1
                         resolve(logUpdate)
                     })
                     break;
-                    case 1:
-                        $('#d_instructions').text("");
-                        $('#dChoice_C').css({fontSize: "54px", letterSpacing: "10px", position: "relative", top: "20%", left: "0%"})
-                        $('#dChoice_A').text("");
-                        $('#dChoice_B').text("");
-                        $('#dChoice_C').text("Click to Continue");
-                        logUpdate = 1;
-                        resolve(logUpdate);
-                        break;
-                        default:
+                    default:
                         throw new Error("Line Not Found")
                 }
-            }
-        }
-        let secondBranch = function(){
-            switch(d_Num){
-                case 0:
-                    logUpdate = -1
-                    resolve(logUpdate);
-                    break;
-                default:
-                    throw Error("Line Not Found");
             }
         }
         switch(branchNum){
@@ -148,15 +113,92 @@ export function nextLine_Math(branchNum, d_Num, responseChar){
             case 1:
                 firstBranch();
                 break;
-            case 2:
-                secondBranch();
-                break;
             default:
                 throw new Error("No Branch Found");
         }
     })
 }
 
-export function pageIntroduction(){
+export function pageIntroduction_Math(lineNumber){
     console.log("page intro")
+    return new Promise((resolve)=>{
+        switch(lineNumber){
+            case 0:
+                avatar.switchExpression("open")
+                .then(()=>typeMessage("Okay, so first things first."))
+                .then(async()=>{await dialogueLB()})
+                // .then(()=>avatar.switchExpression("smile"))
+                // .then(()=>typeMessage("Here you'll find \"The Basics\" which is what it sounds like."))
+                // .then(async()=>{await dialogueLB()})
+                // .then(()=>typeMessage("Anything from addition to long division can be found here."))
+                // .then(async()=>{await dialogueLB()})
+                .then(()=>{resolve()})
+                break;
+            case 1:
+                avatar.switchExpression("open")
+                .then(()=>typeMessage("This next one is my personal favorite!"))
+                .then(async()=>{await dialogueLB()})
+                // .then(()=>avatar.switchExpression("smile"))
+                // .then(()=>typeMessage("From simple equations like 2x = 4, you'll build up your algebra skills here."))
+                // .then(async()=>{await dialogueLB()})
+                .then(()=>{resolve()})
+                // resolve();
+                break;
+            case 2:
+                typeMessage("I'm not much of a fan of this subject, but you might feel differently!")
+                .then(async()=>{await dialogueLB()})
+                // .then(()=>typeMessage("This is where shapes/figures and mathematics meet."))
+                // .then(async()=>{await dialogueLB()})
+                // .then(()=>avatar.switchExpression("open"))
+                // .then(()=>typeMessage("Yup, that's Geometry."))
+                // .then(async()=>{await dialogueLB()})
+                // .then(()=>avatar.switchExpression("smile"))
+                .then(()=>{resolve()})
+                break;
+            case 3:
+                typeMessage("What's Calculus, you ask?")
+                .then(async()=>{await dialogueLB()})
+                // .then(()=>avatar.switchExpression("open"))
+                // .then(async()=>typeMessage("I have no idea!"))
+                // .then(async()=>{await dialogueLB()})
+                // .then(()=>avatar.switchExpression("smile"))
+                // .then(()=>typeMessage("Well, at least that's what I hear a lot."))
+                // .then(async()=>{await dialogueLB()})
+                // .then(()=>typeMessage("So if you feel the same way, don't worry!"))
+                // .then(async()=>{await dialogueLB()})
+                // .then(()=>typeMessage("Everyone has to start somewhere, right?"))
+                // .then(async()=>{await dialogueLB()})
+                .then(()=>{resolve()})
+                break;
+            case 4:
+                typeMessage("Okay, so this one I actually don't know too much about.")
+                .then(async()=>{await dialogueLB()})
+                // .then(()=>avatar.switchExpression("open"))
+                // .then(()=>typeMessage("That being said, I hear it's extremely fascinating stuff!"))
+                // .then(async()=>{await dialogueLB()})
+                // .then(()=>typeMessage("If that kind of stuff interests you..."))
+                // .then(async()=>{await dialogueLB()})
+                // .then(()=>typeMessage("You'll find all sorts of materials on it here!"))
+                // .then(async()=>{await dialogueLB()})
+                .then(()=>{resolve()})
+                break;
+            case 5:
+                avatar.switchExpression("open")
+                .then(()=>typeMessage("Well, I think that about covers it!"))
+                .then(async()=>{await dialogueLB()})
+                // .then(()=>avatar.switchExpression("smile"))
+                .then(()=>typeMessage("If you need any help, feel free to click the icon at the top left of the screen."))
+                .then(async()=>{await dialogueLB()})
+                .then(()=>$('#assistant_help').fadeIn(500))
+                .then(async()=>await pause(500))
+                // .then(()=>avatar.switchExpression("open"))
+                // .then(()=>typeMessage("Good Luck!"))
+                // .then(async()=>{await dialogueLB()})
+                .then(()=>avatar.switchExpression("smile"))
+                .then(()=>{resolve()});
+                break;
+            default:
+                throw Error("Line Not Found");
+        }
+    })
 }
