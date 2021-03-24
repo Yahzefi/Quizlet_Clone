@@ -1,16 +1,13 @@
 //                                      ||   IMPORTS   ||                                      \\
 import { create_dBox } from "../../Initialization/Assistants.js"
-import { pause } from "../c_Redirect.js"
+import { pause, pageIntroduction, anchorRedirect } from "../c_Redirect.js"
 import { Subcomponent } from "../../Initialization/Subcomponent.js";
 import { nextLine_Prog } from "../Dialogues/Programming/d_prog.script.js";
 import { nextLine_Hist } from "../Dialogues/History/d_hist.script.js";
 import { nextLine_Span } from "../Dialogues/Spanish/d_span.script.js";
 import { nextLine_Math } from "../Dialogues/Math/d_math.script.js";
-import { endLine_Prog } from "../c_Programming/showtime.prog.js";
-import { endLine_Hist } from "../c_History/showtime.hist.js";
-import { endLine_Span } from "../c_Spanish/showtime.span.js";
-import { endLine_Math } from "../c_Math/showtime.math.js";
 import { ASSISTANT_LIST } from "../../Initialization/on_Init.js";
+
 
 
 //                                      ||   SUBCOMPONENTS   ||                                      \\
@@ -20,6 +17,7 @@ let dialogueChoice_A_SC = new Subcomponent("p", "dChoice_A", "d-choice");
 let dialogueChoice_B_SC = new Subcomponent("p", "dChoice_B", "d-choice");
 let dialogueChoice_C_SC = new Subcomponent("p", "dChoice_C", "d-choice");
 let continueMessage_SC = new Subcomponent("p", "continue_message", "cont-msg");
+let introCover_SC = new Subcomponent("div", "intro_cover", 'int-cover');
 
 //                                      ||   CONVERSATION OBJECT   ||                                      \\
 
@@ -124,7 +122,7 @@ function maintainDialogue(responseChar){
                                     Conversation.branchIsOver = true;
                                     Conversation.branchNo++;
                                     Conversation.caseNum = 0;
-                                    userSpeak("C").then(()=>{maintainDialogue("C")})
+                                    userSpeak("C").then(()=>maintainDialogue("C"))
                                     break;
                                 default:
                                     break;
@@ -140,14 +138,34 @@ function maintainDialogue(responseChar){
             })
         } else if(Conversation.isFinished) {
             console.log("End");
+            let prog_avatar = document.getElementById("program_assistant")
+            let hist_avatar = document.getElementById("history_assistant")
+            let span_avatar = document.getElementById("spanish_assistant")
+            let math_avatar = document.getElementById("math_assistant")
             if(CURRENT_CATEGORY.isProgramming){
-                endLine_Prog();
+                if(prog_avatar){
+                    endLine("programming")
+                } else {
+                    console.log("prog c")
+                }
             } else if(CURRENT_CATEGORY.isHistory){
-                endLine_Hist();
+                if(hist_avatar){
+                    endLine("history");
+                } else {
+                    console.log("hist c")
+                }
             } else if(CURRENT_CATEGORY.isSpanish){
-                endLine_Span();
+                if(span_avatar){
+                    endLine("spanish");
+                } else {
+                    console.log("span c")
+                }
             } else if(CURRENT_CATEGORY.isMath){
-                endLine_Math();
+                if(math_avatar){
+                    endLine("math");
+                } else {
+                    console.log("math c")
+                }
             }
         }
     }
@@ -293,24 +311,91 @@ function displayChoices(){
         await pause(500);
         $('#' + dialogueInstructions_SC.id).fadeIn(500);
         await pause(500);
-        $('#' + dialogueChoice_A_SC.id).slideDown(1000);
+        $('#' + dialogueChoice_A_SC.id).fadeIn(1000);
         await pause(500);
-        $('#' + dialogueChoice_B_SC.id).slideDown(1000);
+        $('#' + dialogueChoice_B_SC.id).fadeIn(1000);
         await pause(500);
-        $('#' + dialogueChoice_C_SC.id).slideDown(1000);
+        $('#' + dialogueChoice_C_SC.id).fadeIn(1000);
         await pause(1000);
         resolve();
     })
 }
 
-
 function endDialogue(msgInterval){
-    // // Set Assistant "hasIntroduced" value to false
-    // if(CURRENT_CATEGORY.isProgramming){CURRENT_CATEGORY.isProgramming = false}
-    // if(CURRENT_CATEGORY.isHistory){CURRENT_CATEGORY.isHistory = false}
-    // if(CURRENT_CATEGORY.isSpanish){CURRENT_CATEGORY.isSpanish = false}
-    // if(CURRENT_CATEGORY.isMath){CURRENT_CATEGORY.isMath = false}
     clearInterval(msgInterval);
     $('#dialogue_box').children().css("display", "none");
     Conversation.isFinished = true;
+}
+
+async function endLine(category){
+    let avatar;
+    if(category === "math"){
+        avatar = ASSISTANT_LIST.Kinsley;
+    } else if(category === "history"){
+        avatar = ASSISTANT_LIST.Fredrick;
+    } else if(category === "spanish"){
+        avatar = ASSISTANT_LIST.Damien;
+    } else if(category = "programming"){
+        avatar = ASSISTANT_LIST.Tom;
+    }
+    let x = 0;
+
+    $(document.body).prepend(introCover_SC.createElement());
+    $('#' + introCover_SC.id).fadeIn(1000)
+    $('#dialogue_box').fadeOut(1000);
+    await pause(1000)
+    .then(()=>{$('#page_navigation').children().first().css({position: "relative", backgroundColor: "grey", padding: "12px", borderRadius: "50%"})})
+    .then(()=>pageIntroduction(category, x))
+    .then(()=>{
+        x++;
+        $('#page_navigation').children().first().css({position: "", backgroundColor: "", padding: "", borderRadius: ""})
+        $('#page_navigation').children().first().next().css({position: "relative", backgroundColor: "grey", padding: "12px", borderRadius: "50%"})
+    })
+    .then(()=>pageIntroduction(category, x))
+    .then(()=>{
+        x++;
+        $('#page_navigation').children().first().next().css({position: "", backgroundColor: "", padding: "", borderRadius: ""})
+        $('#page_navigation').children().first().next().next().css({position: "relative", backgroundColor: "grey", padding: "12px", borderRadius: "50%"})
+    })
+    .then(()=>pageIntroduction(category, x))
+    .then(()=>{
+        x++;
+        $('#page_navigation').children().first().next().next().css({position: "", backgroundColor: "", padding: "", borderRadius: ""})
+        $('#page_navigation').children().first().next().next().next().css({position: "relative", backgroundColor: "grey", padding: "12px", borderRadius: "50%"})
+    })
+    .then(()=>pageIntroduction(category, x))
+    .then(()=>{
+        x++;
+        $('#page_navigation').children().first().next().next().next().css({position: "", backgroundColor: "", padding: "", borderRadius: ""})
+        $('#page_navigation').children().first().next().next().next().next().css({position: "relative", backgroundColor: "grey", padding: "12px", borderRadius: "50%"})
+    })
+    .then(()=>pageIntroduction(category, x))
+    .then(()=>x++)
+    .then(()=>{
+        $('#page_navigation').children().first().next().next().next().next().css({position:"", backgroundColor:"", padding:"", borderRadius:""})
+        pageIntroduction(category, x)
+        .then(async()=>{
+            $('#' + avatar.id).animate({right: "100%"}, 1000)
+            await pause(1000);
+            $('#chat_div').fadeOut(500)
+            await pause(500);
+            $(document.body).css("overflow", "visible");
+            console.log("end");
+        })
+        .then(async()=>{
+            $('#' + introCover_SC.id).fadeOut(500)
+            await pause(500)
+            $('#' + introCover_SC.id).remove();
+            $('#page_navigation a').click(async(e)=>{
+                $('#banner_div').slideUp(750)
+                $('#header_container h2').slideUp(750)
+                $('#page_navigation').slideUp(750)
+                await pause(750)
+                $('#page_navigation').css({backgroundColor:"grey", padding: "12px"})
+                $('#page_navigation').slideDown(750)
+                await pause(750);
+                anchorRedirect(e, category);
+            })
+        })
+    })
 }
