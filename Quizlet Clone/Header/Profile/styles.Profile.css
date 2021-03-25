@@ -1,3 +1,7 @@
+* {
+    margin: 0;
+}
+
 body {
     display:flex;
     justify-content: center;
@@ -6,3 +10,40 @@ body {
     background-color: rgb(85, 85, 85);
     color:white;
 }
+
+    .head-cont {
+        width: 99.9%;
+        min-height: 200px;
+        max-height: 25%;
+        border: thin solid black;
+    }
+        .nav-bar {
+            position: fixed;
+            top: 0%;
+            right: 0%;
+            height: 4.5vh;
+            border: thin solid black;
+        }
+    .body-cont {
+        display: flex;
+        width: 99.9%;
+        min-height: 200px;
+        max-height: 65%;
+        border: thin solid pink;
+    }
+        .prof-bar {
+            flex: 0.33;
+            padding: 12px;
+        }
+        .rec-act {
+            flex: 0.66;
+            padding: 12px;
+            border-left: thin solid black;
+        }
+    .foot-cont {
+        position: fixed;
+        bottom: 0;
+        width: 99.9%;
+        height: 10vh;
+        border: thin solid lightgreen;
+    }
