@@ -43,7 +43,7 @@ body {
                 .pg-nav a:last-child {
                     border-right: none;
                 }
-                .pg-nav a:hover {
+                #OVERRIDE .pg-nav a:hover {
                     color: blue;
                     cursor: pointer;
                     text-decoration: underline;
@@ -70,3 +70,4 @@ body {
             height: 15%;
             border: 1px solid green;
         }
+
