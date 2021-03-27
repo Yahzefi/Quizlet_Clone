@@ -37,7 +37,7 @@ body {
             }
             .nav-bar {
                 display: none;
-                margin-top: 5%;
+                /* margin-top: 5%; */
             }
                 .nav-bar > a {
                     padding: 12px;
@@ -157,3 +157,22 @@ body {
                 margin-top: 5%;
                 opacity: 0.75;
             }
+    .int-cover {
+        display: none;
+        position: absolute;
+        background-color: rgba(25, 25, 25, 0.85);
+        width: 100%;
+        height: 1100px;
+    }
+    #assistant_help {
+        display:none;
+        position: absolute;
+        left: 2.5%;
+        top: 2.5%;
+        font-size: 48px;
+        color: rgb(104, 102, 219);
+    }
+    #assistant_help:hover {
+        cursor: pointer;
+        color: rgb(142, 140, 248);
+    }
