@@ -12,30 +12,44 @@
     <div id="header_container" class="head-cont">
         <!-- HEADER CONTENT -->
         <nav id="nav_bar" class="nav-bar">
-            <a href="">Test</a>
-            <a href="">Test 2</a>
-            <a href="">Test 3</a>
-            <a href="">Test 4</a>
+            <span id="home_span">Home</span>
+            <span id="settings_span">Settings</span>
             <!-- FROM THE MAIN PAGE AFTER LOGGING IN -->
         </nav>
-        <img src="" alt="profile__avatar" id="profile_image" class="prof-img" />
-        <div id="bio_section" class="bio-sect">
-            <h2>Bio</h2>
+        <div id="user_profile" class="user-prof">
+            <img src="https://avatars.githubusercontent.com/u/74159854?v=4" alt="profile__avatar" id="profile_image" class="prof-img" />
+            <div id="user_info" class="user-info">
+                <h1 id="user_id" class="user-id">Profile Name</h1>
+                <h4 id="user_quote" class="user-quote">Insert Quote Here...</h6>
+                    <!-- Make a Modal Box Pop Up to let user enter their quote  -->
+                <div id="bio_section" class="bio-sect">
+                    <h2>Bio</h2>
+                </div>
+            </div>
         </div>
     </div>
     <div id="body_container" class="body-cont">
         <div id="profile_sidebar" class="prof-bar">
-            <h2>Sidebar</h2>
+            <h4 id="rec_act" class="sidebar-item">Recent Activity</h4>
+            <h4 id="sub_set" class="sidebar-item">Submitted Sets</h4>
+            <h4 id="fol_set" class="sidebar-item">Followed Sets</h4>
+            <h4 id="course_subs" class="sidebar-item">Course Subscriptions</h4>
+            <h4 id="over_stats" class="sidebar-item">Overall Stats</h4>
             <!-- SIDEBAR -->
         </div>
-        <div id="recent_activity" class="rec-act">
-            <h2>Recent Activity</h2>
+        <div id="content_section" class="cont-sect">
+            <h2>Recent Activity (By Default)</h2>
             <!-- RECENT ACTIVITY -->
         </div>
         <!-- BODY CONTENT -->
     </div>
     <div id="footer_container" class="foot-cont">
-        <h2>Footer</h2>
+        <div id="logo_container" class="logo-cont">
+            <img src="/Images/Q_Logo.png" alt="Q-Clone Logo" id="qclone_logo" class="logo-img">
+            <p>Q-Clone</p>
+        </div>
+        <p id="footer_message" class="foot-msg">Q-Clone is a Quizlet-inspired web application for the purpose of creating and studying flashcard sets, taking and creating courses, and playing games which help you learn.</p>
+        <p id="copyright_icon" class="copy-icon">Copyright 2021 &copy;</p>
         <!-- FOOTER CONTENT -->
     </div>
     <script src="main.Profile.js"></script>
