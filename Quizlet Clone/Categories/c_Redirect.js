@@ -1,10 +1,12 @@
 import { anchorRedirect_Math } from "./c_Math/main.Math.js";
 import { anchorRedirect_History } from "./c_History/main.History.js";
 import { anchorRedirect_Spanish } from "./c_Spanish/main.Spanish.js";
+import { anchorRedirect_Programming } from "./c_Programming/main.Programming.js";
 
 import { pageIntroduction_History } from "./Dialogues/History/d_hist.script.js";
 import { pageIntroduction_Math } from "./Dialogues/Math/d_math.script.js";
 import { pageIntroduction_Spanish } from "./Dialogues/Spanish/d_span.script.js";
+import { pageIntroduction_Programming } from "./Dialogues/Programming/d_prog.script.js";
 
 export function openMathPage(){
     window.open("/Categories/c_Math/index.Math.html");
@@ -40,7 +42,8 @@ export function pageIntroduction(category, lineNumber){
             pageIntroduction_Spanish(lineNumber)
             .then(()=>resolve())
         } else if(category === "programming"){
-    
+            pageIntroduction_Programming(lineNumber)
+            .then(()=>resolve())
         }
     })
 }
@@ -55,6 +58,9 @@ export function anchorRedirect(ev, category){
             break;
         case "spanish":
             anchorRedirect_Spanish(ev.target.id);
+            break;
+        case "programming":
+            anchorRedirect_Programming(ev.target.id);
             break;
         default:
             throw Error("Error: Redirect Failed")
