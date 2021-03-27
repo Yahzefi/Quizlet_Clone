@@ -3,9 +3,9 @@ body {
 }
 
 @keyframes shadowPulse{
-    0% {box-shadow: 0px 0px 0px 0px rgba(215, 0, 0, 0.85);}
-    50% {box-shadow: 0px 0px 12px 12px rgba(215, 0, 0, 0.85);}
-    100% {box-shadow: 0px 0px 0px 0px rgba(215, 0, 0, 0.85);}
+    0% {box-shadow: 0px 0px 0px 0px rgba(200, 0, 0, 0.85);}
+    50% {box-shadow: 0px 0px 12px 12px rgba(200, 0, 0, 0.85);}
+    100% {box-shadow: 0px 0px 0px 0px rgba(200, 0, 0, 0.85);}
 }
 
     .h-primary-cont {
@@ -44,7 +44,7 @@ body {
                 .pg-nav a:last-child {
                     border-right: none;
                 }
-                .pg-nav a:hover {
+                #OVERRIDE .pg-nav a:hover {
                     color: blue;
                     cursor: pointer;
                     text-decoration: underline;
@@ -60,10 +60,11 @@ body {
                 width: 225px;
                 height: 300px;
                 border-radius: 50%;
+                margin-top: 2%;
+                background-color: rgba(200, 0, 0, 0.85);
             }
             .start-book:hover {
                 cursor: pointer;
-                background-color: rgba(200, 0, 0, 0.85);
             }
         .foot-cont {
             display: none;
