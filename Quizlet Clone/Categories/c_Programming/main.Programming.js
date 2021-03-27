@@ -64,3 +64,25 @@ function bannerAnimation(){
 function skipShowTime(){
     console.log("Skipped");
 }
+
+export function anchorRedirect_Programming(selectedAnchor){
+    switch(selectedAnchor){
+        case "a1":
+            console.log("HTML")
+            break;
+        case "a2":
+            console.log("CSS")
+            break;
+        case "a3":
+            console.log("JavaScript")
+            break;
+        case "a4":
+            console.log("React")
+            break;
+        case "a5":
+            console.log("Node.js")
+            break;
+        default:
+            throw Error("Error 404: Page Not Found")
+    }
+}
