@@ -79,47 +79,17 @@ export function nextLine_Hist(branchNum, d_Num, responseChar){
                     case 0:
                         avatar.switchExpression("default")
                         .then(()=>typeMessage("Hm...  You don't seem very excited."))
-                        // .then(async()=>{await dialogueLB()})
-                        // .then(()=>typeMessage("That truly is a shame, but in the end I suppose..."))
-                        // .then(async()=>{await dialogueLB()})
-                        // .then(()=>avatar.switchExpression("open"))
-                        // .then(()=>typeMessage("I could always just change your mind!"))
-                        // .then(async()=>{await dialogueLB()})
-                        // .then(()=>{avatar.switchExpression("smile")})
+                        .then(async()=>{await dialogueLB()})
+                        .then(()=>typeMessage("That truly is a shame, but in the end I suppose..."))
+                        .then(async()=>{await dialogueLB()})
+                        .then(()=>avatar.switchExpression("open"))
+                        .then(()=>typeMessage("I could always just change your mind!"))
+                        .then(async()=>{await dialogueLB()})
+                        .then(()=>{avatar.switchExpression("smile")})
                         .then(()=>{
                             logUpdate = -1
                             resolve(logUpdate)
                         })
-                        break;
-                    // case 1:
-                    //     avatar.switchExpression("default")
-                    //     .then(()=>typeMessage("..."))
-                    //     .then(async()=>{await dialogueLB()})
-                    //     .then(async()=>{await pause(1000)})
-                    //     .then(()=>typeMessage("....."))
-                    //     .then(async()=>{await dialogueLB()})
-                    //     .then(async()=>{await pause(1000)})
-                    //     .then(()=>avatar.switchExpression("shocked"))
-                    //     .then(()=>typeMessage("Really..?"))
-                    //     .then(async()=>{await dialogueLB()})
-                    //     .then(()=>typeMessage("Nothing?"))
-                    //     .then(async()=>{await dialogueLB()})
-                    //     .then(()=>avatar.switchExpression("default"))
-                    //     .then(()=>{
-                    //         logUpdate = 0
-                    //         resolve(logUpdate)
-                    //     })
-                    //     break;
-                    // case 2:
-                    //     typeMessage("Well...")
-                    //     .then(()=>avatar.switchExpression("open"))
-                    //     .then(()=>typeMessage("I guess it's up to me to spark some interest in you!"))
-                    //     .then(async()=>{await dialogueLB()})
-                    //     .then(()=>avatar.switchExpression("smile"))
-                    //     .then(()=>{
-                    //         logUpdate = -1
-                    //         resolve(logUpdate);
-                    //     })
                         break;
                     default:
                         throw new Error("Line Not Found")
@@ -174,55 +144,55 @@ export function pageIntroduction_History(lineNumber){
                 avatar.switchExpression("open")
                 .then(()=>typeMessage("We have sections for each of the major continents"))
                 .then(async()=>{await dialogueLB()})
-                // .then(()=>avatar.switchExpression("smile"))
-                // .then(()=>typeMessage("For the sake of this site's layout, Asia has been grouped in with Europe."))
-                // .then(async()=>{await dialogueLB()})
-                // .then(()=>typeMessage("The first section covers the history within North America."))
-                // .then(async()=>{await dialogueLB()})
-                // .then(()=>typeMessage("This includes not only the United States, but also Canada and Mexico's history!"))
-                // .then(async()=>{await dialogueLB()})
+                .then(()=>avatar.switchExpression("smile"))
+                .then(()=>typeMessage("For the sake of this site's layout, Asia has been grouped in with Europe."))
+                .then(async()=>{await dialogueLB()})
+                .then(()=>typeMessage("The first section covers the history within North America."))
+                .then(async()=>{await dialogueLB()})
+                .then(()=>typeMessage("This includes not only the United States, but also Canada and Mexico's history!"))
+                .then(async()=>{await dialogueLB()})
                 .then(()=>resolve());
                 break;
             case 1:
                 avatar.switchExpression("open")
                 .then(()=>typeMessage("The next section covers North America's southern sister!"))
                 .then(async()=>{await dialogueLB()})
-                // .then(()=>avatar.switchExpression("smile"))
-                // .then(()=>typeMessage("Once again for simplicity's sake, areas of central America have been included in this section"))
-                // .then(async()=>{await dialogueLB()})
+                .then(()=>avatar.switchExpression("smile"))
+                .then(()=>typeMessage("Once again for simplicity's sake, areas of central America have been included in this section"))
+                .then(async()=>{await dialogueLB()})
                 .then(()=>resolve());
                 break;
             case 2:
                 avatar.switchExpression("open")
                 .then(()=>typeMessage("The third section is Africa."))
                 .then(async()=>{await dialogueLB()})
-                // .then(()=>avatar.switchExpression("smile"))
-                // .then(()=>typeMessage("In this case, the Middle East will be included in this section."))
-                // .then(async()=>{await dialogueLB()})
+                .then(()=>avatar.switchExpression("smile"))
+                .then(()=>typeMessage("In this case, the Middle East will be included in this section."))
+                .then(async()=>{await dialogueLB()})
                 .then(()=>resolve());
                 break;
             case 3:
                 avatar.switchExpression("open")
                 .then(()=>typeMessage("Fourth is Austrailia.  Ah yes, the Great Outback!"))
                 .then(async()=>{await dialogueLB()})
-                // .then(()=>avatar.switchExpression("smile"))
-                // .then(()=>typeMessage("This area's history is my personal favorite since not many in the states talk about it."))
-                // .then(async()=>{await dialogueLB()})
-                // .then(()=>typeMessage("I hope you share the same experience as you learn more about it too!"))
-                // .then(async()=>{await dialogueLB()})
+                .then(()=>avatar.switchExpression("smile"))
+                .then(()=>typeMessage("This area's history is my personal favorite since not many in the states talk about it."))
+                .then(async()=>{await dialogueLB()})
+                .then(()=>typeMessage("I hope you share the same experience as you learn more about it too!"))
+                .then(async()=>{await dialogueLB()})
                 .then(()=>resolve());
                 break;
             case 4:
                 avatar.switchExpression("open")
                 .then(()=>typeMessage("Lastly is Europe!  As I said at the start, a lot is contained in this section."))
                 .then(async()=>{await dialogueLB()})
-                // .then(()=>avatar.switchExpression("smile"))
-                // .then(()=>typeMessage("It might seem overwhelming because of this, but there's no need to worry!"))
-                // .then(async()=>{await dialogueLB()})
-                // .then(()=>typeMessage("When it comes to learning our world's history, it's important to take your time."))
-                // .then(async()=>{await dialogueLB()})
-                // .then(()=>typeMessage("It's not likely you'll know it all, so you might as well relax and enjoy your stay!"))
-                // .then(async()=>{await dialogueLB()})
+                .then(()=>avatar.switchExpression("smile"))
+                .then(()=>typeMessage("It might seem overwhelming because of this, but there's no need to worry!"))
+                .then(async()=>{await dialogueLB()})
+                .then(()=>typeMessage("When it comes to learning our world's history, it's important to take your time."))
+                .then(async()=>{await dialogueLB()})
+                .then(()=>typeMessage("It's not likely you'll know it all, so you might as well relax and enjoy your stay!"))
+                .then(async()=>{await dialogueLB()})
                 .then(()=>resolve());
                 break;
             case 5:
