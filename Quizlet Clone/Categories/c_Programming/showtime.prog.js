@@ -47,44 +47,44 @@ export function initShowTime(){
 
         // BEGINNING OF DIALOGUE
         avatar_Tom.switchExpression("shocked")
-        // .then(()=>avatar_Tom.shake())
-        // .then(async()=>{
-        //     await pause(250);
-        //     typeMessage("W-What?!")
-        //     await pause(500);
-        // })
-        // .then(async ()=>{
-        //     await pause(750);
-        //     $('#chat_message').text("");
-        // })
-        // .then(()=>avatar_Tom.switchExpression("default"))
-        // .then(()=>typeMessage("Well that's not good..."))
-        // .then(async()=>{await dialogueLB();})
-        // .then(()=>avatar_Tom.switchExpression("open"))
-        // .then(()=>typeMessage("Well this is kind of awkward!"))
-        // .then(async()=>{await dialogueLB();})
-        // .then(()=>typeMessage("I'm actually kind of new here, but the other devs had their hands full"))
-        // .then(async()=>{await dialogueLB();})
-        // .then(()=>avatar_Tom.switchExpression("shocked"))
-        // .then(()=>avatar_Tom.shake())
-        // .then(()=>typeMessage("Wait...  I wonder if..."))
-        // .then(async()=>{await dialogueLB();})
-        // .then(()=>avatar_Tom.switchExpression("default"))
-        // .then(()=>typeMessage("Hold on, I'll be right back!"))
+        .then(()=>avatar_Tom.shake())
+        .then(async()=>{
+            await pause(250);
+            typeMessage("W-What?!")
+            await pause(500);
+        })
+        .then(async ()=>{
+            await pause(750);
+            $('#chat_message').text("");
+        })
+        .then(()=>avatar_Tom.switchExpression("default"))
+        .then(()=>typeMessage("Well that's not good..."))
+        .then(async()=>{await dialogueLB();})
+        .then(()=>avatar_Tom.switchExpression("open"))
+        .then(()=>typeMessage("Well this is kind of awkward!"))
+        .then(async()=>{await dialogueLB();})
+        .then(()=>typeMessage("I'm actually kind of new here, but the other devs had their hands full"))
+        .then(async()=>{await dialogueLB();})
+        .then(()=>avatar_Tom.switchExpression("shocked"))
+        .then(()=>avatar_Tom.shake())
+        .then(()=>typeMessage("Wait...  I wonder if..."))
+        .then(async()=>{await dialogueLB();})
+        .then(()=>avatar_Tom.switchExpression("default"))
+        .then(()=>typeMessage("Hold on, I'll be right back!"))
         .then(async()=>{
             await dialogueLB();
             $('#' + chatBox_SC.id).fadeOut(1000);
             await pause(1000);
             $('#' + chatBox_SC.id).remove();
-            // $('#' + avatar_Tom.id).animate({right: "125%"}, 1000);
-            // await pause(1000);
+            $('#' + avatar_Tom.id).animate({right: "125%"}, 1000);
+            await pause(1000);
             $('#' + avatar_Tom.id).remove();
             $('#' + chatDiv_SC.id).animate({top: "1000px"}, 500)
             await pause(500);
             $('#' + chatDiv_SC.id).remove();
-            // await pause(1000);
-            // $(document.body).css("background-image", "url('https://miro.medium.com/max/1200/1*NXhs15W3eBIuLT9xWFXLcA.jpeg')");
-            // await pause(1000);
+            await pause(1000);
+            $(document.body).css("background-image", "url('https://miro.medium.com/max/1200/1*NXhs15W3eBIuLT9xWFXLcA.jpeg')");
+            await pause(1000);
             $(document.body).css("background-image", "url('https://www.thoughtco.com/thmb/mvmMSSC5cnBtqNmQ_hfFSTD7yew=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/css-code-in-text-editor--web-page-internet-technology-862672426-5c8455ddc9e77c0001a67650.jpg')");
             await pause(500);
         })
@@ -107,14 +107,14 @@ export function initShowTime(){
                 })
                 await pause(750);
             })
-            // .then(()=>typeMessage("Wow, I can't believe that actually worked."))
-            // .then(async()=>{await dialogueLB();})
-            // .then(()=>avatar_Tom.switchExpression("open"))
-            // .then(()=>typeMessage("All I did was turn it off and turn it back on!  Can you believe that?"))
-            // .then(async()=>{await dialogueLB();})
-            // .then(()=>avatar_Tom.switchExpression("smile"))
-            // .then(()=>typeMessage("Anyway, hello there!  My name's Tom."))
-            // .then(async()=>{await dialogueLB();})
+            .then(()=>typeMessage("Wow, I can't believe that actually worked."))
+            .then(async()=>{await dialogueLB();})
+            .then(()=>avatar_Tom.switchExpression("open"))
+            .then(()=>typeMessage("All I did was turn it off and turn it back on!  Can you believe that?"))
+            .then(async()=>{await dialogueLB();})
+            .then(()=>avatar_Tom.switchExpression("smile"))
+            .then(()=>typeMessage("Anyway, hello there!  My name's Tom."))
+            .then(async()=>{await dialogueLB();})
             .then(async()=>{
                 $('#' + chatDiv_SC.id).append(assistantName_SC.createElement([{attr:"",content:"",innerText:"Tom"}]));
                 $('#' + assistantName_SC.id).animate({left: "18.5%", opacity: 1}, 1000)
@@ -157,15 +157,15 @@ function hideElements(){
 function returnElements(){
     return new Promise(async(resolve)=>{
         $('#primary_container').slideDown(1000);
-        // await pause(1000);
+        await pause(1000);
         $("#header_container").css("display", "")
         $("#body_container").css("display", "")
         $("#footer_container").css("display", "")
         $(BANNER).css({display: "inline", top: "0px"});
         $(BANNER).animate({width: "90%"}, 0)
         $(BANNER).animate({height: "300px"}, 0)
-        // await pause(1000);
-        $('#topic_navBar').slideDown(1000);
+        await pause(1000);
+        $('#page_navigation').slideDown(1000);
         await pause(1000);
 
         $(document.body).append(chatDiv_SC.createElement())
@@ -174,9 +174,4 @@ function returnElements(){
                 $('#' + chatBox_SC.id).css("display", "none");
         resolve();
     })
-}
-
-// This category's specific function to continue from after the load/initial conversation with assistant is completed
-export function endLine_Prog(){
-    console.log("End Programming");
 }
