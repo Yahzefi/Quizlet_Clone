@@ -26,16 +26,16 @@ export async function initShowTime(){
     await pause(750);
     avatar_Fred.switchExpression("default")
     .then(()=>typeMessage("Hmm..."))
-    // .then(async ()=>{await dialogueLB()})
-    // .then(()=>avatar_Fred.switchExpression("shocked"))
-    // .then(()=>typeMessage("You must be a fellow historian, yes?"))
-    // .then(async()=>{await dialogueLB()})
-    // .then(()=>avatar_Fred.switchExpression("open"))
-    // .then(()=>avatar_Fred.shake())
-    // .then(async()=>{await pause(500)})
-    // .then(()=>typeMessage("Oh, no!  Where are my manners?"))
-    // .then(async()=>{await dialogueLB()})
-    // .then(()=>typeMessage("I'm Fredrick, it's a pleasure to make your aquaintance!"))
+    .then(async ()=>{await dialogueLB()})
+    .then(()=>avatar_Fred.switchExpression("shocked"))
+    .then(()=>typeMessage("You must be a fellow historian, yes?"))
+    .then(async()=>{await dialogueLB()})
+    .then(()=>avatar_Fred.switchExpression("open"))
+    .then(()=>avatar_Fred.shake())
+    .then(async()=>{await pause(500)})
+    .then(()=>typeMessage("Oh, no!  Where are my manners?"))
+    .then(async()=>{await dialogueLB()})
+    .then(()=>typeMessage("I'm Fredrick, it's a pleasure to make your aquaintance!"))
     .then(async()=>{await dialogueLB()})
     .then(()=>avatar_Fred.switchExpression("smile"))
     .then(async ()=>{
@@ -46,9 +46,4 @@ export async function initShowTime(){
         await pause(150);
     })
     .then(()=>beginConversation("H"))
-}
-
-// This category's specific function to continue from after the load/initial conversation with assistant is completed
-export function endLine_Hist(){
-    console.log("End History");
 }
