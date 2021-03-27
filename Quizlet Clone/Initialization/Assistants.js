@@ -74,7 +74,7 @@ export function typeMessage(msg){
                 resolve();
             }
         }
-        let myInterval = setInterval(splitByLetter, 35)
+        let myInterval = setInterval(splitByLetter, 50)
     })
 }
 
