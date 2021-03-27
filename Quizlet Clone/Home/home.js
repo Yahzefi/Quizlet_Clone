@@ -16,11 +16,11 @@ export function homeMain(data){
     $('#modalCloseTwo').click(()=>{$('#modalBox_2').css("display", "");$('#modalDivTwo').css("display", "")});
 
 // CATEGORY LINKS
-    $('#math_category').click(openMathPage)
-    $('#coding_category').click(openProgrammingPage);
-    $('#category_section_2 h4').click(openProgrammingPage);
-    $('#history_category').click(openHistoryPage);
-    $('#spanish_category').click(openSpanishPage);
+    $('#math_category').click(()=>openMathPage())
+    $('#coding_category').click(()=>openProgrammingPage());
+    $('#category_section_2 h4').click(()=>openProgrammingPage());
+    $('#history_category').click(()=>openHistoryPage());
+    $('#spanish_category').click(()=>openSpanishPage());
 }
 
 function showPostModal(ev){
