@@ -19,7 +19,7 @@ export function headerMain(data){
 // ATTACH CLICK EVENTS TO HEADER NAVS
 
     $('#user_profile').click(()=>{console.log("hello");$('#user_dropdown').slideToggle(1000)})
-        $('#opt_1').click(()=>window.open("/Header/Profile/index.Profile.html"));
+        $('#opt_1').click(()=>window.location.assign("/Header/Profile/index.Profile.html"));
         $('#opt_2').click(()=>{})
         $('#opt_3').click(()=>location.reload());
     $('#user_library').click((e)=>navLink(e));
