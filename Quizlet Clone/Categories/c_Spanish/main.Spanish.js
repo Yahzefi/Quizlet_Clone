@@ -3,6 +3,9 @@ import { initShowTime } from "../c_Spanish/showtime.span.js"
 
 // WEIRD BUG WITH BODY CONTAINER PUTTING MARGIN I DIDN'T SPECIFY
 
+
+// Starting Intro Logo Animation & Handling
+
 $('#c_tortilla').click(async function(){
     $('#body_container_s h4').fadeOut(500);
     $('#body_container_s h1').fadeOut(500);
@@ -36,6 +39,8 @@ $('#f_tortilla').click(async function(){
     $('#body_container_s').remove();
     initShowTime();
 })
+
+// Navigational Redirect Function
 
 export function anchorRedirect_Spanish(selectedAnchor){
     switch(selectedAnchor){
