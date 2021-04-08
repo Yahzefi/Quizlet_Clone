@@ -1,3 +1,6 @@
+// this function checks for username and password authorization 
+// it's overly simplistic as stated in other files to act as a temporary functionality test
+
 export function checkPassword(user, pw){
     if(user === "Admin"){
         if(pw === "pword"){
@@ -29,6 +32,8 @@ export function checkPassword(user, pw){
         })
     }
 }
+
+// this checks the username/password inputs for the login modal box & the inputs for the registration modal box
 
 export function checkValidity(ev){
     if(ev.keyCode == 9 || ev.keyCode == 13 || ev.keyCode == 32){
