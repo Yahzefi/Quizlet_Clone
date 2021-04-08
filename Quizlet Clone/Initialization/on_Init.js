@@ -1,3 +1,10 @@
+
+/* 
+    This file contains a function that is called from main.js when the site is first loaded which creates a template of dom elements 
+    for the site.  When I started this project, I thought of creating this file as a way to have an exportable template for future site creation as a way to reduce wasted time.  The template I created is insanely basic though, but I still like the idea of creating one and would plan the structure out more before I begin coding it next time.
+*/
+
+
 //                                      ||   IMPORTS   ||                                      \\
 
 import { Component } from "../Initialization/Component.js";
