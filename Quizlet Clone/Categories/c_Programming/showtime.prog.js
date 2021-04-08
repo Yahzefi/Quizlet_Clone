@@ -9,12 +9,14 @@ import { beginConversation } from "../Dialogues/d.Main.js";
 const BANNER = document.getElementById('banner_image');
 let avatar_Tom = ASSISTANT_LIST.Tom;
 
-//                                      ||   SUBCOMPONENTS   ||                                      \\
+// New Subcomponents (DOM Elements)
+
 let assistantName_SC = new Subcomponent("h3", "assistant_name", "assist-name");
 let chatDiv_SC = new Subcomponent("div", "chat_div", "chat-div");
     let chatBox_SC = new Subcomponent("div", "chat_box", "chat-box");
         let chatBoxMsg_SC = new Subcomponent("h2", "chat_message", "chat-msg");
 
+// Initial Introductin of Assistant and Beginning of Dialogue
 
 export function initShowTime(){
     // console.log(localStorage.getItem("assistantHasAppeared"));
@@ -125,10 +127,12 @@ export function initShowTime(){
             .then(()=>avatar_Tom.switchExpression("open"))
             .then(()=>typeMessage("It's a pleasure to meet you!"))
             .then(()=>avatar_Tom.switchExpression("smile"))
-            .then(()=>beginConversation("P"))
+            .then(()=>beginConversation("P")) // Redirects to the Dialogue Script
         })
     })
 }
+
+// Functions below deal with initial page animations
 
 function hideElements(){
     return new Promise(async (resolve)=>{
