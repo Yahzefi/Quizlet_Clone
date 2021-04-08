@@ -1,3 +1,6 @@
+// this is the main js file for a section of the site that would contain the top rated flashcard sets
+
+
 import { Subcomponent } from "../Initialization/Subcomponent.js";
 
 
