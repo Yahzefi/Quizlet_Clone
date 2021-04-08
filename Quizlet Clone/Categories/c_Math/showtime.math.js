@@ -4,12 +4,16 @@ import { pause } from "../c_Redirect.js"
 import { typeMessage, dialogueLB } from "../../Initialization/Assistants.js"
 import { beginConversation } from "../Dialogues/d.Main.js";
 
+// New Subcomponents (DOM Elements)
+
 let assistantName_SC = new Subcomponent("h3", "assistant_name", "assist-name");
 let chatDiv_SC = new Subcomponent("div", "chat_div", "chat-div");
     let chatBox_SC = new Subcomponent("div", "chat_box", "chat-box");
         let chatBoxMsg_SC = new Subcomponent("h2", "chat_message", "chat-msg");
 
 let avatar_Math = ASSISTANT_LIST.Kinsley;
+
+// Initial Introductin of Assistant and Beginning of Dialogue
 
 export async function initShowTime(){
     // Extend Primary container && then animate it to slide upwards
@@ -52,5 +56,5 @@ export async function initShowTime(){
     .then(()=>typeMessage("I'm terribly sorry for the misunderstanding, things have been rather hectic recently."))
     .then(async()=>{await dialogueLB()})
     .then(async()=>{await pause(500)})
-    .then(()=>beginConversation("M"))
+    .then(()=>beginConversation("M")) // Redirects to the Dialogue Script
 }
