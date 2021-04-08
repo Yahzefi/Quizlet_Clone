@@ -1,3 +1,6 @@
+
+// this is a function which contains every element in the dom created in the on_Init.js file (template)
+
 export function generateElementList(){
     const HEADER = document.getElementById('header_container');
         const LOGIN_MODAL = document.getElementById("log_modal");
