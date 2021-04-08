@@ -14,6 +14,7 @@ window.addEventListener("DOMContentLoaded", async ()=>{
     initWebLoad()
     .then(generateElementList)
     .then((data)=>{
+        // passes the entire dom tree of the created template from the initWebLoad function
         const APP_ELEMENTS_LIST = data;
         headerMain(APP_ELEMENTS_LIST[0].Header);
         homeMain(APP_ELEMENTS_LIST[1].Body);
