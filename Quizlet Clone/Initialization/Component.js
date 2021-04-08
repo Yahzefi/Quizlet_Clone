@@ -1,3 +1,9 @@
+// this file contains a js class which ended up only being used a handful of times as a way to create a div which would 
+// end up having many children (subcomponents)
+
+// In hindsight, The use of only the Subcomponent class and some minor adjustments would've worked just as well without the added file
+
+
 export class Component {
     constructor(element, id, className, hasStorage) {
         this.cptTagName = element;
