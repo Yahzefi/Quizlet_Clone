@@ -23,6 +23,8 @@ export function homeMain(data){
     $('#spanish_category').click(()=>openSpanishPage());
 }
 
+// this pops up a modal box which contains the expanded information contained in each respective "post"
+
 function showPostModal(ev){
     console.log(ev.target.id);
     switch(ev.target.id){
