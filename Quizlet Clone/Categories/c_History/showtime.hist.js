@@ -4,10 +4,14 @@ import { pause } from "../c_Redirect.js"
 import { typeMessage, dialogueLB } from "../../Initialization/Assistants.js"
 import { beginConversation } from "../Dialogues/d.Main.js";
 
+// New Subcomponents (DOM Elements)
+
 let assistantName_SC = new Subcomponent("h3", "assistant_name", "assist-name");
 let chatDiv_SC = new Subcomponent("div", "chat_div", "chat-div");
     let chatBox_SC = new Subcomponent("div", "chat_box", "chat-box");
         let chatBoxMsg_SC = new Subcomponent("h2", "chat_message", "chat-msg");
+
+// Initial Introductin of Assistant and Beginning of Dialogue
 
 export async function initShowTime(){
     let avatar_Fred = ASSISTANT_LIST.Fredrick;
@@ -45,5 +49,5 @@ export async function initShowTime(){
         $('#' + assistantName_SC.id).css("font-style", "normal")
         await pause(150);
     })
-    .then(()=>beginConversation("H"))
+    .then(()=>beginConversation("H")) // Redirects to the Dialogue Script
 }
