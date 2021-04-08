@@ -1,65 +1,60 @@
-import { pause } from "../c_Redirect.js"
-import { initShowTime } from "../c_Spanish/showtime.span.js"
+import { pause } from "../c_Redirect.js";
+import { Subcomponent } from "../../Initialization/Subcomponent.js";
+import { ASSISTANT_LIST } from "../../Initialization/on_Init.js";
+import { typeMessage, dialogueLB } from "../../Initialization/Assistants.js";
+import { beginConversation } from "../Dialogues/d.Main.js";
 
-// WEIRD BUG WITH BODY CONTAINER PUTTING MARGIN I DIDN'T SPECIFY
+// New Subcomponents (DOM Elements)
 
+let assistantName_SC = new Subcomponent("h3", "assistant_name", "assist-name");
+let chatDiv_SC = new Subcomponent("div", "chat_div", "chat-div");
+    let chatBox_SC = new Subcomponent("div", "chat_box", "chat-box");
+        let chatBoxMsg_SC = new Subcomponent("h2", "chat_message", "chat-msg");
 
-// Starting Intro Logo Animation & Handling
+// Initial Introductin of Assistant and Beginning of Dialogue
 
-$('#c_tortilla').click(async function(){
-    $('#body_container_s h4').fadeOut(500);
-    $('#body_container_s h1').fadeOut(500);
-    $('#body_container_s h2').fadeOut(500);
-    await pause(500)
-    $('#f_head').fadeOut(500);
-    $('#f_tortilla').fadeOut(500);
+export async function initShowTime(){
+    let avatar_Dame = ASSISTANT_LIST.Damien
+    $(document.body).append(avatar_Dame.generate());
+    avatar_Dame.display("60%");
     await pause(1000);
-    $(this).animate({width: "300px", height: "300px"}, 500)
-    $(this).animate({width: "0px", height: "0px"}, 1000)
-    await pause(1500);
-    $('#c_head').remove();
-    $(this).remove();
-    $('#body_container_s').remove();
-    initShowTime();
-})
-
-$('#f_tortilla').click(async function(){
-    $('#body_container_s h4').fadeOut(500);
-    $('#body_container_s h1').fadeOut(500);
-    $('#body_container_s h2').fadeOut(500);
-    await pause(500)
-    $('#c_head').fadeOut(500);
-    $('#c_tortilla').fadeOut(500);
+    $(document.body).prepend(chatDiv_SC.createElement());
+        $('#' + chatDiv_SC.id).append(chatBox_SC.createElement());
+            $('#' + chatBox_SC.id).append(chatBoxMsg_SC.createElement());
+            $('#' + chatBox_SC.id).css("display", "none");
+    $('#' + chatDiv_SC.id).animate({top:"625px"}, 1000)
     await pause(1000);
-    $(this).animate({width: "300px", height: "300px"}, 500)
-    $(this).animate({width: "0px", height: "0px"}, 1000)
-    await pause(1500);
-    $('#f_head').remove();
-    $(this).remove();
-    $('#body_container_s').remove();
-    initShowTime();
-})
+    $('#header_container').fadeIn(750);
+    await pause(750);
+    $('#' + chatBox_SC.id).fadeIn(750);
+    await pause(750);
+    avatar_Dame.switchExpression("open")
+    .then(()=>typeMessage("Hola!"))
+    .then(async ()=>{await dialogueLB()})
+    .then(()=>avatar_Dame.switchExpression("smile"))
+    .then(()=>typeMessage("Me llamo Damien"))
+    .then(async()=>{await dialogueLB()})
+    .then(async ()=>{
+        $('#chat_div').prepend(assistantName_SC.createElement([{attr:"", content:"", innerText:"Damien"}]))
+        $('#' + assistantName_SC.id).animate({left: "18%", opacity: 1}, 1000)
+        await pause(850);
+        $('#' + assistantName_SC.id).css("font-style", "normal")
+        await pause(150);
+    })
+    .then(()=>avatar_Dame.switchExpression("default"))
+    .then(()=>typeMessage("Although if you're new to the language, you might be confused..."))
+    .then(async()=>{await dialogueLB()})
+    .then(()=>avatar_Dame.switchExpression("open"))
+    .then(()=>typeMessage("I guess I should start speaking in English then, huh?"))
+    .then(async()=>{await dialogueLB()})
+    .then(()=>avatar_Dame.switchExpression("smile"))
+    .then(()=>typeMessage("Now then, I assume you're here to learn a second language."))
+    .then(async()=>{await dialogueLB()})
+    .then(()=>typeMessage("What made you pick Spanish versus another language, though?"))
+    .then(async()=>{await dialogueLB()})
+    .then(()=>beginConversation("S")) // Redirects to the Dialogue Script
+}
 
-// Navigational Redirect Function
-
-export function anchorRedirect_Spanish(selectedAnchor){
-    switch(selectedAnchor){
-        case "a1":
-            console.log("Glossary")
-            break;
-        case "a2":
-            console.log("Phrases")
-            break;
-        case "a3":
-            console.log("Courses")
-            break;
-        case "a4":
-            console.log("Culture")
-            break;
-        case "a5":
-            console.log("Tourism")
-            break;
-        default:
-            throw Error("Error 404: Page Not Found")
-    }
+export function endLine_Span(){
+    console.log("End Spanish");
 }
