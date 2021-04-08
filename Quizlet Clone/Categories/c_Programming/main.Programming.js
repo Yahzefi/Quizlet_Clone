@@ -5,6 +5,8 @@ import { pause } from "../c_Redirect.js";
 const BANNER = document.getElementById("banner_image");
 let avatar_Tom = ASSISTANT_LIST.Tom;
 
+// Starting Intro Logo Animation & Handling
+
 $(document).ready(()=>{
     bannerAnimation()
     .then(async ()=>{
@@ -33,6 +35,8 @@ $(document).ready(()=>{
     })
 })
 
+// Checks Local Storage to see if user has already seen introduction dialogue with Assistant
+
 // localStorage.removeItem("assistantHasAppeared")
 
 // if(localStorage.getItem("assistantHasAppeared") !== null){
@@ -44,6 +48,10 @@ if(!avatar_Tom.hasIntroduced){
     $('#showTime_btn').click(initShowTime);
 } else {
     $('#showTime_btn').click(skipShowTime);
+}
+
+function skipShowTime(){
+    console.log("Skipped");
 }
 
 function bannerAnimation(){
@@ -61,9 +69,7 @@ function bannerAnimation(){
     })
 }
 
-function skipShowTime(){
-    console.log("Skipped");
-}
+// Navigational Redirect Function
 
 export function anchorRedirect_Programming(selectedAnchor){
     switch(selectedAnchor){
