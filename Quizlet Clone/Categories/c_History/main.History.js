@@ -4,6 +4,7 @@ import { initShowTime } from "./showtime.hist.js"
 $('#primary_container').css("top", "0px")
 $(document).ready(()=>{$('#primary_container').fadeIn(500)})
 
+// Starting Intro Logo Animation & Handling
 $('#history_startBook').hover(function(){
     this.style.animationName = "shadowPulse";
     this.style.animationDuration = "1.5s";
@@ -23,6 +24,8 @@ $('#history_startBook').click(async function(){
     $('#body_container').remove();
     initShowTime();
 })
+
+// Navigational Redirect Function
 
 export function anchorRedirect_History(selectedAnchor){
     switch(selectedAnchor){
