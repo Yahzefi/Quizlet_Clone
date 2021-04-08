@@ -54,6 +54,8 @@ export function navLink(e){
     }
 }
 
+// basic reusable animation function for navbar
+
 function displayNav(src){
     $(document.body).css("overflow", "");
     $('#page_container').slideUp(1000);
