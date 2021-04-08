@@ -4,6 +4,21 @@ import { ASSISTANT_LIST } from "../../../Initialization/on_Init.js"
 
 const avatar = ASSISTANT_LIST.Kinsley;
 
+/*
+    (nextLine_*ins-category-abbr*) is the main function of the file which contains possible branches the user can go down
+    depending on what they choose as their response
+
+    (introScript) is the first function called and sets up the first batch of responses
+
+    (firstBranch) is the branch that segments off depending on the choice made.
+    If time allowed, there'd be segmented branches from each choice (such as branch 2a, 2b, and 2c) which would then split off even further into something like 2a1 2b1 2c1 or some other unique name to travel through as the dialogue progresses
+
+    The switch at the bottom acts as a conditional check to see which path the user will go down in direct relation to their reply choice
+
+    At the bottom we have (pageIntrocution_*ins-category*) which contains a separate script for the initial run of the page
+    where the designated assistant will give a brief overview of the navigation links and what they contain
+*/
+
 export function nextLine_Math(branchNum, d_Num, responseChar){
     return new Promise((resolve)=>{
         let logUpdate;
