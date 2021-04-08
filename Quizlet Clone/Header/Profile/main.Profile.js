@@ -1,3 +1,8 @@
+// This is the js file for the profile page that is only accessible once the user logs in.
+// currently, the only way to log in is through an overly simplistic authorization check for a user of "Admin"
+// with a password of "pword"
+
+
 $('#home_span').click(()=>{
     window.history.back();
 })
