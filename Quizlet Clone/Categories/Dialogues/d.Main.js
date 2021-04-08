@@ -21,6 +21,8 @@ let introCover_SC = new Subcomponent("div", "intro_cover", 'int-cover');
 
 //                                      ||   CONVERSATION OBJECT   ||                                      \\
 
+// This object helps keep track of what's currently going on in the current conversation regardless of whether it's spanish, math, etc
+
 let Conversation = {
     hasBegun: false,
     hasListener: false,
@@ -32,6 +34,8 @@ let Conversation = {
 
 //                                      ||   ASSISTANTS   ||                                      \\
 
+// This object helps keep track of what category is currently loaded to ensure to correct script is pulled
+
 const CURRENT_CATEGORY = {
     isProgramming: ASSISTANT_LIST.Tom.hasIntroduced,
     isMath: ASSISTANT_LIST.Kinsley.hasIntroduced,
@@ -40,6 +44,9 @@ const CURRENT_CATEGORY = {
 }
 
 //                                      ||   INITIAL FUNCTION   ||                                      \\
+
+// this function is called from each category's respective "showtime" file
+
 export function beginConversation(categoryChar){
     create_dBox()
     .then(async(dBox)=>{
@@ -70,6 +77,8 @@ export function beginConversation(categoryChar){
         }
     })
 }
+
+// This is a recursive function that maintains the dialogue for as long as there is script to run through
 
 function maintainDialogue(responseChar){
     let msgInterval = setInterval(()=>{
@@ -169,15 +178,20 @@ function maintainDialogue(responseChar){
             }
         }
     }
+    // This starts the recursive function for the first time
     if(!Conversation.hasBegun && !Conversation.isFinished){
         Conversation.hasBegun = true;
         statusUpdate()
     } 
+    // This restarts the recursive function if the conversation isn't finished, but the specific branch 
+    // (from the script files) is now over and signals it to move on to the next one
     if(!Conversation.isFinished && Conversation.branchIsOver){
         Conversation.branchIsOver = false;
         statusUpdate()
     }
 }
+
+// this function is called within the recursive one, and is responsible for pulling the script from the dialogue script files
 
 async function continueDialogue(responseChar){
     if(responseChar === "P"){
@@ -257,6 +271,8 @@ async function continueDialogue(responseChar){
     }
 }
 
+// this function includes a short animation to show which choice was made before it fades out 
+
 function userSpeak(responseChar){
     return new Promise((resolve)=>{
         $('#'+ userName_SC.id).css("display", "block");
@@ -305,6 +321,8 @@ function userSpeak(responseChar){
     })
 }
 
+// this function displays the choices of reply the user has depending on which path their currently going down
+
 function displayChoices(){
     return new Promise(async(resolve)=>{
         $('#black_chatBox').animate({opacity: 0.25}, 500)
@@ -321,11 +339,17 @@ function displayChoices(){
     })
 }
 
+// This clears the interval (the one that displays a blinking message to click/press a key to continue further) and marks
+// the conversation as over so that the recursive function will break out of its loop
+
 function endDialogue(msgInterval){
     clearInterval(msgInterval);
     $('#dialogue_box').children().css("display", "none");
     Conversation.isFinished = true;
 }
+
+// this function is called once the recursive function's loop has been broken (conversation is over)
+// the assistant will go through an introduction of the page's navigation links (unless first choice is the "rude" choice then it's skipped)
 
 async function endLine(category){
     let avatar;
