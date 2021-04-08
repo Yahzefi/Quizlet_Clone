@@ -1,3 +1,9 @@
+// this is a js class for created a new subcomponent (or DOM element)
+
+// It's purpose is to allow the developer to import it and then create elements, add attributes, and append it to the DOM 
+// within a line or two of code (to avoid unnecessary repitition)
+
+
 export class Subcomponent {
     constructor(elementType, id, className) {
         this.elementType = elementType;
