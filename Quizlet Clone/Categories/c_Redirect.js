@@ -8,6 +8,8 @@ import { pageIntroduction_Math } from "./Dialogues/Math/d_math.script.js";
 import { pageIntroduction_Spanish } from "./Dialogues/Spanish/d_span.script.js";
 import { pageIntroduction_Programming } from "./Dialogues/Programming/d_prog.script.js";
 
+//                                      ||   Redirect From Main.js   ||                                      \\
+
 export function openMathPage(){
     window.open("/Categories/c_Math/index.Math.html");
 }
@@ -30,6 +32,8 @@ export function pause(ms){
     })
 }
 
+//                                      ||   Redirect from d.Main.js   ||                                      \\
+
 export function pageIntroduction(category, lineNumber){
     return new Promise((resolve)=>{
         if(category === "math"){
@@ -47,6 +51,8 @@ export function pageIntroduction(category, lineNumber){
         }
     })
 }
+
+//                                      ||   Redirect from Category Navigation Links   ||                                      \\
 
 export function anchorRedirect(ev, category){
     switch(category){
