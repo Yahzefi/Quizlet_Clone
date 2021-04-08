@@ -21,7 +21,7 @@ As of now, there are four accessible category pages to explore.
 Each page includes a customized introduction to the site from an "Assistant".
 The user will be greeted and eventually prompted with a set of three responses to a question asked by the assistant.  The user can choose any three of these and depending on what is chosen, a certain path will begin to take shape.  Each user can have a unique experience with the tree-like structure I created for the dialogue scripts.  Due to the previously mentioned constraints I was only able to create one divergence in the dialogue path; however, *(as I explain in the individual script files)* there is a way to diverge even further to create a truly unique experience.
 
-**NOTE** If the user chooses the third reply to the first question, a majority of the dialogue will be skipped, and the user can gain full control of the browsing experience once again *
+**NOTE:** *If the user chooses the third reply to the first question, a majority of the dialogue will be skipped, and the user can gain full control of the browsing experience once again*
 
 
 ## Final Remarks
